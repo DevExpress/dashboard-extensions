@@ -1,0 +1,312 @@
+(function webpackUniversalModuleDefinition(root, factory) {
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("@devexpress/analytics-core/dx-analytics-core"), require("devextreme/ui/map")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "@devexpress/analytics-core/dx-analytics-core", "devextreme/ui/map" ], factory); else if (typeof exports === "object") exports["OnlineMapItemExtension"] = factory(require("devexpress-dashboard/common"), require("@devexpress/analytics-core/dx-analytics-core"), require("devextreme/ui/map")); else root["DashboardExtensions"] = root["DashboardExtensions"] || {}, 
+    root["DashboardExtensions"]["OnlineMapItemExtension"] = factory(root["DevExpress"]["Dashboard"], root["DevExpress"], root["DevExpress"]["ui"]["dxMap"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__9__) {
+    return function(modules) {
+        var installedModules = {};
+        function __webpack_require__(moduleId) {
+            if (installedModules[moduleId]) {
+                return installedModules[moduleId].exports;
+            }
+            var module = installedModules[moduleId] = {
+                i: moduleId,
+                l: false,
+                exports: {}
+            };
+            modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+            module.l = true;
+            return module.exports;
+        }
+        __webpack_require__.m = modules;
+        __webpack_require__.c = installedModules;
+        __webpack_require__.d = function(exports, name, getter) {
+            if (!__webpack_require__.o(exports, name)) {
+                Object.defineProperty(exports, name, {
+                    enumerable: true,
+                    get: getter
+                });
+            }
+        };
+        __webpack_require__.r = function(exports) {
+            if (typeof Symbol !== "undefined" && Symbol.toStringTag) {
+                Object.defineProperty(exports, Symbol.toStringTag, {
+                    value: "Module"
+                });
+            }
+            Object.defineProperty(exports, "__esModule", {
+                value: true
+            });
+        };
+        __webpack_require__.t = function(value, mode) {
+            if (mode & 1) value = __webpack_require__(value);
+            if (mode & 8) return value;
+            if (mode & 4 && typeof value === "object" && value && value.__esModule) return value;
+            var ns = Object.create(null);
+            __webpack_require__.r(ns);
+            Object.defineProperty(ns, "default", {
+                enumerable: true,
+                value: value
+            });
+            if (mode & 2 && typeof value != "string") for (var key in value) __webpack_require__.d(ns, key, function(key) {
+                return value[key];
+            }.bind(null, key));
+            return ns;
+        };
+        __webpack_require__.n = function(module) {
+            var getter = module && module.__esModule ? function getDefault() {
+                return module["default"];
+            } : function getModuleExports() {
+                return module;
+            };
+            __webpack_require__.d(getter, "a", getter);
+            return getter;
+        };
+        __webpack_require__.o = function(object, property) {
+            return Object.prototype.hasOwnProperty.call(object, property);
+        };
+        __webpack_require__.p = "";
+        return __webpack_require__(__webpack_require__.s = 7);
+    }([ function(module, exports) {
+        module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
+    }, , function(module, exports) {
+        module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
+    }, function(module, exports, __webpack_require__) {
+        "use strict";
+        exports.__esModule = true;
+        exports.ONLINE_MAP_EXTENSION_NAME = "OnlineMap";
+        exports.onlineMapMeta = {
+            bindings: [ {
+                propertyName: "Latitude",
+                dataItemType: "Dimension",
+                array: false,
+                enableInteractivity: true,
+                displayName: "DashboardWebCustomItemStringId.Latitude",
+                emptyPlaceholder: "DashboardWebCustomItemStringId.Binding.SetLatitude",
+                selectedPlaceholder: "DashboardWebCustomItemStringId.Binding.ConfigureLatitude",
+                constraints: {
+                    allowedTypes: [ "Integer", "Float", "Double", "Decimal" ]
+                }
+            }, {
+                propertyName: "Longitude",
+                dataItemType: "Dimension",
+                array: false,
+                enableInteractivity: true,
+                displayName: "DashboardWebCustomItemStringId.Longitude",
+                emptyPlaceholder: "DashboardWebCustomItemStringId.Binding.SetLongitude",
+                selectedPlaceholder: "DashboardWebCustomItemStringId.Binding.ConfigureLongitude",
+                constraints: {
+                    allowedTypes: [ "Integer", "Float", "Double", "Decimal" ]
+                }
+            } ],
+            properties: [ {
+                propertyName: "Provider",
+                editor: {
+                    header: "dx-dashboard-button-group"
+                },
+                displayName: "DashboardWebCustomItemStringId.OnlineMapProvider",
+                sectionName: "DashboardWebCustomItemStringId.OnlineMapSectionName",
+                values: {
+                    Google: "DashboardWebCustomItemStringId.OnlineMapProviderGoogle",
+                    Bing: "DashboardWebCustomItemStringId.OnlineMapProviderBing"
+                },
+                defaultVal: "Bing"
+            }, {
+                propertyName: "Type",
+                editor: {
+                    header: "dx-dashboard-button-group"
+                },
+                displayName: "DashboardWebCustomItemStringId.OnlineMapType",
+                sectionName: "DashboardWebCustomItemStringId.OnlineMapSectionName",
+                values: {
+                    RoadMap: "DashboardWebCustomItemStringId.OnlineMapTypeRoadMap",
+                    Satellite: "DashboardWebCustomItemStringId.OnlineMapTypeSatellite",
+                    Hybrid: "DashboardWebCustomItemStringId.OnlineMapTypeHybrid"
+                },
+                defaultVal: "RoadMap"
+            }, {
+                propertyName: "DisplayMode",
+                editor: {
+                    header: "dx-dashboard-button-group"
+                },
+                displayName: "DashboardWebCustomItemStringId.OnlineMapDisplayMode",
+                sectionName: "DashboardWebCustomItemStringId.OnlineMapSectionName",
+                values: {
+                    Markers: "DashboardWebCustomItemStringId.OnlineMapDisplayModeMarkers",
+                    Routes: "DashboardWebCustomItemStringId.OnlineMapDisplayModeRoutes",
+                    MarkersAndRoutes: "DashboardWebCustomItemStringId.OnlineMapDisplayModeMarkersAndRoutes"
+                },
+                defaultVal: "Markers"
+            } ],
+            interactivity: {
+                filter: true,
+                drillDown: false
+            },
+            icon: exports.ONLINE_MAP_EXTENSION_NAME,
+            title: "DashboardWebCustomItemStringId.DefaultNameOnlineMap",
+            index: 1
+        };
+    }, , , , function(module, exports, __webpack_require__) {
+        "use strict";
+        exports.__esModule = true;
+        var meta_1 = __webpack_require__(3);
+        var online_map_viewer_1 = __webpack_require__(8);
+        var icon_1 = __webpack_require__(10);
+        __webpack_require__(11);
+        var OnlineMapItemExtension = function() {
+            function OnlineMapItemExtension(dashboardControl) {
+                this.name = meta_1.ONLINE_MAP_EXTENSION_NAME;
+                this.metaData = meta_1.onlineMapMeta;
+                dashboardControl.registerIcon(icon_1.ONLINE_MAP_ICON);
+            }
+            OnlineMapItemExtension.prototype.createViewerItem = function(model, $element, content) {
+                return new online_map_viewer_1.onlineMapItem(model, $element, content);
+            };
+            return OnlineMapItemExtension;
+        }();
+        exports.OnlineMapItemExtension = OnlineMapItemExtension;
+    }, function(module, exports, __webpack_require__) {
+        "use strict";
+        var __extends = this && this.__extends || function() {
+            var extendStatics = function(d, b) {
+                extendStatics = Object.setPrototypeOf || {
+                    __proto__: []
+                } instanceof Array && function(d, b) {
+                    d.__proto__ = b;
+                } || function(d, b) {
+                    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+                };
+                return extendStatics(d, b);
+            };
+            return function(d, b) {
+                extendStatics(d, b);
+                function __() {
+                    this.constructor = d;
+                }
+                d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+            };
+        }();
+        exports.__esModule = true;
+        var common_1 = __webpack_require__(0);
+        var map_1 = __webpack_require__(9);
+        var onlineMapItem = function(_super) {
+            __extends(onlineMapItem, _super);
+            function onlineMapItem(model, $container, options) {
+                var _this = _super.call(this, model, $container, options) || this;
+                _this.mapViewer = null;
+                return _this;
+            }
+            onlineMapItem.prototype.setSize = function(width, height) {
+                _super.prototype.setSize.call(this, width, height);
+                var contentWidth = this.contentWidth(), contentHeight = this.contentHeight();
+                this.mapViewer.option("width", contentWidth);
+                this.mapViewer.option("height", contentHeight);
+            };
+            onlineMapItem.prototype.clearSelection = function() {
+                _super.prototype.clearSelection.call(this);
+                this._updateSelection();
+            };
+            onlineMapItem.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
+                var _this = this;
+                var markers = [], routes = [], mode = this.getPropertyValue("DisplayMode"), showMarkers = mode === "Markers" || mode === "MarkersAndRoutes" || this.canMasterFilter(), showRoutes = mode === "Routes" || mode === "MarkersAndRoutes";
+                if (this.getBindingValue("Latitude").length > 0 && this.getBindingValue("Longitude").length > 0) {
+                    this.iterateData(function(row) {
+                        var latitude = row.getValue("Latitude")[0];
+                        var longitude = row.getValue("Longitude")[0];
+                        if (latitude && longitude) {
+                            if (showMarkers) {
+                                markers.push({
+                                    location: {
+                                        lat: latitude,
+                                        lng: longitude
+                                    },
+                                    iconSrc: _this.isSelected(row) ? "https://js.devexpress.com/Demos/RealtorApp/images/map-marker.png" : null,
+                                    onClick: function(args) {
+                                        _this._onClick(row);
+                                    },
+                                    tag: row
+                                });
+                            }
+                            if (showRoutes) {
+                                routes.push([ latitude, longitude ]);
+                            }
+                        }
+                    });
+                }
+                var autoAdjust = markers.length > 1 || routes.length > 1, options = {
+                    provider: this.getPropertyValue("Provider").toLowerCase(),
+                    type: this.getPropertyValue("Type").toLowerCase(),
+                    controls: true,
+                    zoom: autoAdjust ? 1e3 : 1,
+                    autoAdjust: autoAdjust,
+                    width: this.contentWidth(),
+                    height: this.contentHeight(),
+                    markers: markers,
+                    routes: routes.length > 0 ? [ {
+                        weight: 6,
+                        color: "blue",
+                        opacity: .5,
+                        mode: "",
+                        locations: routes
+                    } ] : []
+                };
+                if (changeExisting && this.mapViewer) {
+                    this.mapViewer.option(options);
+                } else {
+                    this.mapViewer = new (map_1["default"] || window.DevExpress.ui.dxMap)($element, options);
+                }
+            };
+            onlineMapItem.prototype._onClick = function(row) {
+                this.setMasterFilter(row);
+                this._updateSelection();
+            };
+            onlineMapItem.prototype._updateSelection = function() {
+                var _this = this;
+                var markers = this.mapViewer.option("markers");
+                markers.forEach(function(marker) {
+                    marker.iconSrc = _this.isSelected(marker.tag) ? "https://js.devexpress.com/Demos/RealtorApp/images/map-marker.png" : null;
+                });
+                this.mapViewer.option("autoAdjust", false);
+                this.mapViewer.option("markers", markers);
+            };
+            return onlineMapItem;
+        }(common_1.CustomItemViewer);
+        exports.onlineMapItem = onlineMapItem;
+    }, function(module, exports) {
+        module.exports = __WEBPACK_EXTERNAL_MODULE__9__;
+    }, function(module, exports, __webpack_require__) {
+        "use strict";
+        exports.__esModule = true;
+        var meta_1 = __webpack_require__(3);
+        exports.ONLINE_MAP_ICON = '<?xml version="1.0" encoding="utf-8"?>\n\x3c!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --\x3e\n<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n<svg version="1.1" id="' + meta_1.onlineMapMeta.icon + '" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"\n\t viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">\n<path class="dx_darkgray" d="M12,1C8.1,1,5,4.1,5,8c0,3.9,3,10,7,15c4-5,7-11.1,7-15C19,4.1,15.9,1,12,1z M12,12c-2.2,0-4-1.8-4-4\n\tc0-2.2,1.8-4,4-4s4,1.8,4,4C16,10.2,14.2,12,12,12z"/>\n<circle class="dx_red" cx="12" cy="8" r="2"/>\n</svg>';
+    }, function(module, exports, __webpack_require__) {
+        "use strict";
+        exports.__esModule = true;
+        var DxDesigner = __webpack_require__(2);
+        function getDefaultCustomLocalization() {
+            return {
+                "DashboardWebCustomItemStringId.DefaultNameOnlineMap": "Online Map",
+                "DashboardWebCustomItemStringId.Latitude": "Latitude",
+                "DashboardWebCustomItemStringId.Binding.SetLatitude": "Set Latitude",
+                "DashboardWebCustomItemStringId.Binding.ConfigureLatitude": "Configure Latitude",
+                "DashboardWebCustomItemStringId.Longitude": "Longitude",
+                "DashboardWebCustomItemStringId.Binding.SetLongitude": "Set Longitude",
+                "DashboardWebCustomItemStringId.Binding.ConfigureLongitude": "Configure Longitude",
+                "DashboardWebCustomItemStringId.OnlineMapProvider": "Provider",
+                "DashboardWebCustomItemStringId.OnlineMapType": "Type",
+                "DashboardWebCustomItemStringId.OnlineMapProviderGoogle": "Google",
+                "DashboardWebCustomItemStringId.OnlineMapProviderBing": "Bing",
+                "DashboardWebCustomItemStringId.OnlineMapTypeRoadMap": "RoadMap",
+                "DashboardWebCustomItemStringId.OnlineMapTypeSatellite": "Satellite",
+                "DashboardWebCustomItemStringId.OnlineMapTypeHybrid": "Hybrid",
+                "DashboardWebCustomItemStringId.OnlineMapDisplayMode": "Display Mode",
+                "DashboardWebCustomItemStringId.OnlineMapDisplayModeMarkers": "Markers",
+                "DashboardWebCustomItemStringId.OnlineMapDisplayModeRoutes": "Routes",
+                "DashboardWebCustomItemStringId.OnlineMapDisplayModeMarkersAndRoutes": "All",
+                "DashboardWebCustomItemStringId.OnlineMapSectionName": "Custom Options"
+            };
+        }
+        DxDesigner.Analytics.Localization.addCultureInfo({
+            messages: getDefaultCustomLocalization()
+        });
+    } ]);
+});
