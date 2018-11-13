@@ -2,22 +2,19 @@ const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-var entry = { 
-    'OnlineMapItemExtension': './src/online-map-item/online-map.ts',
-    'CustomDashboardPanelExtension': './src/dashboard-panel/dashboard-panel.ts',
-    'FunnelD3ItemExtension': './src/funnel-d3-item/funnel-d3.ts',
-    'ParameterItemExtension': './src/parameter-item/parameter-item.ts',
-    'WebpageItemExtension': './src/webpage-item/webpage.ts'
-}
-
 module.exports = {
-    
-    entry: entry,
+    entry: { 
+        'online-map-item': './src/online-map-item/online-map-extension.ts',
+        'dashboard-panel': './src/dashboard-panel/dashboard-panel.ts',
+        'funnel-d3-item': './src/funnel-d3-item/funnel-d3-extension.ts',
+        'parameter-item': './src/parameter-item/parameter-item-extension.ts',
+        'webpage-item': './src/webpage-item/webpage-extension.ts'
+    },
     output: {
-        library: ['DashboardExtensions', '[name]'],
+        
         libraryTarget: 'umd',
         path: path.resolve('./'),
-        filename: (args) => 'dist/' + path.parse(entry[args.chunk.name]).name + ".js"
+        filename: "dist/[name].js"
     },
     externals: {
         'jquery': { root: '$', commonjs2: 'jquery', commonjs: 'jquery', amd: 'jquery' },

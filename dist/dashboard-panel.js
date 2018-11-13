@@ -1,6 +1,8 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/designer"), require("devextreme/core/devices")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/designer", "devextreme/core/devices" ], factory); else if (typeof exports === "object") exports["CustomDashboardPanelExtension"] = factory(require("devexpress-dashboard/designer"), require("devextreme/core/devices")); else root["DashboardExtensions"] = root["DashboardExtensions"] || {}, 
-    root["DashboardExtensions"]["CustomDashboardPanelExtension"] = factory(root["DevExpress"]["Dashboard"]["Designer"], root["DevExpress"]["devices"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/designer"), require("devextreme/core/devices")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/designer", "devextreme/core/devices" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/designer"), require("devextreme/core/devices")) : factory(root["DevExpress"]["Dashboard"]["Designer"], root["DevExpress"]["devices"]);
+        for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
+    }
 })(window, function(__WEBPACK_EXTERNAL_MODULE__13__, __WEBPACK_EXTERNAL_MODULE__14__) {
     return function(modules) {
         var installedModules = {};

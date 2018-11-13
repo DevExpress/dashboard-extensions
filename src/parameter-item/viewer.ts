@@ -9,7 +9,7 @@ var buttonsStyle = {
 import { CustomItemViewer } from 'devexpress-dashboard/common'
 
 
-export class parameterItemViewer extends CustomItemViewer {
+export class ParameterItemViewer extends CustomItemViewer {
     $gridContainer: JQuery;
     $buttonContainer: JQuery;
     parametersExtension: any;

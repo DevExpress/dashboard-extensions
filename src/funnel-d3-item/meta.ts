@@ -1,7 +1,7 @@
  import { editorTemplates, parseBool } from 'devexpress-dashboard/model/index.metadata'
  
- export var FUNNEL_D3_EXTENSION_NAME = 'FunnelD3';
- export var funnelMeta = {
+ export const FUNNEL_D3_EXTENSION_NAME = 'FunnelD3';
+ export const funnelMeta = {
     bindings: [{
         propertyName: 'Values',
         dataItemType: 'Measure',

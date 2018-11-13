@@ -1,12 +1,11 @@
 
 import { parameterItemMeta, PARAMETER_ITEM_EXTENSION_NAME } from "./meta";
-import { parameterItemViewer } from "./viewer";
+import { ParameterItemViewer } from "./viewer";
 import { PARAMETER_ITEM_ICON } from "./icon";
 
-export class parameterItemExtension {
+export class ParameterItemExtension {
     name = PARAMETER_ITEM_EXTENSION_NAME;
     metaData = parameterItemMeta;
-
 
     constructor(private dashboardControl) {
         dashboardControl.registerIcon(PARAMETER_ITEM_ICON);
@@ -16,12 +15,11 @@ export class parameterItemExtension {
         
     }
     
-    
     createViewerItem(model, $element, content) {
         var parametersExtension = this.dashboardControl.findExtension("dashboard-parameter-dialog");
         if (!parametersExtension){
             throw Error('The "dashboard-parameter-dialog" extension does not exist. To register this extension, use the DashboardControl.registerExtension method.');
         }
-        return new parameterItemViewer(model, $element, content, parametersExtension);
+        return new ParameterItemViewer(model, $element, content, parametersExtension);
     }
 }

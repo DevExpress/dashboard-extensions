@@ -6,7 +6,7 @@
 import { CustomItemViewer } from 'devexpress-dashboard/common'
 import D3Funnel from 'd3-funnel';
 
-export class funnelD3Item extends CustomItemViewer {
+export class FunnelD3Item extends CustomItemViewer {
     funnelSettings;
     funnelViewer;
     selectionValues: Array<any>

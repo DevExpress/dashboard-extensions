@@ -1,6 +1,8 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("@devexpress/analytics-core/dx-analytics-core"), require("devextreme/ui/map")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "@devexpress/analytics-core/dx-analytics-core", "devextreme/ui/map" ], factory); else if (typeof exports === "object") exports["OnlineMapItemExtension"] = factory(require("devexpress-dashboard/common"), require("@devexpress/analytics-core/dx-analytics-core"), require("devextreme/ui/map")); else root["DashboardExtensions"] = root["DashboardExtensions"] || {}, 
-    root["DashboardExtensions"]["OnlineMapItemExtension"] = factory(root["DevExpress"]["Dashboard"], root["DevExpress"], root["DevExpress"]["ui"]["dxMap"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("@devexpress/analytics-core/dx-analytics-core"), require("devextreme/ui/map")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "@devexpress/analytics-core/dx-analytics-core", "devextreme/ui/map" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("@devexpress/analytics-core/dx-analytics-core"), require("devextreme/ui/map")) : factory(root["DevExpress"]["Dashboard"], root["DevExpress"], root["DevExpress"]["ui"]["dxMap"]);
+        for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
+    }
 })(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__9__) {
     return function(modules) {
         var installedModules = {};
@@ -159,7 +161,7 @@
                 dashboardControl.registerIcon(icon_1.ONLINE_MAP_ICON);
             }
             OnlineMapItemExtension.prototype.createViewerItem = function(model, $element, content) {
-                return new online_map_viewer_1.onlineMapItem(model, $element, content);
+                return new online_map_viewer_1.OnlineMapItem(model, $element, content);
             };
             return OnlineMapItemExtension;
         }();
@@ -188,24 +190,24 @@
         exports.__esModule = true;
         var common_1 = __webpack_require__(0);
         var map_1 = __webpack_require__(9);
-        var onlineMapItem = function(_super) {
-            __extends(onlineMapItem, _super);
-            function onlineMapItem(model, $container, options) {
+        var OnlineMapItem = function(_super) {
+            __extends(OnlineMapItem, _super);
+            function OnlineMapItem(model, $container, options) {
                 var _this = _super.call(this, model, $container, options) || this;
                 _this.mapViewer = null;
                 return _this;
             }
-            onlineMapItem.prototype.setSize = function(width, height) {
+            OnlineMapItem.prototype.setSize = function(width, height) {
                 _super.prototype.setSize.call(this, width, height);
                 var contentWidth = this.contentWidth(), contentHeight = this.contentHeight();
                 this.mapViewer.option("width", contentWidth);
                 this.mapViewer.option("height", contentHeight);
             };
-            onlineMapItem.prototype.clearSelection = function() {
+            OnlineMapItem.prototype.clearSelection = function() {
                 _super.prototype.clearSelection.call(this);
                 this._updateSelection();
             };
-            onlineMapItem.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
+            OnlineMapItem.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
                 var _this = this;
                 var markers = [], routes = [], mode = this.getPropertyValue("DisplayMode"), showMarkers = mode === "Markers" || mode === "MarkersAndRoutes" || this.canMasterFilter(), showRoutes = mode === "Routes" || mode === "MarkersAndRoutes";
                 if (this.getBindingValue("Latitude").length > 0 && this.getBindingValue("Longitude").length > 0) {
@@ -255,11 +257,11 @@
                     this.mapViewer = new (map_1["default"] || window.DevExpress.ui.dxMap)($element, options);
                 }
             };
-            onlineMapItem.prototype._onClick = function(row) {
+            OnlineMapItem.prototype._onClick = function(row) {
                 this.setMasterFilter(row);
                 this._updateSelection();
             };
-            onlineMapItem.prototype._updateSelection = function() {
+            OnlineMapItem.prototype._updateSelection = function() {
                 var _this = this;
                 var markers = this.mapViewer.option("markers");
                 markers.forEach(function(marker) {
@@ -268,9 +270,9 @@
                 this.mapViewer.option("autoAdjust", false);
                 this.mapViewer.option("markers", markers);
             };
-            return onlineMapItem;
+            return OnlineMapItem;
         }(common_1.CustomItemViewer);
-        exports.onlineMapItem = onlineMapItem;
+        exports.OnlineMapItem = OnlineMapItem;
     }, function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE__9__;
     }, function(module, exports, __webpack_require__) {

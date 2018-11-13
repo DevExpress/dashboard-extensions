@@ -1,8 +1,8 @@
 ﻿import { editorTemplates, parseBool } from 'devexpress-dashboard/model/index.metadata'
 
-export var WEBPAGE_EXTENSION_NAME = 'WebPage';
+export const WEBPAGE_EXTENSION_NAME = 'WebPage';
 
-export var webPageMeta: any = {
+export const webPageMeta: any = {
     bindings: [{
         propertyName: 'Attribute',
         dataItemType: 'Dimension',

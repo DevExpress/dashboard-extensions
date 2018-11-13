@@ -1,6 +1,8 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "devexpress-dashboard/model/index.metadata" ], factory); else if (typeof exports === "object") exports["WebpageItemExtension"] = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata")); else root["DashboardExtensions"] = root["DashboardExtensions"] || {}, 
-    root["DashboardExtensions"]["WebpageItemExtension"] = factory(root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"]["Metadata"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "devexpress-dashboard/model/index.metadata" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata")) : factory(root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"]["Metadata"]);
+        for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
+    }
 })(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__) {
     return function(modules) {
         var installedModules = {};
@@ -84,7 +86,7 @@
                     this.name = meta_1.WEBPAGE_EXTENSION_NAME;
                     this.metaData = meta_1.webPageMeta;
                     this.createViewerItem = function(model, $element, content) {
-                        return new webpage_viewer_1.webPageItem(model, $element, content);
+                        return new webpage_viewer_1.WebPageItem(model, $element, content);
                     };
                     dashboardControl.registerIcon(icon_1.WEBPAGE_ICON);
                 }
@@ -121,14 +123,14 @@
             }();
             exports.__esModule = true;
             var common_1 = __webpack_require__(0);
-            var webPageItem = function(_super) {
-                __extends(webPageItem, _super);
-                function webPageItem(model, $container, options) {
+            var WebPageItem = function(_super) {
+                __extends(WebPageItem, _super);
+                function WebPageItem(model, $container, options) {
                     var _this = _super.call(this, model, $container, options) || this;
                     _this._iframe = undefined;
                     return _this;
                 }
-                webPageItem.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
+                WebPageItem.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
                     var attribute;
                     if (!changeExisting || !this._iframe) {
                         this._iframe = $("<iframe>", {
@@ -147,9 +149,9 @@
                     });
                     this._iframe.attr("src", this.getPropertyValue("Url").replace("{0}", attribute));
                 };
-                return webPageItem;
+                return WebPageItem;
             }(common_1.CustomItemViewer);
-            exports.webPageItem = webPageItem;
+            exports.WebPageItem = WebPageItem;
         },
         6: function(module, exports, __webpack_require__) {
             "use strict";

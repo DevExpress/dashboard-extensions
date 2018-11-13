@@ -1,6 +1,6 @@
-﻿    export var ONLINE_MAP_EXTENSION_NAME = 'OnlineMap';
+﻿    export const ONLINE_MAP_EXTENSION_NAME = 'OnlineMap';
 
-    export var onlineMapMeta: any = {
+    export const onlineMapMeta: any = {
         bindings:[{
             propertyName: 'Latitude',
             dataItemType: 'Dimension',

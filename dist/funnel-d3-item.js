@@ -1,6 +1,8 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata"), require("@devexpress/analytics-core/dx-analytics-core"), require("d3-funnel")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "devexpress-dashboard/model/index.metadata", "@devexpress/analytics-core/dx-analytics-core", "d3-funnel" ], factory); else if (typeof exports === "object") exports["FunnelD3ItemExtension"] = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata"), require("@devexpress/analytics-core/dx-analytics-core"), require("d3-funnel")); else root["DashboardExtensions"] = root["DashboardExtensions"] || {}, 
-    root["DashboardExtensions"]["FunnelD3ItemExtension"] = factory(root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"]["Metadata"], root["DevExpress"], root["D3Funnel"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata"), require("@devexpress/analytics-core/dx-analytics-core"), require("d3-funnel")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "devexpress-dashboard/model/index.metadata", "@devexpress/analytics-core/dx-analytics-core", "d3-funnel" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata"), require("@devexpress/analytics-core/dx-analytics-core"), require("d3-funnel")) : factory(root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"]["Metadata"], root["DevExpress"], root["D3Funnel"]);
+        for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
+    }
 })(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__18__) {
     return function(modules) {
         var installedModules = {};
@@ -140,22 +142,23 @@
         };
     }, , , , , , , , , , , function(module, exports, __webpack_require__) {
         "use strict";
+        exports.__esModule = true;
         var icon_1 = __webpack_require__(16);
         var funnel_d3_viewer_1 = __webpack_require__(17);
         __webpack_require__(19);
         var meta_1 = __webpack_require__(4);
-        var funnelD3ItemExtension = function() {
-            function funnelD3ItemExtension(dashboardControl) {
+        var FunnelD3ItemExtension = function() {
+            function FunnelD3ItemExtension(dashboardControl) {
                 this.name = meta_1.FUNNEL_D3_EXTENSION_NAME;
                 this.metaData = meta_1.funnelMeta;
                 dashboardControl.registerIcon(icon_1.FUNNEL_D3_ICON);
             }
-            funnelD3ItemExtension.prototype.createViewerItem = function(model, $element, content) {
-                return new funnel_d3_viewer_1.funnelD3Item(model, $element, content);
+            FunnelD3ItemExtension.prototype.createViewerItem = function(model, $element, content) {
+                return new funnel_d3_viewer_1.FunnelD3Item(model, $element, content);
             };
-            return funnelD3ItemExtension;
+            return FunnelD3ItemExtension;
         }();
-        module.exports = funnelD3ItemExtension;
+        exports.FunnelD3ItemExtension = FunnelD3ItemExtension;
     }, function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
@@ -185,9 +188,9 @@
         exports.__esModule = true;
         var common_1 = __webpack_require__(0);
         var d3_funnel_1 = __webpack_require__(18);
-        var funnelD3Item = function(_super) {
-            __extends(funnelD3Item, _super);
-            function funnelD3Item(model, $container, options) {
+        var FunnelD3Item = function(_super) {
+            __extends(FunnelD3Item, _super);
+            function FunnelD3Item(model, $container, options) {
                 var _this = _super.call(this, model, $container, options) || this;
                 _this.funnelSettings = undefined;
                 _this.funnelViewer = null;
@@ -196,7 +199,7 @@
                 _this._subscribeProperties();
                 return _this;
             }
-            funnelD3Item.prototype.renderContent = function($element, changeExisting) {
+            FunnelD3Item.prototype.renderContent = function($element, changeExisting) {
                 var data = this._getDataSource();
                 if (!this._ensureFunnelLibrary($element)) return;
                 if (!!data) {
@@ -215,24 +218,24 @@
                     this.funnelViewer = null;
                 }
             };
-            funnelD3Item.prototype.setSize = function(width, height) {
+            FunnelD3Item.prototype.setSize = function(width, height) {
                 _super.prototype.setSize.call(this, width, height);
                 this._update(null, this._getFunnelSizeOptions());
             };
-            funnelD3Item.prototype.clearSelection = function() {
+            FunnelD3Item.prototype.clearSelection = function() {
                 _super.prototype.clearSelection.call(this);
                 this._update(this._getDataSource());
             };
-            funnelD3Item.prototype.allowExportSingleItem = function() {
+            FunnelD3Item.prototype.allowExportSingleItem = function() {
                 return !this._isIEBrowser();
             };
-            funnelD3Item.prototype.getExportInfo = function() {
+            FunnelD3Item.prototype.getExportInfo = function() {
                 if (this._isIEBrowser()) return;
                 return {
                     image: this._getImageBase64()
                 };
             };
-            funnelD3Item.prototype._getFunnelSizeOptions = function() {
+            FunnelD3Item.prototype._getFunnelSizeOptions = function() {
                 return {
                     chart: {
                         width: this.$funnelContainer.innerWidth(),
@@ -240,7 +243,7 @@
                     }
                 };
             };
-            funnelD3Item.prototype._getDataSource = function() {
+            FunnelD3Item.prototype._getDataSource = function() {
                 var bindingValues = this.getBindingValue("Values");
                 if (bindingValues.length == 0) return undefined;
                 var data = [];
@@ -266,7 +269,7 @@
                 });
                 return data.length > 0 ? data : undefined;
             };
-            funnelD3Item.prototype._ensureFunnelLibrary = function($element) {
+            FunnelD3Item.prototype._ensureFunnelLibrary = function($element) {
                 if (!window["D3Funnel"]) {
                     $element.empty();
                     $element.append($("<div/>", {
@@ -283,7 +286,7 @@
                 }
                 return true;
             };
-            funnelD3Item.prototype._ensureFunnelSettings = function() {
+            FunnelD3Item.prototype._ensureFunnelSettings = function() {
                 var _this = this;
                 var getSelectionColor = function(hexColor) {
                     return _this.funnelViewer.colorizer.shade(hexColor, -.5);
@@ -326,7 +329,7 @@
                 this.funnelSettings.options.block.highlight = this.canDrillDown() || this.canMasterFilter();
                 return this.funnelSettings;
             };
-            funnelD3Item.prototype._onClick = function(e) {
+            FunnelD3Item.prototype._onClick = function(e) {
                 if (!this._hasArguments() || !e.label) return;
                 var row = e.label.raw.data;
                 if (this.canDrillDown(row)) this.drillDown(row); else if (this.canMasterFilter(row)) {
@@ -334,7 +337,7 @@
                     this._update();
                 }
             };
-            funnelD3Item.prototype._subscribeProperties = function() {
+            FunnelD3Item.prototype._subscribeProperties = function() {
                 this.subscribe("IsCurved", function(isCurved) {
                     return this._update(null, {
                         chart: {
@@ -368,7 +371,7 @@
                     });
                 });
             };
-            funnelD3Item.prototype._update = function(data, options) {
+            FunnelD3Item.prototype._update = function(data, options) {
                 this._ensureFunnelSettings();
                 if (!!data) {
                     this.funnelSettings.data = data;
@@ -381,33 +384,33 @@
                     this._updateExportingImage();
                 }
             };
-            funnelD3Item.prototype._updateExportingImage = function() {
+            FunnelD3Item.prototype._updateExportingImage = function() {
                 var svg = this.$funnelContainer.children()[0], str = new XMLSerializer().serializeToString(svg), encodedData = "data:image/svg+xml;base64," + window.btoa(encodeURI(encodeURIComponent(str)));
                 this.exportingImage.src = encodedData;
             };
-            funnelD3Item.prototype._hasArguments = function() {
+            FunnelD3Item.prototype._hasArguments = function() {
                 return this.getBindingValue("Arguments").length > 0;
             };
-            funnelD3Item.prototype._getImageBase64 = function() {
+            FunnelD3Item.prototype._getImageBase64 = function() {
                 var canvas = $("<canvas>")[0];
                 canvas["width"] = this.$funnelContainer.innerWidth();
                 canvas["height"] = this.$funnelContainer.innerHeight();
                 canvas["getContext"]("2d").drawImage(this.exportingImage, 0, 0);
                 return canvas["toDataURL"]().replace("data:image/png;base64,", "");
             };
-            funnelD3Item.prototype._isIEBrowser = function() {
+            FunnelD3Item.prototype._isIEBrowser = function() {
                 return navigator.userAgent.indexOf("MSIE") !== -1 || navigator.appVersion.indexOf("Trident/") > 0;
             };
-            return funnelD3Item;
+            return FunnelD3Item;
         }(common_1.CustomItemViewer);
-        exports.funnelD3Item = funnelD3Item;
+        exports.FunnelD3Item = FunnelD3Item;
     }, function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE__18__;
     }, function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
-        var dx_analytics_core_1 = __webpack_require__(2);
-        dx_analytics_core_1["default"].Analytics.Localization.addCultureInfo({
+        var DxDesigner = __webpack_require__(2);
+        DxDesigner.Analytics.Localization.addCultureInfo({
             messages: {
                 "DashboardWebCustomItemStringId.DefaultNameFunnelD3": "Funnel D3",
                 "DashboardWebCustomItemStringId.Values": "Values",

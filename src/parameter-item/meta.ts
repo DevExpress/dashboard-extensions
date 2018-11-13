@@ -1,8 +1,8 @@
 import { editorTemplates } from 'devexpress-dashboard/model/index.metadata'
 
-export var PARAMETER_ITEM_EXTENSION_NAME = 'ParameterItem';
+export const PARAMETER_ITEM_EXTENSION_NAME = 'ParameterItem';
 
-export var parameterItemMeta = {
+export const parameterItemMeta = {
     properties: [{
         propertyName: 'showHeaders',
         editor: editorTemplates.buttonGroup,

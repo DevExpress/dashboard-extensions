@@ -1,6 +1,8 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "devexpress-dashboard/model/index.metadata" ], factory); else if (typeof exports === "object") exports["ParameterItemExtension"] = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata")); else root["DashboardExtensions"] = root["DashboardExtensions"] || {}, 
-    root["DashboardExtensions"]["ParameterItemExtension"] = factory(root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"]["Metadata"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "devexpress-dashboard/model/index.metadata" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata")) : factory(root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"]["Metadata"]);
+        for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
+    }
 })(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__) {
     return function(modules) {
         var installedModules = {};
@@ -79,24 +81,24 @@
             var meta_1 = __webpack_require__(5);
             var viewer_1 = __webpack_require__(21);
             var icon_1 = __webpack_require__(22);
-            var parameterItemExtension = function() {
-                function parameterItemExtension(dashboardControl) {
+            var ParameterItemExtension = function() {
+                function ParameterItemExtension(dashboardControl) {
                     this.dashboardControl = dashboardControl;
                     this.name = meta_1.PARAMETER_ITEM_EXTENSION_NAME;
                     this.metaData = meta_1.parameterItemMeta;
                     dashboardControl.registerIcon(icon_1.PARAMETER_ITEM_ICON);
                 }
-                parameterItemExtension.prototype.start = function() {};
-                parameterItemExtension.prototype.createViewerItem = function(model, $element, content) {
+                ParameterItemExtension.prototype.start = function() {};
+                ParameterItemExtension.prototype.createViewerItem = function(model, $element, content) {
                     var parametersExtension = this.dashboardControl.findExtension("dashboard-parameter-dialog");
                     if (!parametersExtension) {
                         throw Error('The "dashboard-parameter-dialog" extension does not exist. To register this extension, use the DashboardControl.registerExtension method.');
                     }
-                    return new viewer_1.parameterItemViewer(model, $element, content, parametersExtension);
+                    return new viewer_1.ParameterItemViewer(model, $element, content, parametersExtension);
                 };
-                return parameterItemExtension;
+                return ParameterItemExtension;
             }();
-            exports.parameterItemExtension = parameterItemExtension;
+            exports.ParameterItemExtension = ParameterItemExtension;
         },
         21: function(module, exports, __webpack_require__) {
             "use strict";
@@ -128,9 +130,9 @@
                 marginTop: 10
             };
             var common_1 = __webpack_require__(0);
-            var parameterItemViewer = function(_super) {
-                __extends(parameterItemViewer, _super);
-                function parameterItemViewer(model, $container, options, parametersExtension) {
+            var ParameterItemViewer = function(_super) {
+                __extends(ParameterItemViewer, _super);
+                function ParameterItemViewer(model, $container, options, parametersExtension) {
                     var _this = _super.call(this, model, $container, options) || this;
                     _this.parametersExtension = parametersExtension;
                     _this._subscribeProperties();
@@ -143,11 +145,11 @@
                     });
                     return _this;
                 }
-                parameterItemViewer.prototype.setSize = function(width, height) {
+                ParameterItemViewer.prototype.setSize = function(width, height) {
                     _super.prototype.setSize.call(this, width, height);
                     this._setGridHeight();
                 };
-                parameterItemViewer.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
+                ParameterItemViewer.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
                     if (!changeExisting) {
                         $element.empty();
                         $element.css("overflow", "auto");
@@ -173,7 +175,7 @@
                         if (this.getPropertyValue("automaticUpdates") != "Off") this.$buttonContainer.hide();
                     }
                 };
-                parameterItemViewer.prototype._generateParametersContent = function() {
+                ParameterItemViewer.prototype._generateParametersContent = function() {
                     this.parametersContent = this.parametersExtension.renderContent(this.$gridContainer);
                     this.parametersContent.grid.option("onDisposing", function() {
                         this.dialogButtonSubscribe.dispose();
@@ -188,22 +190,22 @@
                         showParameterName: this.getPropertyValue("showParameterName")
                     });
                 };
-                parameterItemViewer.prototype._submitValues = function() {
+                ParameterItemViewer.prototype._submitValues = function() {
                     this.parametersContent.submitParameterValues();
                     this._update({
                         showHeaders: this.getPropertyValue("showHeaders"),
                         showParameterName: this.getPropertyValue("showParameterName")
                     });
                 };
-                parameterItemViewer.prototype._updateParameterValues = function() {
+                ParameterItemViewer.prototype._updateParameterValues = function() {
                     this.getPropertyValue("automaticUpdates") != "Off" ? this._submitValues() : null;
                 };
-                parameterItemViewer.prototype._setGridHeight = function() {
+                ParameterItemViewer.prototype._setGridHeight = function() {
                     var gridHeight = this.contentHeight();
                     if (this.getPropertyValue("automaticUpdates") === "Off") gridHeight -= buttonsStyle.containerHeight;
                     this.parametersContent.grid.option("height", gridHeight);
                 };
-                parameterItemViewer.prototype._createButton = function(buttonText, onClick) {
+                ParameterItemViewer.prototype._createButton = function(buttonText, onClick) {
                     var $button = $("<div />", {
                         css: {
                             "margin-right": buttonsStyle.marginRight + "px",
@@ -217,7 +219,7 @@
                     });
                     return $button;
                 };
-                parameterItemViewer.prototype._subscribeProperties = function() {
+                ParameterItemViewer.prototype._subscribeProperties = function() {
                     this.subscribe("showHeaders", function(showHeaders) {
                         this._update({
                             showHeaders: showHeaders
@@ -234,7 +236,7 @@
                         });
                     });
                 };
-                parameterItemViewer.prototype._update = function(options) {
+                ParameterItemViewer.prototype._update = function(options) {
                     if (!!options.showHeaders) {
                         this.parametersContent.grid.option("showColumnHeaders", options.showHeaders === "On");
                     }
@@ -254,9 +256,9 @@
                     }
                     this._setGridHeight();
                 };
-                return parameterItemViewer;
+                return ParameterItemViewer;
             }(common_1.CustomItemViewer);
-            exports.parameterItemViewer = parameterItemViewer;
+            exports.ParameterItemViewer = ParameterItemViewer;
         },
         22: function(module, exports, __webpack_require__) {
             "use strict";
