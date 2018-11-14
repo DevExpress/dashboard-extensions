@@ -8,10 +8,10 @@ module.exports = {
         'dashboard-panel': './src/dashboard-panel/dashboard-panel.ts',
         'funnel-d3-item': './src/funnel-d3-item/funnel-d3-extension.ts',
         'parameter-item': './src/parameter-item/parameter-item-extension.ts',
-        'webpage-item': './src/webpage-item/webpage-extension.ts'
+        'webpage-item': './src/webpage-item/webpage-extension.ts',
+        'simple-table-item': './src/simple-table/simple-table-extension.js'
     },
     output: {
-        
         libraryTarget: 'umd',
         path: path.resolve('./'),
         filename: "dist/[name].js"

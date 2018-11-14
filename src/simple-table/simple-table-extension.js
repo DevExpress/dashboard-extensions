@@ -113,3 +113,5 @@ function CustomItemSimpleTableExtension(_designer) {
         _designer.registerIcon(CUSTOM_ITEM_SIMPLE_TABLE_ICON);
     }
 }
+
+module.exports = { CustomItemSimpleTableExtension };
