@@ -12,7 +12,7 @@ or
 2. Add the *dist* folder in your project.
 
 
-## Intergare dashboard extensions in application (umd bundles approach)
+## Integrate dashboard extensions in application (umd bundles approach)
 
 
 1. Attach the download script to the project inside the `<body>` section before the end tag onto the page containing Web Dashboard.
@@ -46,7 +46,7 @@ or
         dashboardControl.registerExtension(new CustomItemSimpleTableExtension(dashboardControl));
 ```
 
-## Intergare dashboard extensions in application (JS modules approach)
+## Integrate dashboard extensions in application (JS modules approach)
 
 ```
     import { FunnelD3ItemExtension } from 'dashboard-extensions/dist/funnel-d3-item';
