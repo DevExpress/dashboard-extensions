@@ -22,10 +22,10 @@ export class ParameterItemViewer extends CustomItemViewer {
         this.parametersExtension = parametersExtension;
         this._subscribeProperties();
         this.parametersExtension.showDialogButton(false);
-        this.parametersExtension.subscribeToContentChanges(function () {
+        this.parametersExtension.subscribeToContentChanges(() => {
             this._generateParametersContent();
         });
-        this.dialogButtonSubscribe = this.parametersExtension.showDialogButton.subscribe(function() {
+        this.dialogButtonSubscribe = this.parametersExtension.showDialogButton.subscribe(() => {
             this.parametersExtension.showDialogButton(false);
         });
     }
@@ -55,11 +55,11 @@ export class ParameterItemViewer extends CustomItemViewer {
             
             $element.append(this.$buttonContainer);
 
-            var $resetButton = this._createButton("Reset", function () {
+            var $resetButton = this._createButton("Reset", () => {
                 this.parametersContent.resetParameterValues();
             });
             $resetButton.appendTo(this.$buttonContainer);
-            var $submitButton = this._createButton("Submit", function () {
+            var $submitButton = this._createButton("Submit", () => {
                 this._submitValues();
             });
             $submitButton.appendTo(this.$buttonContainer);
@@ -70,11 +70,11 @@ export class ParameterItemViewer extends CustomItemViewer {
     _generateParametersContent() {
         
         this.parametersContent = this.parametersExtension.renderContent(this.$gridContainer);
-        this.parametersContent.grid.option('onDisposing', function () {
+        this.parametersContent.grid.option('onDisposing', () => {
             this.dialogButtonSubscribe.dispose();
             this.parametersExtension.showDialogButton(true);
         });
-        this.parametersContent.valueChanged.add(function() { return this._updateParameterValues(); });
+        this.parametersContent.valueChanged.add(() => this._updateParameterValues());
         this._setGridHeight();
         this._update({
             showHeaders: this.getPropertyValue('showHeaders'),
@@ -114,9 +114,9 @@ export class ParameterItemViewer extends CustomItemViewer {
     }
     _subscribeProperties() {
         
-        this.subscribe('showHeaders', function (showHeaders) { this._update({ showHeaders: showHeaders }); });
-        this.subscribe('showParameterName', function (showParameterName) { this._update({ showParameterName: showParameterName }); });
-        this.subscribe('automaticUpdates', function (automaticUpdates) { this._update({ automaticUpdates: automaticUpdates }) });
+        this.subscribe('showHeaders', (showHeaders) => { this._update({ showHeaders: showHeaders }); });
+        this.subscribe('showParameterName', (showParameterName) => { this._update({ showParameterName: showParameterName }); });
+        this.subscribe('automaticUpdates', (automaticUpdates) => { this._update({ automaticUpdates: automaticUpdates }) });
     };
     _update(options) {
         
@@ -126,7 +126,7 @@ export class ParameterItemViewer extends CustomItemViewer {
         if(!!options.showParameterName) {
             this.parametersContent.valueChanged.empty();
             this.parametersContent.grid.columnOption(0, 'visible', options.showParameterName === 'On');
-            this.parametersContent.valueChanged.add(function () { return this._updateParameterValues(); });
+            this.parametersContent.valueChanged.add(() => { return this._updateParameterValues(); });
         }
         if(!!options.automaticUpdates) {
             if (options.automaticUpdates == 'Off') {

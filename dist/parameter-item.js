@@ -83,19 +83,20 @@
             var icon_1 = __webpack_require__(22);
             var ParameterItemExtension = function() {
                 function ParameterItemExtension(dashboardControl) {
+                    var _this = this;
                     this.dashboardControl = dashboardControl;
                     this.name = meta_1.PARAMETER_ITEM_EXTENSION_NAME;
                     this.metaData = meta_1.parameterItemMeta;
+                    this.createViewerItem = function(model, $element, content) {
+                        var parametersExtension = _this.dashboardControl.findExtension("dashboard-parameter-dialog");
+                        if (!parametersExtension) {
+                            throw Error('The "dashboard-parameter-dialog" extension does not exist. To register this extension, use the DashboardControl.registerExtension method.');
+                        }
+                        return new viewer_1.ParameterItemViewer(model, $element, content, parametersExtension);
+                    };
                     dashboardControl.registerIcon(icon_1.PARAMETER_ITEM_ICON);
                 }
                 ParameterItemExtension.prototype.start = function() {};
-                ParameterItemExtension.prototype.createViewerItem = function(model, $element, content) {
-                    var parametersExtension = this.dashboardControl.findExtension("dashboard-parameter-dialog");
-                    if (!parametersExtension) {
-                        throw Error('The "dashboard-parameter-dialog" extension does not exist. To register this extension, use the DashboardControl.registerExtension method.');
-                    }
-                    return new viewer_1.ParameterItemViewer(model, $element, content, parametersExtension);
-                };
                 return ParameterItemExtension;
             }();
             exports.ParameterItemExtension = ParameterItemExtension;
@@ -138,10 +139,10 @@
                     _this._subscribeProperties();
                     _this.parametersExtension.showDialogButton(false);
                     _this.parametersExtension.subscribeToContentChanges(function() {
-                        this._generateParametersContent();
+                        _this._generateParametersContent();
                     });
                     _this.dialogButtonSubscribe = _this.parametersExtension.showDialogButton.subscribe(function() {
-                        this.parametersExtension.showDialogButton(false);
+                        _this.parametersExtension.showDialogButton(false);
                     });
                     return _this;
                 }
@@ -150,6 +151,7 @@
                     this._setGridHeight();
                 };
                 ParameterItemViewer.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
+                    var _this = this;
                     if (!changeExisting) {
                         $element.empty();
                         $element.css("overflow", "auto");
@@ -165,24 +167,25 @@
                         });
                         $element.append(this.$buttonContainer);
                         var $resetButton = this._createButton("Reset", function() {
-                            this.parametersContent.resetParameterValues();
+                            _this.parametersContent.resetParameterValues();
                         });
                         $resetButton.appendTo(this.$buttonContainer);
                         var $submitButton = this._createButton("Submit", function() {
-                            this._submitValues();
+                            _this._submitValues();
                         });
                         $submitButton.appendTo(this.$buttonContainer);
                         if (this.getPropertyValue("automaticUpdates") != "Off") this.$buttonContainer.hide();
                     }
                 };
                 ParameterItemViewer.prototype._generateParametersContent = function() {
+                    var _this = this;
                     this.parametersContent = this.parametersExtension.renderContent(this.$gridContainer);
                     this.parametersContent.grid.option("onDisposing", function() {
-                        this.dialogButtonSubscribe.dispose();
-                        this.parametersExtension.showDialogButton(true);
+                        _this.dialogButtonSubscribe.dispose();
+                        _this.parametersExtension.showDialogButton(true);
                     });
                     this.parametersContent.valueChanged.add(function() {
-                        return this._updateParameterValues();
+                        return _this._updateParameterValues();
                     });
                     this._setGridHeight();
                     this._update({
@@ -220,23 +223,25 @@
                     return $button;
                 };
                 ParameterItemViewer.prototype._subscribeProperties = function() {
+                    var _this = this;
                     this.subscribe("showHeaders", function(showHeaders) {
-                        this._update({
+                        _this._update({
                             showHeaders: showHeaders
                         });
                     });
                     this.subscribe("showParameterName", function(showParameterName) {
-                        this._update({
+                        _this._update({
                             showParameterName: showParameterName
                         });
                     });
                     this.subscribe("automaticUpdates", function(automaticUpdates) {
-                        this._update({
+                        _this._update({
                             automaticUpdates: automaticUpdates
                         });
                     });
                 };
                 ParameterItemViewer.prototype._update = function(options) {
+                    var _this = this;
                     if (!!options.showHeaders) {
                         this.parametersContent.grid.option("showColumnHeaders", options.showHeaders === "On");
                     }
@@ -244,7 +249,7 @@
                         this.parametersContent.valueChanged.empty();
                         this.parametersContent.grid.columnOption(0, "visible", options.showParameterName === "On");
                         this.parametersContent.valueChanged.add(function() {
-                            return this._updateParameterValues();
+                            return _this._updateParameterValues();
                         });
                     }
                     if (!!options.automaticUpdates) {

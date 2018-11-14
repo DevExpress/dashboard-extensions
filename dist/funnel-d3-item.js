@@ -187,7 +187,7 @@
         }();
         exports.__esModule = true;
         var common_1 = __webpack_require__(0);
-        var d3_funnel_1 = __webpack_require__(18);
+        var D3Funnel = __webpack_require__(18);
         var FunnelD3Item = function(_super) {
             __extends(FunnelD3Item, _super);
             function FunnelD3Item(model, $container, options) {
@@ -210,7 +210,7 @@
                             style: "margin:20px;height:calc(100% - 40px);"
                         });
                         $element.append(this.$funnelContainer);
-                        this.funnelViewer = new d3_funnel_1["default"](this.$funnelContainer[0]);
+                        this.funnelViewer = new D3Funnel(this.$funnelContainer[0]);
                     }
                     this._update(data, this._getFunnelSizeOptions());
                 } else {
@@ -244,6 +244,7 @@
                 };
             };
             FunnelD3Item.prototype._getDataSource = function() {
+                var _this = this;
                 var bindingValues = this.getBindingValue("Values");
                 if (bindingValues.length == 0) return undefined;
                 var data = [];
@@ -251,7 +252,7 @@
                     var values = dataRow.getValue("Values");
                     var valueStr = dataRow.getDisplayText("Values");
                     var color = dataRow.getColor("Values");
-                    if (this._hasArguments()) {
+                    if (_this._hasArguments()) {
                         var labelText = dataRow.getDisplayText("Arguments").join(" - ") + ": " + valueStr;
                         data.push([ {
                             data: dataRow,
@@ -305,8 +306,8 @@
                                 dynamicHeight: this.getPropertyValue("IsDynamicHeight"),
                                 fill: {
                                     scale: function(index) {
-                                        var obj = this.funnelSettings.data[index][0];
-                                        return obj.data && this.isSelected(obj.data) ? getSelectionColor(obj.color) : obj.color;
+                                        var obj = _this.funnelSettings.data[index][0];
+                                        return obj.data && _this.isSelected(obj.data) ? getSelectionColor(obj.color) : obj.color;
                                     },
                                     type: this.getPropertyValue("FillType").toLowerCase()
                                 }
@@ -319,7 +320,7 @@
                             events: {
                                 click: {
                                     block: function(e) {
-                                        return this._onClick(e);
+                                        return _this._onClick(e);
                                     }
                                 }
                             }
@@ -338,8 +339,9 @@
                 }
             };
             FunnelD3Item.prototype._subscribeProperties = function() {
+                var _this = this;
                 this.subscribe("IsCurved", function(isCurved) {
-                    return this._update(null, {
+                    return _this._update(null, {
                         chart: {
                             curve: {
                                 enabled: isCurved
@@ -348,21 +350,21 @@
                     });
                 });
                 this.subscribe("IsDynamicHeight", function(isDynamicHeight) {
-                    return this._update(null, {
+                    return _this._update(null, {
                         block: {
                             dynamicHeight: isDynamicHeight
                         }
                     });
                 });
                 this.subscribe("PinchCount", function(count) {
-                    return this._update(null, {
+                    return _this._update(null, {
                         chart: {
                             bottomPinch: count
                         }
                     });
                 });
                 this.subscribe("FillType", function(type) {
-                    return this._update(null, {
+                    return _this._update(null, {
                         block: {
                             fill: {
                                 type: type.toLowerCase()
