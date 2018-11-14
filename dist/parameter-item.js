@@ -1,9 +1,9 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "devexpress-dashboard/model/index.metadata" ], factory); else {
-        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata")) : factory(root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"]["Metadata"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("jquery"), require("devexpress-dashboard/model/index.metadata")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "jquery", "devexpress-dashboard/model/index.metadata" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("jquery"), require("devexpress-dashboard/model/index.metadata")) : factory(root["DevExpress"]["Dashboard"], root["$"], root["DevExpress"]["Dashboard"]["Metadata"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__) {
     return function(modules) {
         var installedModules = {};
         function __webpack_require__(moduleId) {
@@ -67,7 +67,7 @@
             return Object.prototype.hasOwnProperty.call(object, property);
         };
         __webpack_require__.p = "";
-        return __webpack_require__(__webpack_require__.s = 20);
+        return __webpack_require__(__webpack_require__.s = 22);
     }({
         0: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
@@ -75,12 +75,15 @@
         1: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
         },
-        20: function(module, exports, __webpack_require__) {
+        2: function(module, exports) {
+            module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
+        },
+        22: function(module, exports, __webpack_require__) {
             "use strict";
             exports.__esModule = true;
-            var meta_1 = __webpack_require__(5);
-            var viewer_1 = __webpack_require__(21);
-            var icon_1 = __webpack_require__(22);
+            var meta_1 = __webpack_require__(6);
+            var viewer_1 = __webpack_require__(23);
+            var icon_1 = __webpack_require__(24);
             var ParameterItemExtension = function() {
                 function ParameterItemExtension(dashboardControl) {
                     var _this = this;
@@ -101,7 +104,7 @@
             }();
             exports.ParameterItemExtension = ParameterItemExtension;
         },
-        21: function(module, exports, __webpack_require__) {
+        23: function(module, exports, __webpack_require__) {
             "use strict";
             var __extends = this && this.__extends || function() {
                 var extendStatics = function(d, b) {
@@ -123,6 +126,7 @@
                 };
             }();
             exports.__esModule = true;
+            var $ = __webpack_require__(1);
             var buttonsStyle = {
                 containerHeight: 60,
                 height: 40,
@@ -265,16 +269,16 @@
             }(common_1.CustomItemViewer);
             exports.ParameterItemViewer = ParameterItemViewer;
         },
-        22: function(module, exports, __webpack_require__) {
+        24: function(module, exports, __webpack_require__) {
             "use strict";
             exports.__esModule = true;
-            var meta_1 = __webpack_require__(5);
+            var meta_1 = __webpack_require__(6);
             exports.PARAMETER_ITEM_ICON = '<svg id="' + meta_1.parameterItemMeta.icon + '" viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="11" fill="#39A866" /></svg>';
         },
-        5: function(module, exports, __webpack_require__) {
+        6: function(module, exports, __webpack_require__) {
             "use strict";
             exports.__esModule = true;
-            var index_metadata_1 = __webpack_require__(1);
+            var index_metadata_1 = __webpack_require__(2);
             exports.PARAMETER_ITEM_EXTENSION_NAME = "ParameterItem";
             exports.parameterItemMeta = {
                 properties: [ {

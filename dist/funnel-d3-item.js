@@ -1,9 +1,9 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata"), require("@devexpress/analytics-core/dx-analytics-core"), require("d3-funnel")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "devexpress-dashboard/model/index.metadata", "@devexpress/analytics-core/dx-analytics-core", "d3-funnel" ], factory); else {
-        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata"), require("@devexpress/analytics-core/dx-analytics-core"), require("d3-funnel")) : factory(root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"]["Metadata"], root["DevExpress"], root["D3Funnel"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("jquery"), require("devexpress-dashboard/model/index.metadata"), require("@devexpress/analytics-core/dx-analytics-core"), require("d3-funnel")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "jquery", "devexpress-dashboard/model/index.metadata", "@devexpress/analytics-core/dx-analytics-core", "d3-funnel" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("jquery"), require("devexpress-dashboard/model/index.metadata"), require("@devexpress/analytics-core/dx-analytics-core"), require("d3-funnel")) : factory(root["DevExpress"]["Dashboard"], root["$"], root["DevExpress"]["Dashboard"]["Metadata"], root["DevExpress"], root["D3Funnel"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__18__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__20__) {
     return function(modules) {
         var installedModules = {};
         function __webpack_require__(moduleId) {
@@ -67,17 +67,19 @@
             return Object.prototype.hasOwnProperty.call(object, property);
         };
         __webpack_require__.p = "";
-        return __webpack_require__(__webpack_require__.s = 15);
+        return __webpack_require__(__webpack_require__.s = 17);
     }([ function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
     }, function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
     }, function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
+    }, function(module, exports) {
+        module.exports = __WEBPACK_EXTERNAL_MODULE__3__;
     }, , function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
-        var index_metadata_1 = __webpack_require__(1);
+        var index_metadata_1 = __webpack_require__(2);
         exports.FUNNEL_D3_EXTENSION_NAME = "FunnelD3";
         exports.funnelMeta = {
             bindings: [ {
@@ -140,13 +142,13 @@
             title: "DashboardWebCustomItemStringId.DefaultNameFunnelD3",
             index: 3
         };
-    }, , , , , , , , , , , function(module, exports, __webpack_require__) {
+    }, , , , , , , , , , , , function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
-        var icon_1 = __webpack_require__(16);
-        var funnel_d3_viewer_1 = __webpack_require__(17);
-        __webpack_require__(19);
-        var meta_1 = __webpack_require__(4);
+        var icon_1 = __webpack_require__(18);
+        var funnel_d3_viewer_1 = __webpack_require__(19);
+        __webpack_require__(21);
+        var meta_1 = __webpack_require__(5);
         var FunnelD3ItemExtension = function() {
             function FunnelD3ItemExtension(dashboardControl) {
                 this.name = meta_1.FUNNEL_D3_EXTENSION_NAME;
@@ -162,7 +164,7 @@
     }, function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
-        var meta_1 = __webpack_require__(4);
+        var meta_1 = __webpack_require__(5);
         exports.FUNNEL_D3_ICON = '<?xml version="1.0" encoding="utf-8"?>\x3c!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --\x3e<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="' + meta_1.funnelMeta.icon + '" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"\t viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"><polygon class="dx_green" points="2,1 22,1 16,8 8,8 "/><polygon class="dx_blue" points="8,9 16,9 14,15 10,15 "/><polygon class="dx_red" points="10,16 14,16 13,23 11,23 "/></svg>';
     }, function(module, exports, __webpack_require__) {
         "use strict";
@@ -187,7 +189,8 @@
         }();
         exports.__esModule = true;
         var common_1 = __webpack_require__(0);
-        var D3Funnel = __webpack_require__(18);
+        var D3Funnel = __webpack_require__(20);
+        var $ = __webpack_require__(1);
         var FunnelD3Item = function(_super) {
             __extends(FunnelD3Item, _super);
             function FunnelD3Item(model, $container, options) {
@@ -271,7 +274,7 @@
                 return data.length > 0 ? data : undefined;
             };
             FunnelD3Item.prototype._ensureFunnelLibrary = function($element) {
-                if (!window["D3Funnel"]) {
+                if (!D3Funnel) {
                     $element.empty();
                     $element.append($("<div/>", {
                         css: {
@@ -407,11 +410,11 @@
         }(common_1.CustomItemViewer);
         exports.FunnelD3Item = FunnelD3Item;
     }, function(module, exports) {
-        module.exports = __WEBPACK_EXTERNAL_MODULE__18__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__20__;
     }, function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
-        var DxDesigner = __webpack_require__(2);
+        var DxDesigner = __webpack_require__(3);
         DxDesigner.Analytics.Localization.addCultureInfo({
             messages: {
                 "DashboardWebCustomItemStringId.DefaultNameFunnelD3": "Funnel D3",

@@ -67,9 +67,9 @@
             return Object.prototype.hasOwnProperty.call(object, property);
         };
         __webpack_require__.p = "";
-        return __webpack_require__(__webpack_require__.s = 26);
+        return __webpack_require__(__webpack_require__.s = 28);
     }({
-        26: function(module, exports) {
+        28: function(module, exports) {
             var customItemSimpleTableMeta = {
                 bindings: [ {
                     propertyName: "customDimensions",

@@ -1,3 +1,6 @@
+import * as $ from 'jquery';
+import * as ko from 'knockout';
+
 var buttonsStyle = {
     containerHeight: 60,
     height: 40,

@@ -5,6 +5,7 @@
 
 import { CustomItemViewer } from 'devexpress-dashboard/common'
 import * as D3Funnel from 'd3-funnel';
+import * as $ from 'jquery';
 
 export class FunnelD3Item extends CustomItemViewer {
     funnelSettings;
@@ -86,7 +87,7 @@ export class FunnelD3Item extends CustomItemViewer {
         return data.length > 0 ? data : undefined;
     };
     _ensureFunnelLibrary($element) {
-        if(!window['D3Funnel']) {
+        if(!D3Funnel) {
             
             $element.empty();
 

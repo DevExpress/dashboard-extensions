@@ -18,6 +18,7 @@ module.exports = {
     },
     externals: {
         'jquery': { root: '$', commonjs2: 'jquery', commonjs: 'jquery', amd: 'jquery' },
+        'knockout': { root: 'ko', commonjs2: 'knockout', commonjs: 'knockout', amd: 'knockout' },
         'd3-funnel': { root: 'D3Funnel', commonjs2: 'd3-funnel', commonjs: 'd3-funnel', amd: 'd3-funnel' },
         'devextreme/ui/map': { root: ['DevExpress', 'ui', 'dxMap'], commonjs2: 'devextreme/ui/map', commonjs: 'devextreme/ui/map', amd: 'devextreme/ui/map' },
         'devextreme/core/devices': { root: ['DevExpress', 'devices'], commonjs2: 'devextreme/core/devices', commonjs: 'devextreme/core/devices', amd: 'devextreme/core/devices' },

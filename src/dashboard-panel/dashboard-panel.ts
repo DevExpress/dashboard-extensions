@@ -9,6 +9,8 @@ import { IExtension,
 import { DashboardToolbarGroup, DashboardToolbarItem, ToolboxExtension } from 'devexpress-dashboard/designer';
 import DxDesigner from '@devexpress/analytics-core/dx-analytics-core';
 import devices from 'devextreme/core/devices'
+import * as $ from 'jquery';
+import * as ko from 'knockout';
 
 export class CustomDashboardPanelExtension implements IExtension {
     name = "custom-dashboard-panel";

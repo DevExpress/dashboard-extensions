@@ -1,4 +1,5 @@
 ﻿import { CustomItemViewer } from 'devexpress-dashboard/common'
+import * as $ from 'jquery';
 
 export class WebPageItem extends CustomItemViewer {
     private _iframe: any;
