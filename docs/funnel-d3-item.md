@@ -10,8 +10,6 @@ This dashboard item supports the following capabilities:
 > Note that the custom export functionality implemented in the Funnel D3 item is not supported for the Internet Explorer browser due to the problem with HTML canvas drawing. If you use IE 11 or earlier versions, the export buttons will be hidden. Refer to the following Microsoft issue to learn more: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/1015651/.
 
 
-You can use this extension as a base for your own dashboard item extension [development](https://docs.devexpress.com/Dashboard/117546).
-
 - [Install a dashboard extension package](#install-a-dashboard-extension-package)
     - [Install scripts using npm](#install-scripts-using-npm)
     - [Download the latest version of scripts from GitHub](#download-the-latest-version-of-scripts-from-github)

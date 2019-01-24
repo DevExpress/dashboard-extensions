@@ -4,8 +4,6 @@ The **Dashboard Panel** is a [Web Dashboard extension](https://documentation.dev
 
 You can see the dashboard panel in action by visiting the [DevExpress Web Dashboard Demo](https://demos.devexpress.com/Dashboard/).
 
-You can use these extensions as a base for your own dashboard item extension [development](https://docs.devexpress.com/Dashboard/117546).
-
 - [Install a dashboard extension package](#install-a-dashboard-extension-package)
     - [Install scripts using npm](#install-scripts-using-npm)
     - [Download the latest version of scripts from GitHub](#download-the-latest-version-of-scripts-from-github)

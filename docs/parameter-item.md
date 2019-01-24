@@ -1,7 +1,5 @@
 A custom **Parameter** item is a [custom dashboard item](https://docs.devexpress.com/Dashboard/117546/) that renders [dashboard parameter dialog](https://docs.devexpress.com/Dashboard/117571) content inside the dashboard layout and allows you to edit and submit parameter values.
 
-You can use this extension as a base for your own dashboard item extension [development](https://docs.devexpress.com/Dashboard/117546).
-
 - [Install a dashboard extension package](#install-a-dashboard-extension-package)
     - [Install scripts using npm](#install-scripts-using-npm)
     - [Download the latest version of scripts from GitHub](#download-the-latest-version-of-scripts-from-github)

@@ -2,8 +2,6 @@ The **Online Map** extension is a [custom dashboard item](https://docs.devexpres
 
 This custom item supports the [Master-Filtering](https://docs.devexpress.com/Dashboard/117060) feature.
 
-You can use this extension as a base for your own dashboard item extension [development](https://docs.devexpress.com/Dashboard/117546).
-
 - [Install a dashboard extension package](#install-a-dashboard-extension-package)
     - [Install scripts using npm](#install-scripts-using-npm)
     - [Download the latest version of scripts from GitHub](#download-the-latest-version-of-scripts-from-github)
