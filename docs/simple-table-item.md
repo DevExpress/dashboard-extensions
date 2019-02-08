@@ -20,12 +20,7 @@ Open a folder with the Web Dashboard application and run the following command:
 npm install git+https://git@github.com/DevExpress/dashboard-extensions.git
 ```
 
-<!--  -->
-For SSH:
-```bash
-npm install git+ssh://git@github.com/DevExpress/dashboard-extensions.git
-```
-<!--  -->
+Make sure that the [devexpress-dashboard](https://www.npmjs.com/package/devexpress-dashboard) package is installed.
 
 ### Download the latest version of scripts from GitHub
 1. Download the latest version of scripts from [GitHub](https://github.com/DevExpress/dashboard-extensions/releases).
