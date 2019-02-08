@@ -83,7 +83,7 @@ See [Client-Side Configuration (Global Namespaces)](https://docs.devexpress.com/
 ## Custom Settings
 The **Online Map** dashboard item supports the following settings that you can configure in the Web Dashboard UI:
 
-![online-map-item](~/images/online-map-item.png)
+![online-map-item](../images/online-map-item.png)
 
 * **Provider** - Specifies whether to show Google or Bing maps.
 * **Type** - Specifies the map type. You can choose between RoadMap, Satellite or Hybrid.
@@ -91,34 +91,9 @@ The **Online Map** dashboard item supports the following settings that you can c
 
 
 ## Development 
-<!--
-You can use this extension code as a base for your own dashboard item extension [development](https://docs.devexpress.com/Dashboard/117546).
 
-Before you start, we advise you to [fork](https://help.github.com/articles/fork-a-repo/) this repository and work with your own copy.
+You can use this extension's code as a base for your own dashboard item [development](https://docs.devexpress.com/Dashboard/117546). See the **Development** section of [readme](../readme.md) to learn how to bundle the dashboard extension's files to create `online-map-item.js`.
 
-1. Clone this extension to get a local copy of the repository.
-```Batchfile
-git clone https://github.com/DevExpress/dashboard-extension-online-map-item.git
-cd dashboard-extension-online-map-item
-```
+## See Also
 
-2. In this extension we use the [Node.js](https://nodejs.org/en/about/) toolset. Use the command below to install all modules listed as dependencies in the extension's **package.json** file.
-```Batchfile
-npm install
-```
-
-3. Then install [Gulp](http://gulpjs.com) to build the solution. You can install it globally...
-```Batchfile
-npm install -g gulp
-gulp build
-```
-
-... or use a local Gulp version.
-```Batchfile
-.\node_modules\.bin\gulp build
-```
-
-You can find the resulting files at ```...\dashboard-extensions\dist```:
-**online-map-extension.js** and **online-map-extension.min.js**.
-
--->
+* [Create a Custom Item](https://docs.devexpress.com/Dashboard/117546)

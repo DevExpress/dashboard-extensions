@@ -91,7 +91,7 @@ See [Client-Side Configuration (Global Namespaces)](https://docs.devexpress.com/
 ## Custom Settings
 The **FunnelD3** dashboard item provides the following settings that you can configure in the Web Dashboard UI:
 
-![funnel-d3-item](~/images/funnel-d3-item.png)
+![funnel-d3-item](../images/funnel-d3-item.png)
 
 * **Fill Type** - Specifies the funnel chart's *solid* or *gradient* fill type.
 * **Curved** - Specifies whether the funnel is curved.
@@ -99,34 +99,9 @@ The **FunnelD3** dashboard item provides the following settings that you can con
 * **Pinch Count** - Specifies how many blocks to pinch at the bottom to create a funnel "neck".
 
 ## Development 
-<!--
-You can use this extension code as a base for your own dashboard item extension [development](https://docs.devexpress.com/Dashboard/117546).
 
-Before you start, we advise you to [fork](https://help.github.com/articles/fork-a-repo/) this repository and work with your own copy.
+You can use this extension's code as a base for your own dashboard item [development](https://docs.devexpress.com/Dashboard/117546). See the **Development** section of [readme](../readme.md#development) to learn how to bundle the dashboard extension's files to create `funnel-d3-item.js`.
 
-1. Clone this extension to get a local copy of the repository.
-```Batchfile
-git clone https://github.com/DevExpress/dashboard-extension-funnel-d3-item.git
-cd dashboard-extension-funnel-d3-item
-```
+## See Also
 
-2. In this extension we use the [Node.js](https://nodejs.org/en/about/) toolset. Use the command below to install all modules listed as dependencies in the extension's **package.json** file.
-```Batchfile
-npm install
-```
-
-3. Then install [Gulp](http://gulpjs.com) to build the solution. You can install it globally...
-```Batchfile
-npm install -g gulp
-gulp build
-```
-
-... or use a local Gulp version.
-```Batchfile
-.\node_modules\.bin\gulp build
-```
-
-You can find the resulting files at ```...\dashboard-extension-funnel-d3-item\dist```:
-**funnel.js** and **funnel.min.js**.
-
--->
+* [Create a Custom Item](https://docs.devexpress.com/Dashboard/117546)

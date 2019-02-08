@@ -84,39 +84,14 @@ See [Client-Side Configuration (Global Namespaces)](https://docs.devexpress.com/
 ## Custom Settings
 The **Simple Table** dashboard item supports the following setting that you can configure in the Web Dashboard UI:
 
-![simple-table-item](~/images/simple-table-item.png)
+![simple-table-item](../images/simple-table-item.png)
 
 * **Show Headers** - Specifies whether to show the field headers in the table. The default value is *Auto*.
 
 ## Development 
-<!--
-You can use this extension code as a base for your own dashboard item extension [development](https://docs.devexpress.com/Dashboard/117546).
 
-Before you start, we advise you to [fork](https://help.github.com/articles/fork-a-repo/) this repository and work with your own copy.
+You can use this extension's code as a base for your own dashboard item [development](https://docs.devexpress.com/Dashboard/117546). See the **Development** section of [readme](../readme.md) to learn how to bundle the dashboard extension's files to create `simple-table-item.js`.
 
-1. Clone this extension to get a local copy of the repository.
-```Batchfile
-git clone https://github.com/DevExpress/dashboard-extension-simple-table.git
-cd dashboard-extension-simple-table
-```
+## See Also
 
-2. In this extension we use the [Node.js](https://nodejs.org/en/about/) toolset. Use the command below to install all modules listed as dependencies in the extension's **package.json** file.
-```Batchfile
-npm install
-```
-
-3. Then install [Gulp](http://gulpjs.com) to build the solution. You can install it globally...
-```Batchfile
-npm install -g gulp
-gulp build
-```
-
-... or use a local Gulp version.
-```Batchfile
-.\node_modules\.bin\gulp build
-```
-
-You can find the resulting files at ```...\dashboard-extension-simple-table\dist```:
-**simple-table.js** and **simple-table.min.js**.
-
--->
+* [Create a Custom Item](https://docs.devexpress.com/Dashboard/117546)

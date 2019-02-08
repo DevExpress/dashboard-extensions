@@ -1,6 +1,6 @@
 The **Dashboard Panel** is a [Web Dashboard extension](https://documentation.devexpress.com/#Dashboard/CustomDocument117232) that displays a list of available dashboards and lets you switch between the designer and viewer modes. 
 
-![web-panel](https://user-images.githubusercontent.com/17986517/27797519-a6e7835c-6016-11e7-8abe-2331c9af6ccf.png)
+![dashboard-panel](../images/dashboard-panel.png)
 
 You can see the dashboard panel in action by visiting the [DevExpress Web Dashboard Demo](https://demos.devexpress.com/Dashboard/).
 
@@ -24,13 +24,6 @@ Open a folder with the Web Dashboard application and run the following command:
 ```bash
 npm install git+https://git@github.com/DevExpress/dashboard-extensions.git
 ```
-
-<!--  
-For SSH:
-```bash
-npm install git+ssh://git@github.com/DevExpress/dashboard-extensions.git
-```
--->
 
 ### Download the latest version of scripts from GitHub
 1. Download the latest version of scripts from [GitHub](https://github.com/DevExpress/dashboard-extensions/releases).
@@ -117,51 +110,16 @@ The DashboardPanelExtension class contains the following public properties:
 
 | Property | Description |
 |--|--|
-| **DashboardPanelExtension.allowSwitchToDesigner** | Gets or sets whether you can switch into the designer mode. This property control the visibility of the *Edit in Designer* button.  |
-| **DashboardPanelExtension.name** | Gets a unique name of a Web Dashboard extension. The default value is 'dashboard-panel'. |
-| **DashboardPanelExtension.panelWidth** | Gets or sets the width of the Dashboard Panel extension. The default value is 250 px. |
-| **DashboardPanelExtension.visible** | Gets or sets whether the Dashboard Panel is visible. |
+| [DashboardPanelExtension.allowSwitchToDesigner](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardPanelExtension#js_DevExpress_Dashboard_DashboardPanelExtension_allowSwitchToDesigner) | Specifies whether you can switch into the designer mode. This property control the visibility of the *Edit in Designer* button. Property value: bool.  |
+| [DashboardPanelExtension.name](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardPanelExtension#js_DevExpress_Dashboard_DashboardPanelExtension_name) | Specifies a unique name of a Web Dashboard extension. The default value is 'dashboard-panel'. Property value: string. |
+| [DashboardPanelExtension.panelWidth](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardPanelExtension#js_DevExpress_Dashboard_DashboardPanelExtension_panelWidth) | Specifies the width of the Dashboard Panel extension. The default value is 250 px. Property value: number. |
+| [DashboardPanelExtension.visible](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardPanelExtension#js_DevExpress_Dashboard_DashboardPanelExtension_visible) | Specifies whether the Dashboard Panel is visible. Property value: bool. |
 
 
 ## Development 
 
-<!--
-You can use this extension code as a base for your own dashboard item extension [development](https://docs.devexpress.com/Dashboard/117546).
+You can use this extension's code as a base for your own dashboard item [development](https://docs.devexpress.com/Dashboard/117546). See the **Development** section of [readme](../readme.md) to learn how to bundle the dashboard extension's files to create `dashboard-panel.js`, `dashboard-panel.css`, and `dashboard-panel.html`.
 
-Before you start, we advise you to [fork](https://help.github.com/articles/fork-a-repo/) this repository and work with your own copy.
+## See Also
 
-1. Clone this extension to get a local copy of the repository.
-```Batchfile
-git clone https://github.com/DevExpress/dashboard-extension-dashboard-panel.git
-cd dashboard-extension-dashboard-panel
-```
-
-2. In this extension we use the [Node.js](https://nodejs.org/en/about/) toolset. Use the command below to install all modules listed as dependencies in the extension's **package.json** file.
-```Batchfile
-npm install
-```
-
-3. Then install [Gulp](http://gulpjs.com) to build the solution. You can install it globally...
-```Batchfile
-npm install -g gulp
-gulp build
-```
-
-... or use a local Gulp version.
-```Batchfile
-.\node_modules\.bin\gulp build
-```
-
-You can find the resulting files at ```...\dashboard-extensions\dist```:
-**dashboard-panel.js** and **dashboard-panel.min.js**.
--->
-
-## License
-
-This extension is distributed under the **MIT** license (free and open-source), but can only be used with a commercial DevExpress Dashboard software product. You can [review the license terms](https://www.devexpress.com/Support/EULAs/NetComponents.xml) or [download a free trial version](https://go.devexpress.com/DevExpressDownload_UniversalTrial.aspx) of the Dashboard suite at [DevExpress.com](https://www.devexpress.com).
-
-## Support & Feedback
-
-* Refer to [this section](https://documentation.devexpress.com/#Dashboard/CustomDocument117232) for general information about client-side extensions.
-* To learn how to work with extensions, see the following [KB article](https://www.devexpress.com/Support/Center/Question/Details/T466716).
-* To address questions regarding the Web Dashboard and JavaScript API, use [DevExpress Support Center](https://www.devexpress.com/Support/Center).
+* [Create a Custom Item](https://docs.devexpress.com/Dashboard/117546)
