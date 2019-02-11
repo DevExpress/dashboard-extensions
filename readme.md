@@ -4,11 +4,11 @@ This repository contains [dashboard extensions](https://docs.devexpress.com/Dash
 
 The following extensions are available:
 
-- [Funnel D3](docs/funnel-d3.md)
+- [Funnel D3](docs/funnel-d3-item.md)
 
     A custom **FunnelD3** item renders a funnel chart using the [D3Funnel](https://github.com/jakezatecky/d3-funnel/blob/master/README.md) JS library.
 
-- [Online Map](docs/online-map.md)
+- [Online Map](docs/online-map-item.md)
 
     A custom **Online Map** item allows you to place callouts on Google or Bing maps using geographical coordinates.
 
