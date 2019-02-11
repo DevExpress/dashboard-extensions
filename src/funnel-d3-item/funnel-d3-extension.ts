@@ -1,9 +1,9 @@
 import { FUNNEL_D3_ICON } from "./icon";
-import { funnelD3Item } from "./funnel-d3-viewer";
+import { FunnelD3Item } from "./funnel-d3-viewer";
 import './localization';
 import { FUNNEL_D3_EXTENSION_NAME, funnelMeta } from './meta';
 
-class funnelD3ItemExtension {
+export class FunnelD3ItemExtension {
     name = FUNNEL_D3_EXTENSION_NAME;
     metaData = funnelMeta;
     
@@ -12,7 +12,6 @@ class funnelD3ItemExtension {
     }
 
     createViewerItem(model, $element, content) {
-        return new funnelD3Item(model, $element, content);
+        return new FunnelD3Item(model, $element, content);
     }
 }
-export = funnelD3ItemExtension;

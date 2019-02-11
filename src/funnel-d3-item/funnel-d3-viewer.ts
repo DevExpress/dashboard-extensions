@@ -4,9 +4,10 @@
 
 
 import { CustomItemViewer } from 'devexpress-dashboard/common'
-import D3Funnel from 'd3-funnel';
+import * as D3Funnel from 'd3-funnel';
+import * as $ from 'jquery';
 
-export class funnelD3Item extends CustomItemViewer {
+export class FunnelD3Item extends CustomItemViewer {
     funnelSettings;
     funnelViewer;
     selectionValues: Array<any>
@@ -72,7 +73,7 @@ export class funnelD3Item extends CustomItemViewer {
         if(bindingValues.length == 0)
             return undefined;
         var data = [];
-        this.iterateData(function(dataRow) {
+        this.iterateData((dataRow) => {
             var values = dataRow.getValue('Values');
             var valueStr = dataRow.getDisplayText('Values');
             var color = dataRow.getColor('Values');
@@ -80,13 +81,13 @@ export class funnelD3Item extends CustomItemViewer {
                 var labelText = dataRow.getDisplayText('Arguments').join(' - ') + ': ' + valueStr; 
                 data.push([{ data: dataRow, text: labelText, color: color[0] }].concat(values));//0 - 'layer' index for color value
             } else {
-                data = values.map(function(value, index) { return [{ text: bindingValues[index].displayName() + ': ' + valueStr[index], color: color[index] }, value]; });
+                data = values.map((value, index) => { return [{ text: bindingValues[index].displayName() + ': ' + valueStr[index], color: color[index] }, value]; });
             }
         });
         return data.length > 0 ? data : undefined;
     };
     _ensureFunnelLibrary($element) {
-        if(!window['D3Funnel']) {
+        if(!D3Funnel) {
             
             $element.empty();
 
@@ -118,7 +119,7 @@ export class funnelD3Item extends CustomItemViewer {
                     block: {
                         dynamicHeight: this.getPropertyValue('IsDynamicHeight'),
                         fill: {
-                            scale: function(index) {
+                            scale: (index) => {
                                 var obj = this.funnelSettings.data[index][0];
                                 return obj.data && this.isSelected(obj.data) ? getSelectionColor(obj.color) : obj.color;
                             },
@@ -126,12 +127,12 @@ export class funnelD3Item extends CustomItemViewer {
                         }
                     },
                     label: {
-                        format: function(label, value) {
+                        format: (label, value) => {
                             return label.text;
                         }
                     },
                     events: {
-                        click: { block: function(e) { return this._onClick(e); } }
+                        click: { block: (e) => this._onClick(e) }
                     }
                 }
             };
@@ -151,10 +152,10 @@ export class funnelD3Item extends CustomItemViewer {
         }
     };
     _subscribeProperties() {
-        this.subscribe('IsCurved', function(isCurved) { return this._update(null, { chart: { curve: { enabled: isCurved } } }); });
-        this.subscribe('IsDynamicHeight', function(isDynamicHeight) { return this._update(null, { block: { dynamicHeight: isDynamicHeight } }); });
-        this.subscribe('PinchCount', function(count) { return this._update(null, { chart: { bottomPinch: count } }); });
-        this.subscribe('FillType', function(type) { return this._update(null, { block: { fill: { type: type.toLowerCase() } } }); });
+        this.subscribe('IsCurved', (isCurved) => this._update(null, { chart: { curve: { enabled: isCurved } } }) );
+        this.subscribe('IsDynamicHeight', (isDynamicHeight) => this._update(null, { block: { dynamicHeight: isDynamicHeight } }));
+        this.subscribe('PinchCount', (count) => this._update(null, { chart: { bottomPinch: count } }));
+        this.subscribe('FillType', (type)=> this._update(null, { block: { fill: { type: type.toLowerCase() } } }));
     };
     _update(data?, options?) {
         this._ensureFunnelSettings();

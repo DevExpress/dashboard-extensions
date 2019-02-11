@@ -6,7 +6,7 @@ import { CustomItemViewer } from 'devexpress-dashboard/common'
 import dxMap from 'devextreme/ui/map'
 
 
-export class onlineMapItem extends CustomItemViewer {
+export class OnlineMapItem extends CustomItemViewer {
     private mapViewer: any;
 
     constructor(model: any, $container, options) {

@@ -3,7 +3,7 @@
 import { ICustomItemExtension } from 'devexpress-dashboard/common'
 import { WEBPAGE_EXTENSION_NAME, webPageMeta } from './meta'
 import { WEBPAGE_ICON } from './icon'
-import { webPageItem } from './webpage-viewer'
+import { WebPageItem } from './webpage-viewer'
 
 export class WebPageItemExtension implements ICustomItemExtension {
     name = WEBPAGE_EXTENSION_NAME;
@@ -14,6 +14,6 @@ export class WebPageItemExtension implements ICustomItemExtension {
     }
 
     public createViewerItem = (model: any, $element: JQuery, content: any) => {
-        return new webPageItem(model, $element, content);
+        return new WebPageItem(model, $element, content);
     };
 }

@@ -1,3 +1,6 @@
+var editorTemplates = require('devexpress-dashboard/model/index.metadata').editorTemplates;
+var CustomItemViewer= require('devexpress-dashboard/common').CustomItemViewer
+var $ = require('jquery');
 // Metadata definition.
 var customItemSimpleTableMeta = {
     // A collection of custom data bindings that are available in the Web Dashboard UI.
@@ -25,7 +28,7 @@ var customItemSimpleTableMeta = {
         propertyName: 'showHeaders',
 
         // A type of editor used in the custom property.
-        editor: DevExpress.Dashboard.Metadata.editorTemplates.buttonGroup,
+        editor: editorTemplates.buttonGroup,
 
         // A caption of the custom property.
         displayName: "Show Headers",
@@ -50,7 +53,25 @@ var customItemSimpleTableMeta = {
     // A custom item title.
     title: "Simple Table"
 };
-
+var __extends = this && this.__extends || function() {
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || {
+            __proto__: []
+        } instanceof Array && function(d, b) {
+            d.__proto__ = b;
+        } || function(d, b) {
+            for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+        };
+        return extendStatics(d, b);
+    };
+    return function(d, b) {
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
 // The viewer definition.
 var customItemSimpleTable = (function(_super) {
     __extends(customItemSimpleTable, _super);
@@ -97,13 +118,13 @@ var customItemSimpleTable = (function(_super) {
         this.$table.append($('<tr/>').html(cells.join('')));
     };
     return customItemSimpleTable;
-}(DevExpress.Dashboard.customViewerItem));
+}(CustomItemViewer));
 
 // An icon SVG definition.
 var CUSTOM_ITEM_SIMPLE_TABLE_ICON = '<svg id="' + customItemSimpleTableMeta.icon + '" viewBox="0 0 24 24"><path fill="#39A866" d="M12 2 L2 22 L22 22 Z" /></svg>';
 
 // An extension implementation.
-function CustomItemSimpleTableExtension(_designer) {
+function SimpleTableItemExtension(_designer) {
     this.name = 'CustomItemSimpleTable';
     this.metaData = customItemSimpleTableMeta;
     this.createViewerItem = function(model, $element, content) {
@@ -113,3 +134,5 @@ function CustomItemSimpleTableExtension(_designer) {
         _designer.registerIcon(CUSTOM_ITEM_SIMPLE_TABLE_ICON);
     }
 }
+
+module.exports = { SimpleTableItemExtension };

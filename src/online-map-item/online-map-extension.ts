@@ -1,5 +1,5 @@
 ﻿import { ONLINE_MAP_EXTENSION_NAME, onlineMapMeta } from "./meta";
-import { onlineMapItem } from "./online-map-viewer";
+import { OnlineMapItem } from "./online-map-viewer";
 import { ONLINE_MAP_ICON } from "./icon";
 import { ICustomItemExtension } from "devexpress-dashboard/common";
 import './localization'
@@ -15,6 +15,6 @@ export class OnlineMapItemExtension implements ICustomItemExtension {
     }
 
     createViewerItem(model: any, $element: JQuery, content: any) {
-        return new onlineMapItem(model, $element, content);
+        return new OnlineMapItem(model, $element, content);
     };
 }
