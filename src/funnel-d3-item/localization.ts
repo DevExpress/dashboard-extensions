@@ -1,4 +1,4 @@
-import DxDesigner from '@devexpress/analytics-core/dx-analytics-core'
+import * as DxDesigner from '@devexpress/analytics-core/dx-analytics-core'
 
 DxDesigner.Analytics.Localization.addCultureInfo({
     messages: {

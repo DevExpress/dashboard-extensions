@@ -2,7 +2,7 @@
     <div class="dx-dashboard-toolbox-extension dx-dashboard-custom-panel-extension dx-dashboard-typography" data-bind="style: { width: panelWidth() + 'px', left: left() + 'px'  }, 
                                                                                                                 css: { 'dx-dashboard-card-view-panel': isMobile() }">
         <div class="dx-dashboard-title-panel">
-            <div class="dx-dashboard-title-text" data-bind="text: DevExpress.Designer.getLocalization('DashboardWebStringId.Dashboards')"></div>
+            <div class="dx-dashboard-title-text">Dashboards</div>
             <!-- ko if: isMobile -->
             <!-- ko template: 'dx-dashboard-custom-panel-close-icon' -->
             <!-- /ko -->
@@ -63,13 +63,13 @@
         <div style="display:inline-block">
             <!-- ko template: 'dashboard-custom-panel-extension-designer-button-icon' -->
             <!-- /ko -->
-            <br /><span data-bind="text: DevExpress.Designer.getLocalization('DashboardWebStringId.EditInDesigner')"></span>
+            <br /><span>Edit in designer</span>
         </div>
     </div>
 </script>
 
 <script type="text/html" id="dashboard-custom-panel-extension-viewer-button">
-    <div class='dx-dashboard-viewer-button' data-bind="click: click, text: DevExpress.Designer.getLocalization('DashboardWebStringId.Viewer')"></div>
+    <div class='dx-dashboard-viewer-button' data-bind="click: click">Viewer</div>
 </script>
 
 <script type="text/html" id="dx-dashboard-custom-panel-close-icon">

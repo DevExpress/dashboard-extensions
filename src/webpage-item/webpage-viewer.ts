@@ -1,6 +1,7 @@
 ﻿import { CustomItemViewer } from 'devexpress-dashboard/common'
+import * as $ from 'jquery';
 
-export class webPageItem extends CustomItemViewer {
+export class WebPageItem extends CustomItemViewer {
     private _iframe: any;
 
     constructor(model: any, $container, options) {

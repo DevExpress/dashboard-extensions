@@ -1,5 +1,3 @@
-﻿/// <reference path="meta.ts" />
-
 import { webPageMeta } from "./meta"
 
 export var WEBPAGE_ICON =

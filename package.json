@@ -10,10 +10,10 @@
   "license": "MIT",
   "homepage": "https://github.com/DevExpress/dashboard-extensions#readme",
   "dependencies": {
-    "devexpress-dashboard": "18.2.2-pre-18311",
-    "devextreme": "18.2.2-pre-beta",
-    "@devexpress/analytics-core": "18.2.2-beta",
-    "d3-funnel": "1.2.1"
+    "d3-funnel": "^1.2.1"
+  },
+  "peerDependencies": {
+    "devexpress-dashboard": ">18.2.0-pre"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.6.0",
