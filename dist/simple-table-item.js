@@ -1,9 +1,9 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(); else if (typeof define === "function" && define.amd) define([], factory); else {
-        var a = factory();
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("jquery"), require("devexpress-dashboard/model/index.metadata")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "jquery", "devexpress-dashboard/model/index.metadata" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("jquery"), require("devexpress-dashboard/model/index.metadata")) : factory(root["DevExpress"]["Dashboard"], root["$"], root["DevExpress"]["Dashboard"]["Metadata"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
-})(window, function() {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__) {
     return function(modules) {
         var installedModules = {};
         function __webpack_require__(moduleId) {
@@ -69,7 +69,19 @@
         __webpack_require__.p = "";
         return __webpack_require__(__webpack_require__.s = 28);
     }({
-        28: function(module, exports) {
+        0: function(module, exports) {
+            module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
+        },
+        1: function(module, exports) {
+            module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
+        },
+        2: function(module, exports) {
+            module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
+        },
+        28: function(module, exports, __webpack_require__) {
+            var editorTemplates = __webpack_require__(2).editorTemplates;
+            var CustomItemViewer = __webpack_require__(0).CustomItemViewer;
+            var $ = __webpack_require__(1);
             var customItemSimpleTableMeta = {
                 bindings: [ {
                     propertyName: "customDimensions",
@@ -83,7 +95,7 @@
                 } ],
                 properties: [ {
                     propertyName: "showHeaders",
-                    editor: DevExpress.Dashboard.Metadata.editorTemplates.buttonGroup,
+                    editor: editorTemplates.buttonGroup,
                     displayName: "Show Headers",
                     sectionName: "Custom Options",
                     values: {
@@ -96,6 +108,25 @@
                 icon: "CustomItemSimpleTable",
                 title: "Simple Table"
             };
+            var __extends = this && this.__extends || function() {
+                var extendStatics = function(d, b) {
+                    extendStatics = Object.setPrototypeOf || {
+                        __proto__: []
+                    } instanceof Array && function(d, b) {
+                        d.__proto__ = b;
+                    } || function(d, b) {
+                        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+                    };
+                    return extendStatics(d, b);
+                };
+                return function(d, b) {
+                    extendStatics(d, b);
+                    function __() {
+                        this.constructor = d;
+                    }
+                    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                };
+            }();
             var customItemSimpleTable = function(_super) {
                 __extends(customItemSimpleTable, _super);
                 function customItemSimpleTable(model, $container, options) {
@@ -141,9 +172,9 @@
                     this.$table.append($("<tr/>").html(cells.join("")));
                 };
                 return customItemSimpleTable;
-            }(DevExpress.Dashboard.customViewerItem);
+            }(CustomItemViewer);
             var CUSTOM_ITEM_SIMPLE_TABLE_ICON = '<svg id="' + customItemSimpleTableMeta.icon + '" viewBox="0 0 24 24"><path fill="#39A866" d="M12 2 L2 22 L22 22 Z" /></svg>';
-            function CustomItemSimpleTableExtension(_designer) {
+            function SimpleTableItemExtension(_designer) {
                 this.name = "CustomItemSimpleTable";
                 this.metaData = customItemSimpleTableMeta;
                 this.createViewerItem = function(model, $element, content) {
@@ -154,7 +185,7 @@
                 }
             }
             module.exports = {
-                CustomItemSimpleTableExtension: CustomItemSimpleTableExtension
+                SimpleTableItemExtension: SimpleTableItemExtension
             };
         }
     });

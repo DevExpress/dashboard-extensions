@@ -100,7 +100,7 @@
                 this.allowSwitchToDesigner = ko.observable(true);
                 this.selectedItemKeys = ko.observableArray();
                 this.availableDashboards = ko.observableArray();
-                this._actualPanelWidth = ko.observable(this.panelWidth);
+                this._actualPanelWidth = ko.observable();
                 this._left = ko.computed(function() {
                     return _this.visible() ? 0 : -_this._actualPanelWidth();
                 });
@@ -165,6 +165,8 @@
                     devices_1["default"].on("orientationChanged", function(e) {
                         _this._actualPanelWidth($(window).width());
                     });
+                } else {
+                    this._actualPanelWidth(this.panelWidth);
                 }
                 this._customTemplate = this._getCustomTemplate();
                 this._dashboardControl.customTemplates.push(this._customTemplate);

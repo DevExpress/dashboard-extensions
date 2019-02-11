@@ -36,7 +36,7 @@ export class CustomDashboardPanelExtension implements IExtension {
     selectedItemKeys = ko.observableArray<string>();
     availableDashboards = ko.observableArray<DashboardInfo>();
 
-    private _actualPanelWidth = ko.observable<number>(this.panelWidth);
+    private _actualPanelWidth = ko.observable<number>();
 
     private _left = ko.computed(() => {
         return this.visible() ? 0 : -this._actualPanelWidth();
@@ -82,6 +82,8 @@ export class CustomDashboardPanelExtension implements IExtension {
             devices.on('orientationChanged', (e) => {
                 this._actualPanelWidth($(window).width());
             });
+        } else {
+            this._actualPanelWidth(this.panelWidth);
         }
 
         this._customTemplate = this._getCustomTemplate();

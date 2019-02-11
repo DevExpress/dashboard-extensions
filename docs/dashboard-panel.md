@@ -56,7 +56,7 @@ You can now integrate the Dashboard Panel extension to the Web Dashboard. Use on
     </head>
     ```
 
-3. Import the required modules and register extensions in code before the control is rendered: 
+3. Import the required modules and register extensions in code before the control is rendered:
 
     ```javascript
         import { CustomDashboardPanelExtension } from 'dashboard-extensions/dist/dashboard-panel';
@@ -111,7 +111,7 @@ See [Client-Side Configuration (Modular Approach)](https://docs.devexpress.com/D
 See [Client-Side Configuration (Global Namespaces)](https://docs.devexpress.com/Dashboard/119158/) for more information on how to configure a client part of the Web Dashboard application using the approach with global namespaces.
 
 ## API
-The DashboardPanelExtension class contains the following public properties:
+The DashboardPanelExtension class contains the following public properties that are similar to the integrated Dashboard Panel's API:
 
 | Property | Description |
 |--|--|
