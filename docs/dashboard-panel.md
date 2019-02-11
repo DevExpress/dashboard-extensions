@@ -1,8 +1,7 @@
-The **Dashboard Panel** is a [Web Dashboard extension](https://documentation.devexpress.com/#Dashboard/CustomDocument117232) that displays a list of available dashboards and lets you switch between the designer and viewer modes. 
+The **Dashboard Panel** is a Web Dashboard's extension that is a separate version of the integrated [Dashboard Panel](http://docs.devexpress.com/Dashboard/119771/) (see the [live demo](https://demos.devexpress.com/Dashboard/)). The Dashboard Panel displays a list of available dashboards and lets you switch between the designer and viewer modes. This extension provides you with more customization capabilities than the integrated Dashboard Panel.
 
 ![dashboard-panel](../images/dashboard-panel.png)
 
-You can see the dashboard panel in action by visiting the [DevExpress Web Dashboard Demo](https://demos.devexpress.com/Dashboard/).
 
 - [Install a dashboard extension package](#install-a-dashboard-extension-package)
     - [Install scripts using npm](#install-scripts-using-npm)
@@ -10,9 +9,10 @@ You can see the dashboard panel in action by visiting the [DevExpress Web Dashbo
 - [Integrate dashboard extensions in the application](#integrate-dashboard-extensions-in-the-application)
     - [Modular approach](#modular-approach)
     - [Global namespaces approach](#global-namespaces-approach)
+- [API](#api)
 - [Development](#development)
 - [License](#license)
-- [Support & Feedback](#support--feedback)
+- [See Also](#see-also)
 
 ## Install a dashboard extension package
 
@@ -32,21 +32,28 @@ Make sure that the [devexpress-dashboard](https://www.npmjs.com/package/devexpre
 2. Copy the *dist* folder with scripts to your project with the Web Dashboard application.
 
 
-
 ## Integrate dashboard extensions in the application
 
 You can now integrate the Dashboard Panel extension to the Web Dashboard. Use one of the [approaches](https://docs.devexpress.com/Dashboard/119108): **modular approach** or **global namespaces approach**. 
 
-
 ### Modular approach
 
-1. Add the **dashboard-panel.html** file's content to the page containing the Web Dashboard inside the `<body>` section before the end tag.
+1. Add the **dashboard-panel.html** file's content to the page containing the Web Dashboard inside the `<body>` section before the end tag:
 
-2. Add the **dashboard-panel.css** stylesheet:
+    ```html
+    <body>
+        <!--...-->
+        <!-- Place the dashboard-panel markup here. -->
+    </body>
+    ```
 
-    ```css
-    /* ... */
-    @import url("../node_modules/dashboard-extensions/dist/dashboard-panel.css");
+2. Add a link to the **dashboard-panel.css** stylesheet in the `<head>` section of the page containing the Web Dashboard:
+
+    ```html
+    <head>
+        <!--...-->
+        <link rel="stylesheet" href="../node_modules/dashboard-extensions/dist/dashboard-panel.css">;
+    </head>
     ```
 
 3. Import the required modules and register extensions in code before the control is rendered: 
@@ -96,11 +103,7 @@ See [Client-Side Configuration (Modular Approach)](https://docs.devexpress.com/D
         // ...
     });
     // ...
-    dashboardControl.registerExtension(new OnlineMapItemExtension(dashboardControl));
-    dashboardControl.registerExtension(new FunnelD3ItemExtension(dashboardControl));
-    dashboardControl.registerExtension(new WebPageItemExtension(dashboardControl));
-    dashboardControl.registerExtension(new ParameterItemExtension(dashboardControl));
-    dashboardControl.registerExtension(new SimpleTableItemExtension(dashboardControl));    
+    dashboardControl.registerExtension(new DashboardPanelExtension(dashboardControl));
 
     dashboardControl.render();
 ```
@@ -121,6 +124,10 @@ The DashboardPanelExtension class contains the following public properties:
 ## Development 
 
 You can use this extension's code as a base for your own dashboard item [development](https://docs.devexpress.com/Dashboard/117546). See the **Development** section of [readme](../readme.md) to learn how to bundle the dashboard extension's files to create `dashboard-panel.js`, `dashboard-panel.css`, and `dashboard-panel.html`.
+
+## License
+
+This extension is distributed under the **MIT** license (free and open-source), but can only be used with a commercial DevExpress Dashboard software product. You can [review the license terms](https://www.devexpress.com/Support/EULAs/NetComponents.xml) or [download a free trial version](https://go.devexpress.com/DevExpressDownload_UniversalTrial.aspx) of the Dashboard suite at [DevExpress.com](https://www.devexpress.com).
 
 ## See Also
 

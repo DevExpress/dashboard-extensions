@@ -1,12 +1,8 @@
-## Dashboard extensions
+## DevExpress Dashboard Extensions
 
-This repository contains [dashboard extensions](https://docs.devexpress.com/Dashboard/117232) that allow you to add the required functionality to the Web Dashboard. 
+This repository contains [dashboard extensions](https://docs.devexpress.com/Dashboard/117232) that allow you to add the additional functionality to the Web Dashboard. 
 
 The following extensions are available:
-
-- [Dashboard Panel](docs/dashboard-panel.md)
-
-    The **Dashboard Panel** is an extension that displays a list of available dashboards and lets you switch between the [designer and viewer](https://docs.devexpress.com/Dashboard/120098) modes.
 
 - [Funnel D3](docs/funnel-d3.md)
 
@@ -16,6 +12,10 @@ The following extensions are available:
 
     A custom **Online Map** item allows you to place callouts on Google or Bing maps using geographical coordinates.
 
+- [Web Page](docs/webpage-item.md)
+
+    A custom **Web Page** item displays a single web page or a set of pages.
+
 - [Parameter Item](docs/parameter-item.md)
 
     A custom **Parameter** item renders [dashboard parameter dialog](https://docs.devexpress.com/Dashboard/117571) content inside the dashboard layout and allows you to edit and submit parameter values.
@@ -24,10 +24,9 @@ The following extensions are available:
 
     A custom **Simple Table** item renders data from the measure / dimensions as an HTML table.
 
-- [Web Page](docs/webpage-item.md)
+- [Dashboard Panel](docs/dashboard-panel.md)
 
-    A custom **Web Page** item displays a single web page or a set of pages.
-
+    The **Dashboard Panel** is an extension that displays a list of available dashboards and lets you switch between the [designer and viewer](https://docs.devexpress.com/Dashboard/120098) modes.
 
 You can use these extensions as a base for your own dashboard item extension [development](https://docs.devexpress.com/Dashboard/117546).
 
@@ -88,6 +87,8 @@ Import the required modules and register extensions in code before the control i
     }
 
 ```
+
+> Note that the Dashboard Panel extension consists of HTML, JavaScript, and CSS files and requires additional steps to integrate into the Web Dashboard. See a [Dashboard Panel](docs/dashboard-panel.md) instruction to learn details.
 
 See [Client-Side Configuration (Modular Approach)](https://docs.devexpress.com/Dashboard/400409/) for more information on how to configure a client part of the Web Dashboard application for a modular approach.
 

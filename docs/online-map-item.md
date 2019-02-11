@@ -8,7 +8,10 @@ This custom item supports the [Master-Filtering](https://docs.devexpress.com/Das
 - [Integrate dashboard extensions in the application](#integrate-dashboard-extensions-in-the-application)
     - [Modular approach](#modular-approach)
     - [Global namespaces approach](#global-namespaces-approach)
+- [Custom Settings](#custom-settings)
 - [Development](#development)
+- [License](#license)
+- [See Also](#see-also)
 
 ## Install a dashboard extension package
 
@@ -95,6 +98,10 @@ The **Online Map** dashboard item supports the following settings that you can c
 ## Development 
 
 You can use this extension's code as a base for your own dashboard item [development](https://docs.devexpress.com/Dashboard/117546). See the **Development** section of [readme](../readme.md) to learn how to bundle the dashboard extension's files to create `online-map-item.js`.
+
+## License
+
+This extension is distributed under the **MIT** license (free and open-source), but can only be used with a commercial DevExpress Dashboard software product. You can [review the license terms](https://www.devexpress.com/Support/EULAs/NetComponents.xml) or [download a free trial version](https://go.devexpress.com/DevExpressDownload_UniversalTrial.aspx) of the Dashboard suite at [DevExpress.com](https://www.devexpress.com).
 
 ## See Also
 
