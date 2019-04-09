@@ -4,6 +4,7 @@ import { ICustomItemExtension } from 'devexpress-dashboard/common'
 import { WEBPAGE_EXTENSION_NAME, webPageMeta } from './meta'
 import { WEBPAGE_ICON } from './icon'
 import { WebPageItem } from './webpage-viewer'
+import { dxElement } from 'devextreme/core/element';
 
 export class WebPageItemExtension implements ICustomItemExtension {
     name = WEBPAGE_EXTENSION_NAME;
@@ -13,7 +14,7 @@ export class WebPageItemExtension implements ICustomItemExtension {
         dashboardControl.registerIcon(WEBPAGE_ICON);
     }
 
-    public createViewerItem = (model: any, $element: JQuery, content: any) => {
-        return new WebPageItem(model, $element, content);
+    public createViewerItem = (model: any, element: dxElement, content: any) => {
+        return new WebPageItem(model, element, content);
     };
 }

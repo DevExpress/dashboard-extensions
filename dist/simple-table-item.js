@@ -129,15 +129,16 @@
             }();
             var customItemSimpleTable = function(_super) {
                 __extends(customItemSimpleTable, _super);
-                function customItemSimpleTable(model, $container, options) {
-                    _super.call(this, model, $container, options);
+                function customItemSimpleTable(model, container, options) {
+                    _super.call(this, model, container, options);
                     var _this = this;
                     this.$table = undefined;
                     this.subscribe("showHeaders", function(mode) {
                         _this._update(mode);
                     });
                 }
-                customItemSimpleTable.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
+                customItemSimpleTable.prototype.renderContent = function(element, changeExisting, afterRenderCallback) {
+                    let $element = element;
                     if (!changeExisting) {
                         $element.empty();
                         $element.css("overflow", "auto");

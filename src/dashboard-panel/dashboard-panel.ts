@@ -25,7 +25,7 @@ export class CustomDashboardPanelExtension implements IExtension {
     private _ellipsisText = 'dx-dashboard-ellipsis';
     private _itemTemplate = ko.observable<string>();
     private _isMobile = ko.observable<boolean>(false);
-    private _disposables: KnockoutSubscription[] = [];
+    private _disposables: ko.Subscription[] = [];
 
     panelWidth = 250;
     visible = ko.observable(false);

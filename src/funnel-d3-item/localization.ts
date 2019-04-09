@@ -1,6 +1,6 @@
-import * as DxDesigner from '@devexpress/analytics-core/dx-analytics-core'
+import DxDesigner from '@devexpress/analytics-core/dx-analytics-core'
 
-DxDesigner.Analytics.Localization.addCultureInfo({
+DxDesigner.Analytics.Utils.addCultureInfo({
     messages: {
         // Binding Panel
         'DashboardWebCustomItemStringId.DefaultNameFunnelD3': "Funnel D3",

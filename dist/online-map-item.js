@@ -160,8 +160,8 @@
                 this.metaData = meta_1.onlineMapMeta;
                 dashboardControl.registerIcon(icon_1.ONLINE_MAP_ICON);
             }
-            OnlineMapItemExtension.prototype.createViewerItem = function(model, $element, content) {
-                return new online_map_viewer_1.OnlineMapItem(model, $element, content);
+            OnlineMapItemExtension.prototype.createViewerItem = function(model, element, content) {
+                return new online_map_viewer_1.OnlineMapItem(model, element, content);
             };
             return OnlineMapItemExtension;
         }();
@@ -192,8 +192,8 @@
         var map_1 = __webpack_require__(10);
         var OnlineMapItem = function(_super) {
             __extends(OnlineMapItem, _super);
-            function OnlineMapItem(model, $container, options) {
-                var _this = _super.call(this, model, $container, options) || this;
+            function OnlineMapItem(model, container, options) {
+                var _this = _super.call(this, model, container, options) || this;
                 _this.mapViewer = null;
                 return _this;
             }
@@ -207,8 +207,9 @@
                 _super.prototype.clearSelection.call(this);
                 this._updateSelection();
             };
-            OnlineMapItem.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
+            OnlineMapItem.prototype.renderContent = function(element, changeExisting, afterRenderCallback) {
                 var _this = this;
+                var $element = $(element);
                 var markers = [], routes = [], mode = this.getPropertyValue("DisplayMode"), showMarkers = mode === "Markers" || mode === "MarkersAndRoutes" || this.canMasterFilter(), showRoutes = mode === "Routes" || mode === "MarkersAndRoutes";
                 if (this.getBindingValue("Latitude").length > 0 && this.getBindingValue("Longitude").length > 0) {
                     this.iterateData(function(row) {
@@ -283,7 +284,7 @@
     }, function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
-        var DxDesigner = __webpack_require__(3);
+        var dx_analytics_core_1 = __webpack_require__(3);
         function getDefaultCustomLocalization() {
             return {
                 "DashboardWebCustomItemStringId.DefaultNameOnlineMap": "Online Map",
@@ -307,7 +308,7 @@
                 "DashboardWebCustomItemStringId.OnlineMapSectionName": "Custom Options"
             };
         }
-        DxDesigner.Analytics.Localization.addCultureInfo({
+        dx_analytics_core_1["default"].Analytics.Utils.addCultureInfo({
             messages: getDefaultCustomLocalization()
         });
     } ]);

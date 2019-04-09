@@ -11,7 +11,7 @@ export class FunnelD3ItemExtension {
         dashboardControl.registerIcon(FUNNEL_D3_ICON);
     }
 
-    createViewerItem(model, $element, content) {
-        return new FunnelD3Item(model, $element, content);
+    createViewerItem(model, element, content) {
+        return new FunnelD3Item(model, element, content);
     }
 }

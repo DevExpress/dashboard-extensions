@@ -19,8 +19,8 @@ export class ParameterItemViewer extends CustomItemViewer {
     parametersContent: any;
     dialogButtonSubscribe: any;
 
-    constructor(model, $container, options, parametersExtension) {
-       super(model, $container, options);
+    constructor(model, container, options, parametersExtension) {
+       super(model, container, options);
         
         this.parametersExtension = parametersExtension;
         this._subscribeProperties();
@@ -38,7 +38,8 @@ export class ParameterItemViewer extends CustomItemViewer {
         this._setGridHeight();
     };
 
-    renderContent($element, changeExisting, afterRenderCallback) {
+    renderContent(element, changeExisting, afterRenderCallback) {
+        let $element = $(element);
         if (!changeExisting) {
             $element.empty();
             $element.css('overflow', 'auto');

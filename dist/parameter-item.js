@@ -90,12 +90,12 @@
                     this.dashboardControl = dashboardControl;
                     this.name = meta_1.PARAMETER_ITEM_EXTENSION_NAME;
                     this.metaData = meta_1.parameterItemMeta;
-                    this.createViewerItem = function(model, $element, content) {
+                    this.createViewerItem = function(model, element, content) {
                         var parametersExtension = _this.dashboardControl.findExtension("dashboard-parameter-dialog");
                         if (!parametersExtension) {
                             throw Error('The "dashboard-parameter-dialog" extension does not exist. To register this extension, use the DashboardControl.registerExtension method.');
                         }
-                        return new viewer_1.ParameterItemViewer(model, $element, content, parametersExtension);
+                        return new viewer_1.ParameterItemViewer(model, element, content, parametersExtension);
                     };
                     dashboardControl.registerIcon(icon_1.PARAMETER_ITEM_ICON);
                 }
@@ -137,8 +137,8 @@
             var common_1 = __webpack_require__(0);
             var ParameterItemViewer = function(_super) {
                 __extends(ParameterItemViewer, _super);
-                function ParameterItemViewer(model, $container, options, parametersExtension) {
-                    var _this = _super.call(this, model, $container, options) || this;
+                function ParameterItemViewer(model, container, options, parametersExtension) {
+                    var _this = _super.call(this, model, container, options) || this;
                     _this.parametersExtension = parametersExtension;
                     _this._subscribeProperties();
                     _this.parametersExtension.showDialogButton(false);
@@ -154,8 +154,9 @@
                     _super.prototype.setSize.call(this, width, height);
                     this._setGridHeight();
                 };
-                ParameterItemViewer.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
+                ParameterItemViewer.prototype.renderContent = function(element, changeExisting, afterRenderCallback) {
                     var _this = this;
+                    var $element = $(element);
                     if (!changeExisting) {
                         $element.empty();
                         $element.css("overflow", "auto");

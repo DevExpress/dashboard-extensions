@@ -88,8 +88,8 @@
                 function WebPageItemExtension(dashboardControl) {
                     this.name = meta_1.WEBPAGE_EXTENSION_NAME;
                     this.metaData = meta_1.webPageMeta;
-                    this.createViewerItem = function(model, $element, content) {
-                        return new webpage_viewer_1.WebPageItem(model, $element, content);
+                    this.createViewerItem = function(model, element, content) {
+                        return new webpage_viewer_1.WebPageItem(model, element, content);
                     };
                     dashboardControl.registerIcon(icon_1.WEBPAGE_ICON);
                 }
@@ -129,13 +129,14 @@
             var $ = __webpack_require__(1);
             var WebPageItem = function(_super) {
                 __extends(WebPageItem, _super);
-                function WebPageItem(model, $container, options) {
-                    var _this = _super.call(this, model, $container, options) || this;
+                function WebPageItem(model, container, options) {
+                    var _this = _super.call(this, model, container, options) || this;
                     _this._iframe = undefined;
                     return _this;
                 }
-                WebPageItem.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
+                WebPageItem.prototype.renderContent = function(element, changeExisting, afterRenderCallback) {
                     var attribute;
+                    var $element = $(element);
                     if (!changeExisting || !this._iframe) {
                         this._iframe = $("<iframe>", {
                             attr: {

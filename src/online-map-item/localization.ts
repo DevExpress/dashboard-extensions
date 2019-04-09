@@ -1,4 +1,4 @@
-﻿import * as DxDesigner from '@devexpress/analytics-core/dx-analytics-core'
+﻿import DxDesigner from '@devexpress/analytics-core/dx-analytics-core'
 
 function getDefaultCustomLocalization() {
     return {
@@ -28,4 +28,5 @@ function getDefaultCustomLocalization() {
         'DashboardWebCustomItemStringId.OnlineMapSectionName': "Custom Options"
     };
 }
-DxDesigner.Analytics.Localization.addCultureInfo({ messages: getDefaultCustomLocalization() });
+DxDesigner.Analytics.Utils.addCultureInfo({ messages: getDefaultCustomLocalization() });
+

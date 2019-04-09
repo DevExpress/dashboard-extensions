@@ -79,10 +79,10 @@
         var ko = __webpack_require__(16);
         var CustomDashboardPanelExtension = function() {
             function CustomDashboardPanelExtension(_dashboardControl, options) {
+                var _this = this;
                 if (options === void 0) {
                     options = {};
                 }
-                var _this = this;
                 this._dashboardControl = _dashboardControl;
                 this.options = options;
                 this.name = "custom-dashboard-panel";

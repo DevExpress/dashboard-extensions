@@ -6,16 +6,17 @@
 import { CustomItemViewer } from 'devexpress-dashboard/common'
 import * as D3Funnel from 'd3-funnel';
 import * as $ from 'jquery';
+import { dxElement } from 'devextreme/core/element';
 
 export class FunnelD3Item extends CustomItemViewer {
     funnelSettings;
     funnelViewer;
     selectionValues: Array<any>
     exportingImage: HTMLImageElement;
-    $funnelContainer: JQuery;
+    funnelContainer: HTMLElement;
 
-    constructor(model, $container, options) {
-        super(model, $container, options);
+    constructor(model, container, options) {
+        super(model, container, options);
 
         this.funnelSettings = undefined;
         this.funnelViewer = null;
@@ -24,25 +25,27 @@ export class FunnelD3Item extends CustomItemViewer {
         this._subscribeProperties();
     }
 
-    renderContent($element, changeExisting) {
+    renderContent(element: dxElement, changeExisting) {
+        let htmlElement: HTMLElement = element instanceof $ ? element.get(0): <HTMLElement>(<any>element);
+
         var data = this._getDataSource();
-        if(!this._ensureFunnelLibrary($element))
+        if(!this._ensureFunnelLibrary(htmlElement))
             return;
         if(!!data) {
             if(!changeExisting || !this.funnelViewer) {
-                this.$funnelContainer && this.$funnelContainer.remove();
-                $element.empty();
+                this.funnelContainer && this.funnelContainer.parentNode.removeChild(this.funnelContainer);
+                htmlElement.innerHTML = '';
 
-                this.$funnelContainer = $('<div/>', { 
-                    style: 'margin:20px;height:calc(100% - 40px);'
-                });
-
-                $element.append(this.$funnelContainer);
-                this.funnelViewer = new D3Funnel(this.$funnelContainer[0]);
+                this.funnelContainer = document.createElement('div');
+                this.funnelContainer.style.margin = '20px';
+                this.funnelContainer.style.height = 'calc(100% - 40px)'
+            
+                htmlElement.appendChild(this.funnelContainer);
+                this.funnelViewer = new D3Funnel(this.funnelContainer);
             }
             this._update(data, this._getFunnelSizeOptions());
         } else {
-            $element.empty();
+            htmlElement.innerHTML = '';
             this.funnelViewer = null;
         }
     };
@@ -66,7 +69,7 @@ export class FunnelD3Item extends CustomItemViewer {
     };
     _getFunnelSizeOptions () {
 
-        return { chart: { width: this.$funnelContainer.innerWidth(),  height:this.$funnelContainer.innerHeight() } };
+        return { chart: { width: this.funnelContainer.clientWidth,  height:this.funnelContainer.clientHeight } };
     };
     _getDataSource() {
         var bindingValues = this.getBindingValue('Values');
@@ -86,21 +89,19 @@ export class FunnelD3Item extends CustomItemViewer {
         });
         return data.length > 0 ? data : undefined;
     };
-    _ensureFunnelLibrary($element) {
+    _ensureFunnelLibrary(htmlElement: HTMLElement) {
         if(!D3Funnel) {
             
-            $element.empty();
-
-            $element.append($('<div/>', {
-                css: {
-                    position: 'absolute',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    width: '95%',
-                    color: '#CF0F2E',
-                    'text-align': 'center'
-                }
-            }).html("'D3Funnel' cannot be displayed. You should include 'd3.v3.min.js' and 'd3-funnel.js' libraries."));
+            htmlElement.innerHTML = '';
+            var textDiv = document.createElement('div');
+            textDiv.style.position= 'absolute';
+            textDiv.style.top= '50%';
+            textDiv.style.transform= 'translateY(-50%)';
+            textDiv.style.width= '95%';
+            textDiv.style.color= '#CF0F2E';
+            textDiv.style.textAlign= 'center';
+            textDiv.innerText = "'D3Funnel' cannot be displayed. You should include 'd3.v3.min.js' and 'd3-funnel.js' libraries."
+            htmlElement.appendChild(textDiv);
             return false;
         }
         return true;
@@ -171,7 +172,7 @@ export class FunnelD3Item extends CustomItemViewer {
         }
     };
     _updateExportingImage () {
-        var svg = this.$funnelContainer.children()[0],
+        var svg = this.funnelContainer.firstElementChild,
             str = new XMLSerializer().serializeToString(svg),
             encodedData = 'data:image/svg+xml;base64,' + window.btoa(encodeURI(encodeURIComponent(str)));
         this.exportingImage.src = encodedData;
@@ -180,11 +181,13 @@ export class FunnelD3Item extends CustomItemViewer {
         return this.getBindingValue('Arguments').length > 0;
     };
     _getImageBase64 () {
-        var canvas = $('<canvas>')[0];
-        canvas['width'] = this.$funnelContainer.innerWidth();
-        canvas['height'] = this.$funnelContainer.innerHeight();
-        canvas['getContext']('2d').drawImage(this.exportingImage, 0, 0);
-        return canvas['toDataURL']().replace('data:image/png;base64,', '');
+        var canvas = document.createElement('canvas');;
+    
+
+        canvas.width = this.funnelContainer.clientWidth;
+        canvas.height = this.funnelContainer.clientHeight;
+        canvas.getContext('2d').drawImage(this.exportingImage, 0, 0);
+        return canvas.toDataURL().replace('data:image/png;base64,', '');
     }
     _isIEBrowser () {
         return navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0;

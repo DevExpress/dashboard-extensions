@@ -75,17 +75,18 @@ var __extends = this && this.__extends || function() {
 // The viewer definition.
 var customItemSimpleTable = (function(_super) {
     __extends(customItemSimpleTable, _super);
-    function customItemSimpleTable(model, $container, options) {
-        _super.call(this, model, $container, options);
+    function customItemSimpleTable(model, container, options) {
+        _super.call(this, model, container, options);
         var _this = this;
         this.$table = undefined;
 
         // Allows you to react on and subscribe to custom property changes.
         this.subscribe('showHeaders', function(mode) { _this._update(mode); });
     }
-    customItemSimpleTable.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
+    customItemSimpleTable.prototype.renderContent = function(element, changeExisting, afterRenderCallback) {
         // The changeExisting flag indicates whether to update a custom item content or 
         // render it from scratch when any changes exist (true to update content; otherwise, false).
+        let $element = $(element);
         if (!changeExisting) {
             $element.empty();
             $element.css('overflow', 'auto');
