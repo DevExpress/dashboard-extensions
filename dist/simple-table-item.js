@@ -138,7 +138,7 @@
                     });
                 }
                 customItemSimpleTable.prototype.renderContent = function(element, changeExisting, afterRenderCallback) {
-                    let $element = element;
+                    let $element = $(element);
                     if (!changeExisting) {
                         $element.empty();
                         $element.css("overflow", "auto");
