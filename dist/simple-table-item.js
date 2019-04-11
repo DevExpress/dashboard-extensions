@@ -67,7 +67,7 @@
             return Object.prototype.hasOwnProperty.call(object, property);
         };
         __webpack_require__.p = "";
-        return __webpack_require__(__webpack_require__.s = 28);
+        return __webpack_require__(__webpack_require__.s = 29);
     }({
         0: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
@@ -78,7 +78,7 @@
         2: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
         },
-        28: function(module, exports, __webpack_require__) {
+        29: function(module, exports, __webpack_require__) {
             var editorTemplates = __webpack_require__(2).editorTemplates;
             var CustomItemViewer = __webpack_require__(0).CustomItemViewer;
             var $ = __webpack_require__(1);

@@ -1,9 +1,9 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("jquery"), require("devexpress-dashboard/model/index.metadata")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "jquery", "devexpress-dashboard/model/index.metadata" ], factory); else {
-        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("jquery"), require("devexpress-dashboard/model/index.metadata")) : factory(root["DevExpress"]["Dashboard"], root["$"], root["DevExpress"]["Dashboard"]["Metadata"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata"), require("devextreme/ui/button")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "devexpress-dashboard/model/index.metadata", "devextreme/ui/button" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("devexpress-dashboard/model/index.metadata"), require("devextreme/ui/button")) : factory(root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"]["Metadata"], root["DevExpress"]["ui"]["dxButton"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__24__) {
     return function(modules) {
         var installedModules = {};
         function __webpack_require__(moduleId) {
@@ -72,9 +72,6 @@
         0: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
         },
-        1: function(module, exports) {
-            module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
-        },
         2: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
         },
@@ -83,7 +80,7 @@
             exports.__esModule = true;
             var meta_1 = __webpack_require__(6);
             var viewer_1 = __webpack_require__(23);
-            var icon_1 = __webpack_require__(24);
+            var icon_1 = __webpack_require__(25);
             var ParameterItemExtension = function() {
                 function ParameterItemExtension(dashboardControl) {
                     var _this = this;
@@ -126,7 +123,7 @@
                 };
             }();
             exports.__esModule = true;
-            var $ = __webpack_require__(1);
+            var button_1 = __webpack_require__(24);
             var buttonsStyle = {
                 containerHeight: 60,
                 height: 40,
@@ -139,6 +136,7 @@
                 __extends(ParameterItemViewer, _super);
                 function ParameterItemViewer(model, container, options, parametersExtension) {
                     var _this = _super.call(this, model, container, options) || this;
+                    _this.buttons = [];
                     _this.parametersExtension = parametersExtension;
                     _this._subscribeProperties();
                     _this.parametersExtension.showDialogButton(false);
@@ -154,40 +152,40 @@
                     _super.prototype.setSize.call(this, width, height);
                     this._setGridHeight();
                 };
-                ParameterItemViewer.prototype.renderContent = function(element, changeExisting, afterRenderCallback) {
+                ParameterItemViewer.prototype.renderContent = function(dxElement, changeExisting, afterRenderCallback) {
                     var _this = this;
-                    var $element = $(element);
+                    var element = dxElement.jquery ? dxElement.get(0) : dxElement;
                     if (!changeExisting) {
-                        $element.empty();
-                        $element.css("overflow", "auto");
-                        this.$gridContainer = $("<div />");
-                        $element.append(this.$gridContainer);
+                        element.innerHTML = "";
+                        this.buttons.forEach(function(button) {
+                            return button.dispose();
+                        });
+                        element.style.overflow = "auto";
+                        this.gridContainer = document.createElement("div");
+                        element.appendChild(this.gridContainer);
                         this._generateParametersContent();
-                        this.$buttonContainer = $("<div />", {
-                            css: {
-                                height: buttonsStyle.containerHeight + "px",
-                                width: buttonsStyle.width * 2 + buttonsStyle.marginRight * 2 + "px",
-                                float: "right"
-                            }
-                        });
-                        $element.append(this.$buttonContainer);
-                        var $resetButton = this._createButton("Reset", function() {
+                        this.buttonContainer = document.createElement("div");
+                        this.buttonContainer.style.height = buttonsStyle.containerHeight + "px", this.buttonContainer.style.width = buttonsStyle.width * 2 + buttonsStyle.marginRight * 2 + "px", 
+                        this.buttonContainer.style.cssFloat = "right";
+                        element.appendChild(this.buttonContainer);
+                        this.buttons.push(this._createButton(this.buttonContainer, "Reset", function() {
                             _this.parametersContent.resetParameterValues();
-                        });
-                        $resetButton.appendTo(this.$buttonContainer);
-                        var $submitButton = this._createButton("Submit", function() {
+                        }));
+                        this.buttons.push(this._createButton(this.buttonContainer, "Submit", function() {
                             _this._submitValues();
-                        });
-                        $submitButton.appendTo(this.$buttonContainer);
-                        if (this.getPropertyValue("automaticUpdates") != "Off") this.$buttonContainer.hide();
+                        }));
+                        if (this.getPropertyValue("automaticUpdates") != "Off") this.buttonContainer.style.display = "none";
                     }
                 };
                 ParameterItemViewer.prototype._generateParametersContent = function() {
                     var _this = this;
-                    this.parametersContent = this.parametersExtension.renderContent(this.$gridContainer);
+                    this.parametersContent = this.parametersExtension.renderContent(this.gridContainer);
                     this.parametersContent.grid.option("onDisposing", function() {
                         _this.dialogButtonSubscribe.dispose();
                         _this.parametersExtension.showDialogButton(true);
+                        _this.buttons.forEach(function(button) {
+                            return button.dispose();
+                        });
                     });
                     this.parametersContent.valueChanged.add(function() {
                         return _this._updateParameterValues();
@@ -213,19 +211,17 @@
                     if (this.getPropertyValue("automaticUpdates") === "Off") gridHeight -= buttonsStyle.containerHeight;
                     this.parametersContent.grid.option("height", gridHeight);
                 };
-                ParameterItemViewer.prototype._createButton = function(buttonText, onClick) {
-                    var $button = $("<div />", {
-                        css: {
-                            "margin-right": buttonsStyle.marginRight + "px",
-                            "margin-top": buttonsStyle.marginTop + "px"
-                        }
-                    }).dxButton({
+                ParameterItemViewer.prototype._createButton = function(container, buttonText, onClick) {
+                    var button = document.createElement("div");
+                    button.style.marginRight = buttonsStyle.marginRight + "px";
+                    button.style.marginTop = buttonsStyle.marginTop + "px";
+                    container.appendChild(button);
+                    return new (button_1["default"] || window.DevExpress.ui.dxButton)(button, {
                         text: buttonText,
                         height: buttonsStyle.height + "px",
                         width: buttonsStyle.width + "px",
                         onClick: onClick
                     });
-                    return $button;
                 };
                 ParameterItemViewer.prototype._subscribeProperties = function() {
                     var _this = this;
@@ -259,9 +255,9 @@
                     }
                     if (!!options.automaticUpdates) {
                         if (options.automaticUpdates == "Off") {
-                            this.$buttonContainer.show();
+                            this.buttonContainer.style.display = "block";
                         } else {
-                            this.$buttonContainer.hide();
+                            this.buttonContainer.style.display = "none";
                         }
                     }
                     this._setGridHeight();
@@ -270,7 +266,10 @@
             }(common_1.CustomItemViewer);
             exports.ParameterItemViewer = ParameterItemViewer;
         },
-        24: function(module, exports, __webpack_require__) {
+        24: function(module, exports) {
+            module.exports = __WEBPACK_EXTERNAL_MODULE__24__;
+        },
+        25: function(module, exports, __webpack_require__) {
             "use strict";
             exports.__esModule = true;
             var meta_1 = __webpack_require__(6);
