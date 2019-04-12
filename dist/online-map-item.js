@@ -1,6 +1,6 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("@devexpress/analytics-core/dx-analytics-core"), require("devextreme/ui/map")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "@devexpress/analytics-core/dx-analytics-core", "devextreme/ui/map" ], factory); else {
-        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("@devexpress/analytics-core/dx-analytics-core"), require("devextreme/ui/map")) : factory(root["DevExpress"]["Dashboard"], root["DevExpress"], root["DevExpress"]["ui"]["dxMap"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard"), require("devextreme/ui/map")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "devexpress-dashboard", "devextreme/ui/map" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("devexpress-dashboard"), require("devextreme/ui/map")) : factory(root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"], root["DevExpress"]["ui"]["dxMap"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
 })(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__10__) {
@@ -284,7 +284,7 @@
     }, function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
-        var dx_analytics_core_1 = __webpack_require__(3);
+        var devexpress_dashboard_1 = __webpack_require__(3);
         function getDefaultCustomLocalization() {
             return {
                 "DashboardWebCustomItemStringId.DefaultNameOnlineMap": "Online Map",
@@ -308,8 +308,6 @@
                 "DashboardWebCustomItemStringId.OnlineMapSectionName": "Custom Options"
             };
         }
-        dx_analytics_core_1["default"].Analytics.Utils.addCultureInfo({
-            messages: getDefaultCustomLocalization()
-        });
+        devexpress_dashboard_1.ResourceManager.setLocalizationMessages(getDefaultCustomLocalization());
     } ]);
 });

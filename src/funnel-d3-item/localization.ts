@@ -1,24 +1,22 @@
-import DxDesigner from '@devexpress/analytics-core/dx-analytics-core'
+import { ResourceManager } from 'devexpress-dashboard'
 
-DxDesigner.Analytics.Utils.addCultureInfo({
-    messages: {
-        // Binding Panel
-        'DashboardWebCustomItemStringId.DefaultNameFunnelD3': "Funnel D3",
-        'DashboardWebCustomItemStringId.Values': "Values",
-        'DashboardWebCustomItemStringId.SetValue': "Set Value",
-        'DashboardWebCustomItemStringId.ConfigureValue': "Configure Value",
-        'DashboardWebCustomItemStringId.Arguments': "Arguments",
-        'DashboardWebCustomItemStringId.SetArgument': "Set Argument",
-        'DashboardWebCustomItemStringId.ConfigureArgument': "Configure Argument",
+ResourceManager.setLocalizationMessages({
+    // Binding Panel
+    'DashboardWebCustomItemStringId.DefaultNameFunnelD3': "Funnel D3",
+    'DashboardWebCustomItemStringId.Values': "Values",
+    'DashboardWebCustomItemStringId.SetValue': "Set Value",
+    'DashboardWebCustomItemStringId.ConfigureValue': "Configure Value",
+    'DashboardWebCustomItemStringId.Arguments': "Arguments",
+    'DashboardWebCustomItemStringId.SetArgument': "Set Argument",
+    'DashboardWebCustomItemStringId.ConfigureArgument': "Configure Argument",
 
-        // Options
-        'DashboardWebCustomItemStringId.IsCurved': 'Curved',
-        'DashboardWebCustomItemStringId.IsDynamicHeight': 'Dynamic Height',
-        'DashboardWebCustomItemStringId.PinchCount': 'Pinch Count',
-        'DashboardWebCustomItemStringId.FillType': "Fill Type",
-        'DashboardWebCustomItemStringId.FillTypeSolid': "Solid",
-        'DashboardWebCustomItemStringId.FillTypeGradient': "Gradient",
+    // Options
+    'DashboardWebCustomItemStringId.IsCurved': 'Curved',
+    'DashboardWebCustomItemStringId.IsDynamicHeight': 'Dynamic Height',
+    'DashboardWebCustomItemStringId.PinchCount': 'Pinch Count',
+    'DashboardWebCustomItemStringId.FillType': "Fill Type",
+    'DashboardWebCustomItemStringId.FillTypeSolid': "Solid",
+    'DashboardWebCustomItemStringId.FillTypeGradient': "Gradient",
 
-        'DashboardWebCustomItemStringId.SectionName': 'Settings'
-    }
+    'DashboardWebCustomItemStringId.SectionName': 'Settings'
 });
