@@ -79,10 +79,10 @@
         var ko = __webpack_require__(16);
         var CustomDashboardPanelExtension = function() {
             function CustomDashboardPanelExtension(_dashboardControl, options) {
+                var _this = this;
                 if (options === void 0) {
                     options = {};
                 }
-                var _this = this;
                 this._dashboardControl = _dashboardControl;
                 this.options = options;
                 this.name = "custom-dashboard-panel";
@@ -275,9 +275,11 @@
                         }
                     },
                     onSelectionChanged: function(e) {
-                        var newDashboardId = e.addedItems[0].id;
-                        if (!_this._dashboardControl.dashboardContainer() || _this._dashboardControl.dashboardContainer().id !== newDashboardId) {
-                            _this._dashboardControl.loadDashboard(newDashboardId);
+                        if (e.addedItems.length) {
+                            var newDashboardId = e.addedItems[0].id;
+                            if (!_this._dashboardControl.dashboardContainer() || _this._dashboardControl.dashboardContainer().id !== newDashboardId) {
+                                _this._dashboardControl.loadDashboard(newDashboardId);
+                            }
                         }
                     }
                 };
