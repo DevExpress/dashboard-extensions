@@ -215,9 +215,11 @@ export class CustomDashboardPanelExtension implements IExtension {
                 }
             },
             onSelectionChanged: (e) => {
-                var newDashboardId = e.addedItems[0].id;
-                if(!this._dashboardControl.dashboardContainer() || this._dashboardControl.dashboardContainer().id !== newDashboardId) {
-                    this._dashboardControl.loadDashboard(newDashboardId);
+                if(e.addedItems.length) {
+                    var newDashboardId = e.addedItems[0].id;
+                    if(!this._dashboardControl.dashboardContainer() || this._dashboardControl.dashboardContainer().id !== newDashboardId) {
+                        this._dashboardControl.loadDashboard(newDashboardId);
+                    }
                 }
             },
         };

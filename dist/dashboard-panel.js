@@ -275,9 +275,11 @@
                         }
                     },
                     onSelectionChanged: function(e) {
-                        var newDashboardId = e.addedItems[0].id;
-                        if (!_this._dashboardControl.dashboardContainer() || _this._dashboardControl.dashboardContainer().id !== newDashboardId) {
-                            _this._dashboardControl.loadDashboard(newDashboardId);
+                        if (e.addedItems.length) {
+                            var newDashboardId = e.addedItems[0].id;
+                            if (!_this._dashboardControl.dashboardContainer() || _this._dashboardControl.dashboardContainer().id !== newDashboardId) {
+                                _this._dashboardControl.loadDashboard(newDashboardId);
+                            }
                         }
                     }
                 };
