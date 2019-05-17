@@ -22,14 +22,16 @@ export class OnlineMapItem extends CustomItemViewer {
         this.mapViewer.option('width', contentWidth);
         this.mapViewer.option('height', contentHeight);
     }
-
+    setSelection(values: Array<Array<any>>) {
+        super.setSelection(values);
+        this._updateSelection();
+    };
     clearSelection() {
         super.clearSelection();
         this._updateSelection();
     }
 
     renderContent(element: dxElement, changeExisting: boolean, afterRenderCallback?) {
-        let $element = $(element);
         var markers = [],
             routes = [],
             mode = this.getPropertyValue('DisplayMode'),
@@ -80,7 +82,7 @@ export class OnlineMapItem extends CustomItemViewer {
         if(changeExisting && this.mapViewer) {
             this.mapViewer.option(options);
         } else {
-            this.mapViewer = new (dxMap || (<any>window).DevExpress.ui.dxMap)($element, options);
+            this.mapViewer = new (dxMap || (<any>window).DevExpress.ui.dxMap)(element, options);
         }
     }
 
