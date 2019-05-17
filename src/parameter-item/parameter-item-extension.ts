@@ -15,11 +15,11 @@ export class ParameterItemExtension {
         
     }
     
-    createViewerItem = (model, $element, content) => {
+    createViewerItem = (model, element, content) => {
         var parametersExtension = this.dashboardControl.findExtension("dashboard-parameter-dialog");
         if (!parametersExtension){
             throw Error('The "dashboard-parameter-dialog" extension does not exist. To register this extension, use the DashboardControl.registerExtension method.');
         }
-        return new ParameterItemViewer(model, $element, content, parametersExtension);
+        return new ParameterItemViewer(model, element, content, parametersExtension);
     }
 }

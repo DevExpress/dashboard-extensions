@@ -67,7 +67,7 @@
             return Object.prototype.hasOwnProperty.call(object, property);
         };
         __webpack_require__.p = "";
-        return __webpack_require__(__webpack_require__.s = 28);
+        return __webpack_require__(__webpack_require__.s = 29);
     }({
         0: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
@@ -78,7 +78,7 @@
         2: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
         },
-        28: function(module, exports, __webpack_require__) {
+        29: function(module, exports, __webpack_require__) {
             var editorTemplates = __webpack_require__(2).editorTemplates;
             var CustomItemViewer = __webpack_require__(0).CustomItemViewer;
             var $ = __webpack_require__(1);
@@ -129,15 +129,16 @@
             }();
             var customItemSimpleTable = function(_super) {
                 __extends(customItemSimpleTable, _super);
-                function customItemSimpleTable(model, $container, options) {
-                    _super.call(this, model, $container, options);
+                function customItemSimpleTable(model, container, options) {
+                    _super.call(this, model, container, options);
                     var _this = this;
                     this.$table = undefined;
                     this.subscribe("showHeaders", function(mode) {
                         _this._update(mode);
                     });
                 }
-                customItemSimpleTable.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
+                customItemSimpleTable.prototype.renderContent = function(element, changeExisting, afterRenderCallback) {
+                    let $element = $(element);
                     if (!changeExisting) {
                         $element.empty();
                         $element.css("overflow", "auto");

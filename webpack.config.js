@@ -21,9 +21,8 @@ module.exports = {
         'knockout': { root: 'ko', commonjs2: 'knockout', commonjs: 'knockout', amd: 'knockout' },
         'd3-funnel': { root: 'D3Funnel', commonjs2: 'd3-funnel', commonjs: 'd3-funnel', amd: 'd3-funnel' },
         'devextreme/ui/map': { root: ['DevExpress', 'ui', 'dxMap'], commonjs2: 'devextreme/ui/map', commonjs: 'devextreme/ui/map', amd: 'devextreme/ui/map' },
+        'devextreme/ui/button': { root: ['DevExpress', 'ui', 'dxButton'], commonjs2: 'devextreme/ui/button', commonjs: 'devextreme/ui/button', amd: 'devextreme/ui/button' },
         'devextreme/core/devices': { root: ['DevExpress', 'devices'], commonjs2: 'devextreme/core/devices', commonjs: 'devextreme/core/devices', amd: 'devextreme/core/devices' },
-        '@devexpress/analytics-core/dx-analytics-core': { root: 'DevExpress', commonjs2: '@devexpress/analytics-core/dx-analytics-core', commonjs: '@devexpress/analytics-core/dx-analytics-core', amd: '@devexpress/analytics-core/dx-analytics-core' },
-        '@devexpress/analytics-core/dx-querybuilder': { root: 'DevExpress', commonjs2: '@devexpress/analytics-core/dx-querybuilder', commonjs: '@devexpress/analytics-core/dx-querybuilder', amd: '@devexpress/analytics-core/dx-querybuilder' },
 
         'devexpress-dashboard': { root: ['DevExpress', 'Dashboard'], commonjs2: 'devexpress-dashboard', commonjs: 'devexpress-dashboard', amd: 'devexpress-dashboard' },
         'devexpress-dashboard/common': { root: ['DevExpress', 'Dashboard'], commonjs2: 'devexpress-dashboard/common', commonjs: 'devexpress-dashboard/common', amd: 'devexpress-dashboard/common' },

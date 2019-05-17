@@ -1,5 +1,5 @@
 import * as $ from 'jquery';
-import * as ko from 'knockout';
+import dxButton from 'devextreme/ui/button'
 
 var buttonsStyle = {
     containerHeight: 60,
@@ -10,17 +10,19 @@ var buttonsStyle = {
 };
 
 import { CustomItemViewer } from 'devexpress-dashboard/common'
+import { dxElement } from 'devextreme/core/element';
 
 
 export class ParameterItemViewer extends CustomItemViewer {
-    $gridContainer: JQuery;
-    $buttonContainer: JQuery;
+    gridContainer: HTMLElement;
+    buttonContainer: HTMLElement;
     parametersExtension: any;
     parametersContent: any;
     dialogButtonSubscribe: any;
+    buttons = [];
 
-    constructor(model, $container, options, parametersExtension) {
-       super(model, $container, options);
+    constructor(model, container, options, parametersExtension) {
+       super(model, container, options);
         
         this.parametersExtension = parametersExtension;
         this._subscribeProperties();
@@ -38,44 +40,43 @@ export class ParameterItemViewer extends CustomItemViewer {
         this._setGridHeight();
     };
 
-    renderContent($element, changeExisting, afterRenderCallback) {
+    renderContent(dxElement: JQuery<HTMLElement> | HTMLElement, changeExisting, afterRenderCallback) {
+        let element: HTMLElement = (<JQuery>dxElement).jquery ? (<JQuery>dxElement).get(0): <HTMLElement>dxElement;
         if (!changeExisting) {
-            $element.empty();
-            $element.css('overflow', 'auto');
+            element.innerHTML = '';
+            this.buttons.forEach(button => button.dispose());
+            element.style.overflow = 'auto';
             
+            this.gridContainer = document.createElement('div');
 
-            this.$gridContainer = $("<div />");
-            $element.append(this.$gridContainer);
+            element.appendChild(this.gridContainer);
             this._generateParametersContent();
 
-            this.$buttonContainer = $("<div />", {
-                css: {
-                    'height': buttonsStyle.containerHeight + 'px',
-                    'width':  buttonsStyle.width * 2 + buttonsStyle.marginRight * 2 + 'px',
-                    'float': 'right'
-                }
-            });
-            
-            $element.append(this.$buttonContainer);
+            this.buttonContainer = document.createElement('div');
 
-            var $resetButton = this._createButton("Reset", () => {
+            this.buttonContainer.style.height = buttonsStyle.containerHeight + 'px',
+            this.buttonContainer.style.width = buttonsStyle.width * 2 + buttonsStyle.marginRight * 2 + 'px',
+            this.buttonContainer.style.cssFloat = 'right'
+                
+            element.appendChild(this.buttonContainer);
+
+            this.buttons.push(this._createButton(this.buttonContainer, "Reset", () => {
                 this.parametersContent.resetParameterValues();
-            });
-            $resetButton.appendTo(this.$buttonContainer);
-            var $submitButton = this._createButton("Submit", () => {
+            }));
+            this.buttons.push(this._createButton(this.buttonContainer, "Submit", () => {
                 this._submitValues();
-            });
-            $submitButton.appendTo(this.$buttonContainer);
+            }));
             if (this.getPropertyValue('automaticUpdates') != 'Off')
-                this.$buttonContainer.hide();
+                this.buttonContainer.style.display = 'none';
         }
     };
     _generateParametersContent() {
         
-        this.parametersContent = this.parametersExtension.renderContent(this.$gridContainer);
+        this.parametersContent = this.parametersExtension.renderContent(this.gridContainer);
         this.parametersContent.grid.option('onDisposing', () => {
             this.dialogButtonSubscribe.dispose();
             this.parametersExtension.showDialogButton(true);
+            this.buttons.forEach(button => button.dispose());
         });
         this.parametersContent.valueChanged.add(() => this._updateParameterValues());
         this._setGridHeight();
@@ -101,19 +102,19 @@ export class ParameterItemViewer extends CustomItemViewer {
             gridHeight -= buttonsStyle.containerHeight;
         this.parametersContent.grid.option('height', gridHeight);
     }
-    _createButton(buttonText, onClick) {
-        let $button = $("<div />", {
-            css: {
-                'margin-right': buttonsStyle.marginRight + 'px',
-                'margin-top': buttonsStyle.marginTop + 'px'
-            }
-        }).dxButton({
+    _createButton(container: HTMLElement, buttonText: string, onClick: () => void) {
+      
+
+        let button =   document.createElement("div");
+        button.style.marginRight =  buttonsStyle.marginRight + 'px';
+        button.style.marginTop = buttonsStyle.marginTop + 'px';
+        container.appendChild(button);
+        return new (dxButton || (<any>window).DevExpress.ui.dxButton)(button, {
             text: buttonText,
             height: buttonsStyle.height + 'px',
             width: buttonsStyle.width + 'px',
             onClick: onClick
         });
-        return $button;
     }
     _subscribeProperties() {
         
@@ -133,9 +134,9 @@ export class ParameterItemViewer extends CustomItemViewer {
         }
         if(!!options.automaticUpdates) {
             if (options.automaticUpdates == 'Off') {
-                this.$buttonContainer.show();
+                this.buttonContainer.style.display = 'block';
             } else {
-                this.$buttonContainer.hide();
+                this.buttonContainer.style.display = 'none';
             }
         }
         this._setGridHeight();

@@ -1,6 +1,6 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("@devexpress/analytics-core/dx-analytics-core"), require("devextreme/ui/map")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "@devexpress/analytics-core/dx-analytics-core", "devextreme/ui/map" ], factory); else {
-        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("@devexpress/analytics-core/dx-analytics-core"), require("devextreme/ui/map")) : factory(root["DevExpress"]["Dashboard"], root["DevExpress"], root["DevExpress"]["ui"]["dxMap"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard"), require("devextreme/ui/map")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "devexpress-dashboard", "devextreme/ui/map" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("devexpress-dashboard"), require("devextreme/ui/map")) : factory(root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"], root["DevExpress"]["ui"]["dxMap"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
 })(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__10__) {
@@ -160,8 +160,8 @@
                 this.metaData = meta_1.onlineMapMeta;
                 dashboardControl.registerIcon(icon_1.ONLINE_MAP_ICON);
             }
-            OnlineMapItemExtension.prototype.createViewerItem = function(model, $element, content) {
-                return new online_map_viewer_1.OnlineMapItem(model, $element, content);
+            OnlineMapItemExtension.prototype.createViewerItem = function(model, element, content) {
+                return new online_map_viewer_1.OnlineMapItem(model, element, content);
             };
             return OnlineMapItemExtension;
         }();
@@ -192,8 +192,8 @@
         var map_1 = __webpack_require__(10);
         var OnlineMapItem = function(_super) {
             __extends(OnlineMapItem, _super);
-            function OnlineMapItem(model, $container, options) {
-                var _this = _super.call(this, model, $container, options) || this;
+            function OnlineMapItem(model, container, options) {
+                var _this = _super.call(this, model, container, options) || this;
                 _this.mapViewer = null;
                 return _this;
             }
@@ -211,7 +211,7 @@
                 _super.prototype.clearSelection.call(this);
                 this._updateSelection();
             };
-            OnlineMapItem.prototype.renderContent = function($element, changeExisting, afterRenderCallback) {
+            OnlineMapItem.prototype.renderContent = function(element, changeExisting, afterRenderCallback) {
                 var _this = this;
                 var markers = [], routes = [], mode = this.getPropertyValue("DisplayMode"), showMarkers = mode === "Markers" || mode === "MarkersAndRoutes" || this.canMasterFilter(), showRoutes = mode === "Routes" || mode === "MarkersAndRoutes";
                 if (this.getBindingValue("Latitude").length > 0 && this.getBindingValue("Longitude").length > 0) {
@@ -258,7 +258,7 @@
                 if (changeExisting && this.mapViewer) {
                     this.mapViewer.option(options);
                 } else {
-                    this.mapViewer = new (map_1["default"] || window.DevExpress.ui.dxMap)($element, options);
+                    this.mapViewer = new (map_1["default"] || window.DevExpress.ui.dxMap)(element, options);
                 }
             };
             OnlineMapItem.prototype._onClick = function(row) {
@@ -287,7 +287,7 @@
     }, function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
-        var DxDesigner = __webpack_require__(3);
+        var devexpress_dashboard_1 = __webpack_require__(3);
         function getDefaultCustomLocalization() {
             return {
                 "DashboardWebCustomItemStringId.DefaultNameOnlineMap": "Online Map",
@@ -311,8 +311,6 @@
                 "DashboardWebCustomItemStringId.OnlineMapSectionName": "Custom Options"
             };
         }
-        DxDesigner.Analytics.Localization.addCultureInfo({
-            messages: getDefaultCustomLocalization()
-        });
+        devexpress_dashboard_1.ResourceManager.setLocalizationMessages(getDefaultCustomLocalization());
     } ]);
 });

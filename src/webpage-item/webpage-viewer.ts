@@ -1,16 +1,18 @@
 ﻿import { CustomItemViewer } from 'devexpress-dashboard/common'
 import * as $ from 'jquery';
+import { dxElement } from 'devextreme/core/element';
 
 export class WebPageItem extends CustomItemViewer {
     private _iframe: any;
 
-    constructor(model: any, $container, options) {
-        super(model, $container, options);
+    constructor(model: any, container, options) {
+        super(model, container, options);
         this._iframe = undefined;
     }
 
-    renderContent($element: JQuery, changeExisting: boolean, afterRenderCallback?) {
+    renderContent(element: dxElement, changeExisting: boolean, afterRenderCallback?) {
         var attribute;
+        var $element = $(element);
         if(!changeExisting || !this._iframe) {
             this._iframe = $('<iframe>', { 
                 attr: {

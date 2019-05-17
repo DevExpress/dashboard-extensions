@@ -4,13 +4,14 @@
 
 import { CustomItemViewer } from 'devexpress-dashboard/common'
 import dxMap from 'devextreme/ui/map'
+import { dxElement } from 'devextreme/core/element';
 
 
 export class OnlineMapItem extends CustomItemViewer {
     private mapViewer: any;
 
-    constructor(model: any, $container, options) {
-        super(model, $container, options);
+    constructor(model: any, container, options) {
+        super(model, container, options);
         this.mapViewer = null;
     }
 
@@ -25,13 +26,12 @@ export class OnlineMapItem extends CustomItemViewer {
         super.setSelection(values);
         this._updateSelection();
     };
-
     clearSelection() {
         super.clearSelection();
         this._updateSelection();
     }
 
-    renderContent($element: JQuery, changeExisting: boolean, afterRenderCallback?) {
+    renderContent(element: dxElement, changeExisting: boolean, afterRenderCallback?) {
         var markers = [],
             routes = [],
             mode = this.getPropertyValue('DisplayMode'),
@@ -82,7 +82,7 @@ export class OnlineMapItem extends CustomItemViewer {
         if(changeExisting && this.mapViewer) {
             this.mapViewer.option(options);
         } else {
-            this.mapViewer = new (dxMap || (<any>window).DevExpress.ui.dxMap)($element, options);
+            this.mapViewer = new (dxMap || (<any>window).DevExpress.ui.dxMap)(element, options);
         }
     }
 
