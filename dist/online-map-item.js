@@ -203,13 +203,16 @@
                 this.mapViewer.option("width", contentWidth);
                 this.mapViewer.option("height", contentHeight);
             };
+            OnlineMapItem.prototype.setSelection = function(values) {
+                _super.prototype.setSelection.call(this, values);
+                this._updateSelection();
+            };
             OnlineMapItem.prototype.clearSelection = function() {
                 _super.prototype.clearSelection.call(this);
                 this._updateSelection();
             };
             OnlineMapItem.prototype.renderContent = function(element, changeExisting, afterRenderCallback) {
                 var _this = this;
-                var $element = $(element);
                 var markers = [], routes = [], mode = this.getPropertyValue("DisplayMode"), showMarkers = mode === "Markers" || mode === "MarkersAndRoutes" || this.canMasterFilter(), showRoutes = mode === "Routes" || mode === "MarkersAndRoutes";
                 if (this.getBindingValue("Latitude").length > 0 && this.getBindingValue("Longitude").length > 0) {
                     this.iterateData(function(row) {
@@ -255,7 +258,7 @@
                 if (changeExisting && this.mapViewer) {
                     this.mapViewer.option(options);
                 } else {
-                    this.mapViewer = new (map_1["default"] || window.DevExpress.ui.dxMap)($element, options);
+                    this.mapViewer = new (map_1["default"] || window.DevExpress.ui.dxMap)(element, options);
                 }
             };
             OnlineMapItem.prototype._onClick = function(row) {
