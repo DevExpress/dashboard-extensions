@@ -203,6 +203,10 @@
                 this.mapViewer.option("width", contentWidth);
                 this.mapViewer.option("height", contentHeight);
             };
+            OnlineMapItem.prototype.setSelection = function(values) {
+                _super.prototype.setSelection.call(this, values);
+                this._updateSelection();
+            };
             OnlineMapItem.prototype.clearSelection = function() {
                 _super.prototype.clearSelection.call(this);
                 this._updateSelection();

@@ -21,6 +21,10 @@ export class OnlineMapItem extends CustomItemViewer {
         this.mapViewer.option('width', contentWidth);
         this.mapViewer.option('height', contentHeight);
     }
+    setSelection(values: Array<Array<any>>) {
+        super.setSelection(values);
+        this._updateSelection();
+    };
 
     clearSelection() {
         super.clearSelection();
