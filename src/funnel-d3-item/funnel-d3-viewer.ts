@@ -53,6 +53,10 @@ export class FunnelD3Item extends CustomItemViewer {
         super.setSize(width, height);
         this._update(null, this._getFunnelSizeOptions());
     };
+    setSelection(values: Array<Array<any>>) {
+        super.setSelection(values);
+        this._update(this._getDataSource());
+    };
     clearSelection() {
         super.clearSelection();
         this._update(this._getDataSource());
@@ -174,7 +178,7 @@ export class FunnelD3Item extends CustomItemViewer {
     _updateExportingImage () {
         var svg = this.funnelContainer.firstElementChild,
             str = new XMLSerializer().serializeToString(svg),
-            encodedData = 'data:image/svg+xml;base64,' + window.btoa(encodeURI(encodeURIComponent(str)));
+            encodedData = 'data:image/svg+xml;base64,' + window.btoa(window["unescape"](encodeURIComponent(str)));
         this.exportingImage.src = encodedData;
     };
     _hasArguments() {

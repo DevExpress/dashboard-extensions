@@ -226,6 +226,10 @@
                 _super.prototype.setSize.call(this, width, height);
                 this._update(null, this._getFunnelSizeOptions());
             };
+            FunnelD3Item.prototype.setSelection = function(values) {
+                _super.prototype.setSelection.call(this, values);
+                this._update(this._getDataSource());
+            };
             FunnelD3Item.prototype.clearSelection = function() {
                 _super.prototype.clearSelection.call(this);
                 this._update(this._getDataSource());
@@ -390,7 +394,7 @@
                 }
             };
             FunnelD3Item.prototype._updateExportingImage = function() {
-                var svg = this.funnelContainer.firstElementChild, str = new XMLSerializer().serializeToString(svg), encodedData = "data:image/svg+xml;base64," + window.btoa(encodeURI(encodeURIComponent(str)));
+                var svg = this.funnelContainer.firstElementChild, str = new XMLSerializer().serializeToString(svg), encodedData = "data:image/svg+xml;base64," + window.btoa(window["unescape"](encodeURIComponent(str)));
                 this.exportingImage.src = encodedData;
             };
             FunnelD3Item.prototype._hasArguments = function() {
