@@ -39,7 +39,12 @@ export class ParameterItemViewer extends CustomItemViewer {
         super.setSize(width, height);
         this._setGridHeight();
     };
-
+    dispose() {
+        super.dispose();
+        this.dialogButtonSubscribe.dispose();
+        this.parametersExtension.showDialogButton(true);
+        this.buttons.forEach(button => button.dispose());
+    }
     renderContent(dxElement: JQuery<HTMLElement> | HTMLElement, changeExisting, afterRenderCallback) {
         let element: HTMLElement = (<JQuery>dxElement).jquery ? (<JQuery>dxElement).get(0): <HTMLElement>dxElement;
         if (!changeExisting) {
@@ -70,14 +75,8 @@ export class ParameterItemViewer extends CustomItemViewer {
                 this.buttonContainer.style.display = 'none';
         }
     };
-    _generateParametersContent() {
-        
+    _generateParametersContent() {       
         this.parametersContent = this.parametersExtension.renderContent(this.gridContainer);
-        this.parametersContent.grid.option('onDisposing', () => {
-            this.dialogButtonSubscribe.dispose();
-            this.parametersExtension.showDialogButton(true);
-            this.buttons.forEach(button => button.dispose());
-        });
         this.parametersContent.valueChanged.add(() => this._updateParameterValues());
         this._setGridHeight();
         this._update({
