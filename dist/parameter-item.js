@@ -152,6 +152,14 @@
                     _super.prototype.setSize.call(this, width, height);
                     this._setGridHeight();
                 };
+                ParameterItemViewer.prototype.dispose = function() {
+                    _super.prototype.dispose.call(this);
+                    this.dialogButtonSubscribe.dispose();
+                    this.parametersExtension.showDialogButton(true);
+                    this.buttons.forEach(function(button) {
+                        return button.dispose();
+                    });
+                };
                 ParameterItemViewer.prototype.renderContent = function(dxElement, changeExisting, afterRenderCallback) {
                     var _this = this;
                     var element = dxElement.jquery ? dxElement.get(0) : dxElement;
@@ -180,13 +188,6 @@
                 ParameterItemViewer.prototype._generateParametersContent = function() {
                     var _this = this;
                     this.parametersContent = this.parametersExtension.renderContent(this.gridContainer);
-                    this.parametersContent.grid.option("onDisposing", function() {
-                        _this.dialogButtonSubscribe.dispose();
-                        _this.parametersExtension.showDialogButton(true);
-                        _this.buttons.forEach(function(button) {
-                            return button.dispose();
-                        });
-                    });
                     this.parametersContent.valueChanged.add(function() {
                         return _this._updateParameterValues();
                     });
