@@ -41,6 +41,7 @@ export class ParameterItemViewer extends CustomItemViewer {
     };
     dispose() {
         super.dispose();
+        this.parametersContent && this.parametersContent.dispose && this.parametersContent.dispose();
         this.dialogButtonSubscribe.dispose();
         this.parametersExtension.showDialogButton(true);
         this.buttons.forEach(button => button.dispose());
