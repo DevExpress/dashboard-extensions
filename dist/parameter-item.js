@@ -154,6 +154,7 @@
                 };
                 ParameterItemViewer.prototype.dispose = function() {
                     _super.prototype.dispose.call(this);
+                    this.parametersContent && this.parametersContent.dispose && this.parametersContent.dispose();
                     this.dialogButtonSubscribe.dispose();
                     this.parametersExtension.showDialogButton(true);
                     this.buttons.forEach(function(button) {
