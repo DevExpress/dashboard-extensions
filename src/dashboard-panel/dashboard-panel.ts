@@ -8,7 +8,6 @@ import { IExtension,
     ViewerApiExtension } from 'devexpress-dashboard/common'
 import { DashboardToolbarGroup, DashboardToolbarItem, ToolboxExtension } from 'devexpress-dashboard/designer';
 import DxDesigner from '@devexpress/analytics-core/dx-analytics-core';
-import devices from 'devextreme/core/devices'
 import * as $ from 'jquery';
 import * as ko from 'knockout';
 
@@ -79,9 +78,6 @@ export class CustomDashboardPanelExtension implements IExtension {
         this._itemTemplate(this._getTemplateName());
         if(this._isMobile()) {
             this._actualPanelWidth($(window).width());
-            devices.on('orientationChanged', (e) => {
-                this._actualPanelWidth($(window).width());
-            });
         } else {
             this._actualPanelWidth(this.panelWidth);
         }
@@ -193,6 +189,7 @@ export class CustomDashboardPanelExtension implements IExtension {
         this._dashboardControl.switchToDesigner();
     }
     private _getCustomTemplate() {
+        var enableAnimation = ko.observable(!this.visible());
         let listOptions = {
             noDataText: '',
             keyExpr: 'id',
@@ -230,12 +227,13 @@ export class CustomDashboardPanelExtension implements IExtension {
             data: {
                 panelWidth: this._actualPanelWidth,
                 allowSwitchToDesigner: this.allowSwitchToDesigner,
-                left: this._left,
+                visible: this.visible,
                 isMobile: this._isMobile,
                 hidePanel: () => { this._hidePanel(); },
                 switchToDesigner: this.switchToDesigner,
                 switchToViewer: this.switchToViewer,
-                listOptions: listOptions
+                listOptions: listOptions,
+                enableAnimation: enableAnimation
             }
         };
     }
