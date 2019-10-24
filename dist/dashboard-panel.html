@@ -1,13 +1,37 @@
 ﻿<script type="text/html" id="dashboard-custom-panel-extension">
-    <div class="dx-dashboard-toolbox-extension dx-dashboard-custom-panel-extension dx-dashboard-typography" data-bind="style: { width: panelWidth() + 'px', left: left() + 'px'  }, 
-                                                                                                                css: { 'dx-dashboard-card-view-panel': isMobile() }">
-        <div class="dx-dashboard-title-panel">
-            <div class="dx-dashboard-title-text">Dashboards</div>
-            <!-- ko if: isMobile -->
-            <!-- ko template: 'dx-dashboard-custom-panel-close-icon' -->
-            <!-- /ko -->
-            <!-- /ko -->
-        </div>
+    <div class="dx-dashboard-custom-panel-extension dx-dashboard-typography" 
+        data-bind="css: { 'dx-dashboard-card-view-panel': isMobile() },
+            dxPopup: {
+                target: $root.getWidgetContainer(),
+                container: $root.getWidgetContainer(),
+                position: {
+                    my: 'left top',
+                    at: 'left top',
+                    collision: 'flipfit',
+                    boundaryOffset: '0, 0',
+                    boundary: $root.getWidgetContainer(),
+                    offset: '0, 0'
+                },
+                animation: enableAnimation () ? {
+                    show: { type: 'slide', from: { left: -panelWidth() }, to: { left: 0 }, duration: 500 },
+                    hide: { type: 'slide', from: { left: 0 }, to: { left: -panelWidth() }, duration: 500 }
+                } : null,
+                focusStateEnabled: false,
+                showCloseButton: isMobile,
+                dragEnabled: false,
+                width: panelWidth,
+                height: '100%',
+                shading: false,
+                toolbarItems: [{
+                    text: $root.getLocalizationById('DashboardWebStringId.Dashboards'),
+                    location: 'before',
+                    toolbar: 'top'
+                }],
+                closeOnOutsideClick: false,
+                onContentReady: function() { enableAnimation(true) },
+                visible: visible
+    }">
+        
         <div 
              class="dx-dashboard-dashboard-list dx-dashboard-typography" 
              data-bind="dxList: listOptions, 
@@ -59,31 +83,18 @@
 </script>
 
 <script type="text/html" id="dashboard-custom-panel-extension-designer-button">
-    <div class="dx-dashboard-edit-in-designer-button" data-bind="click: switchToDesigner">
-        <div style="display:inline-block">
-            <!-- ko template: 'dashboard-custom-panel-extension-designer-button-icon' -->
-            <!-- /ko -->
-            <br /><span>Edit in designer</span>
+    <div class="dx-dashboard-edit-in-designer-button" data-bind="dxButton: { onClick: switchToDesigner, type: 'default', template: 'template' }">
+        <div data-options="dxTemplate: { name: 'template' }" class="designer-button-content">
+            <div>
+                <!-- ko template: 'dashboard-custom-panel-extension-designer-button-icon' -->
+                <!-- /ko -->
+                <br /><span>Edit in designer</span>
+            </div>
         </div>
     </div>
 </script>
 
 <script type="text/html" id="dashboard-custom-panel-extension-viewer-button">
-    <div class='dx-dashboard-viewer-button' data-bind="click: click">Viewer</div>
+    <div class="dx-dashboard-viewer-button" data-bind="dxButton: { onClick: click, type: 'default', text: $root.getLocalizationById('DashboardWebStringId.Viewer') }">
+    </div>
 </script>
-
-<script type="text/html" id="dx-dashboard-custom-panel-close-icon">
-    <div class="dx-dashboard-custom-panel-close-icon"  data-bind="click: hidePanel">
-        <svg class="dx-dashboard-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-             viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
-<style type="text/css">
-    .dx_gray {
-        fill: #7B7B7B;
-    }
-</style>
-<polygon class="dx_gray" points="19,7 16,7 12,11 8,7 5,7 10.5,12.5 5,18 8,18 12,14 16,18 19,18 13.5,12.5 " />
-
-</svg>
-        </div>
-</script>
-
