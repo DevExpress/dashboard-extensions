@@ -1,9 +1,9 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("jquery"), require("devexpress-dashboard/model/index.metadata")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "jquery", "devexpress-dashboard/model/index.metadata" ], factory); else {
-        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("jquery"), require("devexpress-dashboard/model/index.metadata")) : factory(root["DevExpress"]["Dashboard"], root["$"], root["DevExpress"]["Dashboard"]["Metadata"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/designer"), require("devexpress-dashboard/common"), require("jquery")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/model", "devexpress-dashboard/designer", "devexpress-dashboard/common", "jquery" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/designer"), require("devexpress-dashboard/common"), require("jquery")) : factory(root["DevExpress"]["Dashboard"]["Model"], root["DevExpress"]["Dashboard"]["Designer"], root["DevExpress"]["Dashboard"], root["$"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__3__) {
     return function(modules) {
         var installedModules = {};
         function __webpack_require__(moduleId) {
@@ -67,7 +67,7 @@
             return Object.prototype.hasOwnProperty.call(object, property);
         };
         __webpack_require__.p = "";
-        return __webpack_require__(__webpack_require__.s = 29);
+        return __webpack_require__(__webpack_require__.s = 25);
     }({
         0: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
@@ -78,10 +78,11 @@
         2: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
         },
-        29: function(module, exports, __webpack_require__) {
-            var editorTemplates = __webpack_require__(2).editorTemplates;
-            var CustomItemViewer = __webpack_require__(0).CustomItemViewer;
-            var $ = __webpack_require__(1);
+        25: function(module, exports, __webpack_require__) {
+            var CustomItemViewer = __webpack_require__(2).CustomItemViewer;
+            var CustomItem = __webpack_require__(0).CustomItem;
+            var FormItemTemplates = __webpack_require__(1).FormItemTemplates;
+            var $ = __webpack_require__(3);
             var customItemSimpleTableMeta = {
                 bindings: [ {
                     propertyName: "customDimensions",
@@ -93,17 +94,27 @@
                     dataItemType: "Measure",
                     displayName: "Custom Measure"
                 } ],
-                properties: [ {
+                customProperties: [ {
+                    ownerType: CustomItem,
                     propertyName: "showHeaders",
-                    editor: editorTemplates.buttonGroup,
-                    displayName: "Show Headers",
-                    sectionName: "Custom Options",
-                    values: {
-                        Auto: "Auto",
-                        Off: "Off",
-                        On: "On"
-                    },
-                    defaultVal: "Auto"
+                    valueType: "string",
+                    defaultValue: "Auto"
+                } ],
+                optionsPanelSections: [ {
+                    title: "Custom Options",
+                    items: [ {
+                        dataField: "showHeaders",
+                        template: FormItemTemplates.buttonGroup,
+                        editorOptions: {
+                            items: [ {
+                                text: "Auto"
+                            }, {
+                                text: "Off"
+                            }, {
+                                text: "On"
+                            } ]
+                        }
+                    } ]
                 } ],
                 icon: "CustomItemSimpleTable",
                 title: "Simple Table"
@@ -188,6 +199,9 @@
             module.exports = {
                 SimpleTableItemExtension: SimpleTableItemExtension
             };
+        },
+        3: function(module, exports) {
+            module.exports = __WEBPACK_EXTERNAL_MODULE__3__;
         }
     });
 });

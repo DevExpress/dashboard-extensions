@@ -1,38 +1,49 @@
-import { editorTemplates } from 'devexpress-dashboard/model/index.metadata'
+import { ICustomItemMetaData, CustomItem } from 'devexpress-dashboard/model';
+import { FormItemTemplates } from 'devexpress-dashboard/designer';
+
+const onOffButtons = [{ text: 'On' }, { text: 'Off' }];
 
 export const PARAMETER_ITEM_EXTENSION_NAME = 'ParameterItem';
 
-export const parameterItemMeta = {
-    properties: [{
+export const parameterItemMeta: ICustomItemMetaData = {
+    customProperties: [{
+        ownerType: CustomItem,
         propertyName: 'showHeaders',
-        editor: editorTemplates.buttonGroup,
-        displayName: "Show Headers",
-        values: {
-            Off: "Off",
-            On: "On"
-        },
-        defaultVal: 'On'
-    }, {
+        valueType: 'string',
+        defaultValue: 'On',
+    },{
+        ownerType: CustomItem,
         propertyName: 'showParameterName',
-        editor: editorTemplates.buttonGroup,
-        displayName: "Show Parameter Name",
-        values: {
-            Off: "Off",
-            On: "On"
-        },
-        defaultVal: 'On'
-    }, {
+        valueType: 'string',
+        defaultValue: 'On',
+    },{
+        ownerType: CustomItem,
         propertyName: 'automaticUpdates',
-        editor: editorTemplates.buttonGroup,
-        displayName: "Automatic Updates",
-        values: {
-            Off: "Off",
-            On: "On"
-        },
-        defaultVal: 'Off'
+        valueType: 'string',
+        defaultValue: 'Off',
     }],
-
+    optionsPanelSections: [{
+        title: 'Parameters settings',
+        items: [{
+            dataField: 'showHeaders',
+            template: FormItemTemplates.buttonGroup,
+            editorOptions: {
+                items: onOffButtons,
+            },
+        }, {
+            dataField: 'showParameterName',
+            template: FormItemTemplates.buttonGroup,
+            editorOptions: {
+                items: onOffButtons,
+            },
+        }, {
+            dataField: 'automaticUpdates',
+            template: FormItemTemplates.buttonGroup,
+            editorOptions: {
+                items: onOffButtons,
+            },
+        }],
+    }],
     icon: PARAMETER_ITEM_EXTENSION_NAME,
-
     title: "Parameters"
 };

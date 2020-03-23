@@ -1,9 +1,9 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("jquery"), require("devexpress-dashboard/designer"), require("knockout")); else if (typeof define === "function" && define.amd) define([ "jquery", "devexpress-dashboard/designer", "knockout" ], factory); else {
-        var a = typeof exports === "object" ? factory(require("jquery"), require("devexpress-dashboard/designer"), require("knockout")) : factory(root["$"], root["DevExpress"]["Dashboard"]["Designer"], root["ko"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/designer"), require("jquery"), require("knockout")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/designer", "jquery", "knockout" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/designer"), require("jquery"), require("knockout")) : factory(root["DevExpress"]["Dashboard"]["Designer"], root["$"], root["ko"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
-})(window, function(__WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__14__, __WEBPACK_EXTERNAL_MODULE__15__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__13__) {
     return function(modules) {
         var installedModules = {};
         function __webpack_require__(moduleId) {
@@ -67,17 +67,17 @@
             return Object.prototype.hasOwnProperty.call(object, property);
         };
         __webpack_require__.p = "";
-        return __webpack_require__(__webpack_require__.s = 13);
+        return __webpack_require__(__webpack_require__.s = 12);
     }({
         1: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
         },
-        13: function(module, exports, __webpack_require__) {
+        12: function(module, exports, __webpack_require__) {
             "use strict";
             exports.__esModule = true;
-            var designer_1 = __webpack_require__(14);
-            var $ = __webpack_require__(1);
-            var ko = __webpack_require__(15);
+            var designer_1 = __webpack_require__(1);
+            var $ = __webpack_require__(3);
+            var ko = __webpack_require__(13);
             var CustomDashboardPanelExtension = function() {
                 function CustomDashboardPanelExtension(_dashboardControl, options) {
                     var _this = this;
@@ -105,6 +105,19 @@
                     this._left = ko.computed(function() {
                         return _this.visible() ? 0 : -_this._actualPanelWidth();
                     });
+                    this._titleToolbarUpdatedHandler = function(args) {
+                        args.options.navigationItems.push({
+                            type: "button",
+                            template: function() {
+                                return $("<div/>").addClass([ _this._flexParent, _this._ellipsisText ].join(" ")).append($('<svg><use xlink:href="#' + _this._iconBack + '" /></svg>')).append($("<div/>").text(_this._dashboardsButtonName).addClass([ _this._dashboardsButton, _this._dashboardTruncated ].join(" ")));
+                            },
+                            click: function() {
+                                _this.showPanelAsync({
+                                    surfaceLeft: _this._actualPanelWidth()
+                                });
+                            }
+                        });
+                    };
                     this.showPanelAsync = function(options) {
                         var def = $.Deferred();
                         _this.visible(true);
@@ -178,22 +191,10 @@
                         }
                     }));
                     if (this._isMobile()) {
-                        var api = this._dashboardControl.findExtension("viewer-api");
-                        var originalTitleUpdatedHangler_1 = api._options.onDashboardTitleToolbarUpdated;
-                        api._options.onDashboardTitleToolbarUpdated = function(args) {
-                            args.options.navigationItems.push({
-                                type: "button",
-                                template: function() {
-                                    return $("<div/>").addClass([ _this._flexParent, _this._ellipsisText ].join(" ")).append($('<svg><use xlink:href="#' + _this._iconBack + '" /></svg>')).append($("<div/>").text(_this._dashboardsButtonName).addClass([ _this._dashboardsButton, _this._dashboardTruncated ].join(" ")));
-                                },
-                                click: function() {
-                                    _this.showPanelAsync({
-                                        surfaceLeft: _this._actualPanelWidth()
-                                    });
-                                }
-                            });
-                            originalTitleUpdatedHangler_1.call(_this, args);
-                        };
+                        var viewerApiExtension = this._dashboardControl.findExtension("viewer-api");
+                        if (viewerApiExtension) {
+                            viewerApiExtension.on("dashboardTitleToolbarUpdated", this._titleToolbarUpdatedHandler);
+                        }
                     }
                     if (!this._dashboardControl.isDesignMode()) {
                         this._dashboardControl.surfaceLeft(this._isMobile() ? 0 : this.panelWidth);
@@ -205,9 +206,13 @@
                         return d.dispose();
                     });
                     this._disposables = [];
-                    var extension = this._dashboardControl.findExtension("toolbox");
-                    if (extension) {
-                        extension.toolbarGroups.remove(this._toolbarElement);
+                    var viewerApiExtension = this._dashboardControl.findExtension("viewer-api");
+                    if (viewerApiExtension) {
+                        viewerApiExtension.off("dashboardTitleToolbarUpdated", this._titleToolbarUpdatedHandler);
+                    }
+                    var toolboxExtension = this._dashboardControl.findExtension("toolbox");
+                    if (toolboxExtension) {
+                        toolboxExtension.toolbarGroups.remove(this._toolbarElement);
                     }
                     this._dashboardControl.customTemplates.remove(this._customTemplate);
                 };
@@ -320,11 +325,11 @@
                 return PanelExtensionDashboardInfo;
             }();
         },
-        14: function(module, exports) {
-            module.exports = __WEBPACK_EXTERNAL_MODULE__14__;
+        13: function(module, exports) {
+            module.exports = __WEBPACK_EXTERNAL_MODULE__13__;
         },
-        15: function(module, exports) {
-            module.exports = __WEBPACK_EXTERNAL_MODULE__15__;
+        3: function(module, exports) {
+            module.exports = __WEBPACK_EXTERNAL_MODULE__3__;
         }
     });
 });

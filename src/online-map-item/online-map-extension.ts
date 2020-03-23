@@ -2,7 +2,6 @@
 import { OnlineMapItem } from "./online-map-viewer";
 import { ONLINE_MAP_ICON } from "./icon";
 import { ICustomItemExtension } from "devexpress-dashboard/common";
-import './localization'
 import { dxElement } from "devextreme/core/element";
 
 

@@ -58,8 +58,8 @@ export class OnlineMapItem extends CustomItemViewer {
         }
         var autoAdjust = markers.length > 1 || routes.length > 1, 
             options = <any>{
-                provider: this.getPropertyValue('Provider').toLowerCase(),
-                type: this.getPropertyValue('Type').toLowerCase(),
+                provider: (<string>this.getPropertyValue('Provider')).toLowerCase(),
+                type: (<string>this.getPropertyValue('Type')).toLowerCase(),
                 controls: true,
                 zoom: autoAdjust ? 1000 : 1,
                 autoAdjust: autoAdjust,
