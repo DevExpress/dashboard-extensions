@@ -103,7 +103,7 @@ See [Client-Side Configuration (Modular Approach)](https://docs.devexpress.com/D
         // ...
     });
     // ...
-    dashboardControl.registerExtension(new DashboardPanelExtension(dashboardControl));
+    dashboardControl.registerExtension(new CustomDashboardPanelExtension(dashboardControl));
 
     dashboardControl.render();
 ```
