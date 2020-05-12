@@ -1,9 +1,9 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("jquery"), require("devexpress-dashboard/model/index.metadata"), require("devexpress-dashboard"), require("d3-funnel")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "jquery", "devexpress-dashboard/model/index.metadata", "devexpress-dashboard", "d3-funnel" ], factory); else {
-        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("jquery"), require("devexpress-dashboard/model/index.metadata"), require("devexpress-dashboard"), require("d3-funnel")) : factory(root["DevExpress"]["Dashboard"], root["$"], root["DevExpress"]["Dashboard"]["Metadata"], root["DevExpress"]["Dashboard"], root["D3Funnel"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/designer"), require("devexpress-dashboard/common"), require("jquery"), require("d3-funnel")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/model", "devexpress-dashboard/designer", "devexpress-dashboard/common", "jquery", "d3-funnel" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/designer"), require("devexpress-dashboard/common"), require("jquery"), require("d3-funnel")) : factory(root["DevExpress"]["Dashboard"]["Model"], root["DevExpress"]["Dashboard"]["Designer"], root["DevExpress"]["Dashboard"], root["$"], root["D3Funnel"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__20__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__17__) {
     return function(modules) {
         var installedModules = {};
         function __webpack_require__(moduleId) {
@@ -67,7 +67,7 @@
             return Object.prototype.hasOwnProperty.call(object, property);
         };
         __webpack_require__.p = "";
-        return __webpack_require__(__webpack_require__.s = 17);
+        return __webpack_require__(__webpack_require__.s = 14);
     }([ function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
     }, function(module, exports) {
@@ -79,7 +79,8 @@
     }, , function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
-        var index_metadata_1 = __webpack_require__(2);
+        var model_1 = __webpack_require__(0);
+        var designer_1 = __webpack_require__(1);
         exports.FUNNEL_D3_EXTENSION_NAME = "FunnelD3";
         exports.funnelMeta = {
             bindings: [ {
@@ -87,67 +88,105 @@
                 dataItemType: "Measure",
                 array: true,
                 enableColoring: true,
-                displayName: "DashboardWebCustomItemStringId.Values",
-                emptyPlaceholder: "DashboardWebCustomItemStringId.SetValue",
-                selectedPlaceholder: "DashboardWebCustomItemStringId.ConfigureValue"
+                displayName: "Values",
+                emptyPlaceholder: "Set Value",
+                selectedPlaceholder: "Configure Value"
             }, {
                 propertyName: "Arguments",
                 dataItemType: "Dimension",
                 array: true,
                 enableInteractivity: true,
                 enableColoring: true,
-                displayName: "DashboardWebCustomItemStringId.Arguments",
-                emptyPlaceholder: "DashboardWebCustomItemStringId.SetArgument",
-                selectedPlaceholder: "DashboardWebCustomItemStringId.ConfigureArgument"
+                displayName: "Arguments",
+                emptyPlaceholder: "Set Argument",
+                selectedPlaceholder: "Configure Argument"
             } ],
-            properties: [ {
+            customProperties: [ {
+                ownerType: model_1.CustomItem,
                 propertyName: "FillType",
-                editor: index_metadata_1.editorTemplates.buttonGroup,
-                displayName: "DashboardWebCustomItemStringId.FillType",
-                sectionName: "DashboardWebCustomItemStringId.SectionName",
-                values: {
-                    Solid: "DashboardWebCustomItemStringId.FillTypeSolid",
-                    Gradient: "DashboardWebCustomItemStringId.FillTypeGradient"
-                },
-                defaultVal: "Solid"
+                valueType: "string",
+                defaultValue: "Solid"
             }, {
+                ownerType: model_1.CustomItem,
                 propertyName: "IsCurved",
-                editor: index_metadata_1.editorTemplates.boolYesNo,
-                displayName: "DashboardWebCustomItemStringId.IsCurved",
-                sectionName: "DashboardWebCustomItemStringId.SectionName",
-                defaultVal: false,
-                from: index_metadata_1.parseBool
+                valueType: "boolean",
+                defaultValue: false
             }, {
+                ownerType: model_1.CustomItem,
                 propertyName: "IsDynamicHeight",
-                editor: index_metadata_1.editorTemplates.boolYesNo,
-                displayName: "DashboardWebCustomItemStringId.IsDynamicHeight",
-                sectionName: "DashboardWebCustomItemStringId.SectionName",
-                defaultVal: true,
-                from: index_metadata_1.parseBool
+                valueType: "boolean",
+                defaultValue: true
             }, {
+                ownerType: model_1.CustomItem,
                 propertyName: "PinchCount",
-                editor: index_metadata_1.editorTemplates.numeric,
-                editorOptions: {
-                    min: 0
-                },
-                displayName: "DashboardWebCustomItemStringId.PinchCount",
-                sectionName: "DashboardWebCustomItemStringId.SectionName",
-                defaultVal: 0
+                valueType: "number",
+                defaultValue: 0
+            } ],
+            optionsPanelSections: [ {
+                title: "Settings",
+                items: [ {
+                    dataField: "FillType",
+                    template: designer_1.FormItemTemplates.buttonGroup,
+                    editorOptions: {
+                        items: [ {
+                            text: "Solid"
+                        }, {
+                            text: "Gradient"
+                        } ]
+                    }
+                }, {
+                    dataField: "IsCurved",
+                    label: {
+                        text: "Curved"
+                    },
+                    template: designer_1.FormItemTemplates.buttonGroup,
+                    editorOptions: {
+                        keyExpr: "value",
+                        items: [ {
+                            value: false,
+                            text: "No"
+                        }, {
+                            value: true,
+                            text: "Yes"
+                        } ]
+                    }
+                }, {
+                    dataField: "IsDynamicHeight",
+                    label: {
+                        text: "Dynamic Height"
+                    },
+                    template: designer_1.FormItemTemplates.buttonGroup,
+                    editorOptions: {
+                        keyExpr: "value",
+                        items: [ {
+                            value: false,
+                            text: "No"
+                        }, {
+                            value: true,
+                            text: "Yes"
+                        } ]
+                    }
+                }, {
+                    dataField: "PinchCount",
+                    editorType: "dxNumberBox",
+                    editorOptions: {
+                        min: 0
+                    }
+                } ]
             } ],
             interactivity: {
                 filter: true,
                 drillDown: true
             },
             icon: exports.FUNNEL_D3_EXTENSION_NAME,
-            title: "DashboardWebCustomItemStringId.DefaultNameFunnelD3",
+            title: "Funnel D3",
             index: 3
         };
-    }, , , , , , , , , , , , function(module, exports, __webpack_require__) {
+    }, , , , , , , , , function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
-        var icon_1 = __webpack_require__(18);
-        var funnel_d3_viewer_1 = __webpack_require__(19);
-        __webpack_require__(21);
+        var icon_1 = __webpack_require__(15);
+        var funnel_d3_viewer_1 = __webpack_require__(16);
         var meta_1 = __webpack_require__(5);
         var FunnelD3ItemExtension = function() {
             function FunnelD3ItemExtension(dashboardControl) {
@@ -188,9 +227,9 @@
             };
         }();
         exports.__esModule = true;
-        var common_1 = __webpack_require__(0);
-        var D3Funnel = __webpack_require__(20);
-        var $ = __webpack_require__(1);
+        var common_1 = __webpack_require__(2);
+        var D3Funnel = __webpack_require__(17);
+        var $ = __webpack_require__(3);
         var FunnelD3Item = function(_super) {
             __extends(FunnelD3Item, _super);
             function FunnelD3Item(model, container, options) {
@@ -414,26 +453,6 @@
         }(common_1.CustomItemViewer);
         exports.FunnelD3Item = FunnelD3Item;
     }, function(module, exports) {
-        module.exports = __WEBPACK_EXTERNAL_MODULE__20__;
-    }, function(module, exports, __webpack_require__) {
-        "use strict";
-        exports.__esModule = true;
-        var devexpress_dashboard_1 = __webpack_require__(3);
-        devexpress_dashboard_1.ResourceManager.setLocalizationMessages({
-            "DashboardWebCustomItemStringId.DefaultNameFunnelD3": "Funnel D3",
-            "DashboardWebCustomItemStringId.Values": "Values",
-            "DashboardWebCustomItemStringId.SetValue": "Set Value",
-            "DashboardWebCustomItemStringId.ConfigureValue": "Configure Value",
-            "DashboardWebCustomItemStringId.Arguments": "Arguments",
-            "DashboardWebCustomItemStringId.SetArgument": "Set Argument",
-            "DashboardWebCustomItemStringId.ConfigureArgument": "Configure Argument",
-            "DashboardWebCustomItemStringId.IsCurved": "Curved",
-            "DashboardWebCustomItemStringId.IsDynamicHeight": "Dynamic Height",
-            "DashboardWebCustomItemStringId.PinchCount": "Pinch Count",
-            "DashboardWebCustomItemStringId.FillType": "Fill Type",
-            "DashboardWebCustomItemStringId.FillTypeSolid": "Solid",
-            "DashboardWebCustomItemStringId.FillTypeGradient": "Gradient",
-            "DashboardWebCustomItemStringId.SectionName": "Settings"
-        });
+        module.exports = __WEBPACK_EXTERNAL_MODULE__17__;
     } ]);
 });

@@ -1,5 +1,6 @@
-var editorTemplates = require('devexpress-dashboard/model/index.metadata').editorTemplates;
-var CustomItemViewer= require('devexpress-dashboard/common').CustomItemViewer
+var CustomItemViewer= require('devexpress-dashboard/common').CustomItemViewer;
+var CustomItem = require('devexpress-dashboard/model').CustomItem;
+var FormItemTemplates = require('devexpress-dashboard/designer').FormItemTemplates;
 var $ = require('jquery');
 // Metadata definition.
 var customItemSimpleTableMeta = {
@@ -22,29 +23,22 @@ var customItemSimpleTableMeta = {
         displayName: "Custom Measure"
     }],
 
-    // A collection of custom properties that are available in the Web Dashboard UI.
-    properties: [{
-        // A unique name of the data binding.
+    customProperties: [{
+        ownerType: CustomItem,
         propertyName: 'showHeaders',
+        valueType: 'string',
+        defaultValue: 'Auto',
+    }],
 
-        // A type of editor used in the custom property.
-        editor: editorTemplates.buttonGroup,
-
-        // A caption of the custom property.
-        displayName: "Show Headers",
-
-		// A name of the custom section in the Options menu.
-        sectionName: "Custom Options",
-
-        // Custom property values.
-        values: {
-            Auto: "Auto",
-            Off: "Off",
-            On: "On"
-        },
-
-        // A default value of the custom property.
-        defaultVal: 'Auto'
+    optionsPanelSections: [{
+        title: "Custom Options",
+        items: [{
+            dataField: 'showHeaders',
+            template: FormItemTemplates.buttonGroup,
+            editorOptions: {
+                items: [{ text: 'Auto' }, { text: 'Off' }, { text: 'On' }],
+            },
+        }]
     }],
 
     // The icon's ID used in the SVG definition.

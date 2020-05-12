@@ -1,9 +1,9 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/common"), require("devexpress-dashboard"), require("devextreme/ui/map")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/common", "devexpress-dashboard", "devextreme/ui/map" ], factory); else {
-        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/common"), require("devexpress-dashboard"), require("devextreme/ui/map")) : factory(root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"], root["DevExpress"]["ui"]["dxMap"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/designer"), require("devexpress-dashboard/common"), require("devextreme/ui/map")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/model", "devexpress-dashboard/designer", "devexpress-dashboard/common", "devextreme/ui/map" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/designer"), require("devexpress-dashboard/common"), require("devextreme/ui/map")) : factory(root["DevExpress"]["Dashboard"]["Model"], root["DevExpress"]["Dashboard"]["Designer"], root["DevExpress"]["Dashboard"], root["DevExpress"]["ui"]["dxMap"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__10__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__10__) {
     return function(modules) {
         var installedModules = {};
         function __webpack_require__(moduleId) {
@@ -70,11 +70,15 @@
         return __webpack_require__(__webpack_require__.s = 8);
     }([ function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
-    }, , , function(module, exports) {
-        module.exports = __WEBPACK_EXTERNAL_MODULE__3__;
-    }, function(module, exports, __webpack_require__) {
+    }, function(module, exports) {
+        module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
+    }, function(module, exports) {
+        module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
+    }, , function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
+        var model_1 = __webpack_require__(0);
+        var designer_1 = __webpack_require__(1);
         exports.ONLINE_MAP_EXTENSION_NAME = "OnlineMap";
         exports.onlineMapMeta = {
             bindings: [ {
@@ -82,9 +86,9 @@
                 dataItemType: "Dimension",
                 array: false,
                 enableInteractivity: true,
-                displayName: "DashboardWebCustomItemStringId.Latitude",
-                emptyPlaceholder: "DashboardWebCustomItemStringId.Binding.SetLatitude",
-                selectedPlaceholder: "DashboardWebCustomItemStringId.Binding.ConfigureLatitude",
+                displayName: "Latitude",
+                emptyPlaceholder: "Set Latitude",
+                selectedPlaceholder: "Configure Latitude",
                 constraints: {
                     allowedTypes: [ "Integer", "Float", "Double", "Decimal" ]
                 }
@@ -93,58 +97,77 @@
                 dataItemType: "Dimension",
                 array: false,
                 enableInteractivity: true,
-                displayName: "DashboardWebCustomItemStringId.Longitude",
-                emptyPlaceholder: "DashboardWebCustomItemStringId.Binding.SetLongitude",
-                selectedPlaceholder: "DashboardWebCustomItemStringId.Binding.ConfigureLongitude",
+                displayName: "Longitude",
+                emptyPlaceholder: "Set Longitude",
+                selectedPlaceholder: "Configure Longitude",
                 constraints: {
                     allowedTypes: [ "Integer", "Float", "Double", "Decimal" ]
                 }
             } ],
-            properties: [ {
+            customProperties: [ {
+                ownerType: model_1.CustomItem,
                 propertyName: "Provider",
-                editor: {
-                    header: "dx-dashboard-button-group"
-                },
-                displayName: "DashboardWebCustomItemStringId.OnlineMapProvider",
-                sectionName: "DashboardWebCustomItemStringId.OnlineMapSectionName",
-                values: {
-                    Google: "DashboardWebCustomItemStringId.OnlineMapProviderGoogle",
-                    Bing: "DashboardWebCustomItemStringId.OnlineMapProviderBing"
-                },
-                defaultVal: "Bing"
+                valueType: "string",
+                defaultValue: "Bing"
             }, {
+                ownerType: model_1.CustomItem,
                 propertyName: "Type",
-                editor: {
-                    header: "dx-dashboard-button-group"
-                },
-                displayName: "DashboardWebCustomItemStringId.OnlineMapType",
-                sectionName: "DashboardWebCustomItemStringId.OnlineMapSectionName",
-                values: {
-                    RoadMap: "DashboardWebCustomItemStringId.OnlineMapTypeRoadMap",
-                    Satellite: "DashboardWebCustomItemStringId.OnlineMapTypeSatellite",
-                    Hybrid: "DashboardWebCustomItemStringId.OnlineMapTypeHybrid"
-                },
-                defaultVal: "RoadMap"
+                valueType: "string",
+                defaultValue: "RoadMap"
             }, {
+                ownerType: model_1.CustomItem,
                 propertyName: "DisplayMode",
-                editor: {
-                    header: "dx-dashboard-button-group"
-                },
-                displayName: "DashboardWebCustomItemStringId.OnlineMapDisplayMode",
-                sectionName: "DashboardWebCustomItemStringId.OnlineMapSectionName",
-                values: {
-                    Markers: "DashboardWebCustomItemStringId.OnlineMapDisplayModeMarkers",
-                    Routes: "DashboardWebCustomItemStringId.OnlineMapDisplayModeRoutes",
-                    MarkersAndRoutes: "DashboardWebCustomItemStringId.OnlineMapDisplayModeMarkersAndRoutes"
-                },
-                defaultVal: "Markers"
+                valueType: "string",
+                defaultValue: "Markers"
+            } ],
+            optionsPanelSections: [ {
+                title: "Custom Options",
+                items: [ {
+                    dataField: "Provider",
+                    template: designer_1.FormItemTemplates.buttonGroup,
+                    editorOptions: {
+                        items: [ {
+                            text: "Google"
+                        }, {
+                            text: "Bing"
+                        } ]
+                    }
+                }, {
+                    dataField: "Type",
+                    template: designer_1.FormItemTemplates.buttonGroup,
+                    editorOptions: {
+                        items: [ {
+                            text: "RoadMap"
+                        }, {
+                            text: "Satellite"
+                        }, {
+                            text: "Hybrid"
+                        } ]
+                    }
+                }, {
+                    dataField: "DisplayMode",
+                    template: designer_1.FormItemTemplates.buttonGroup,
+                    editorOptions: {
+                        keyExpr: "value",
+                        items: [ {
+                            value: "Markers",
+                            text: "Markers"
+                        }, {
+                            value: "Routes",
+                            text: "Routes"
+                        }, {
+                            value: "MarkersAndRoutes",
+                            text: "All"
+                        } ]
+                    }
+                } ]
             } ],
             interactivity: {
                 filter: true,
                 drillDown: false
             },
             icon: exports.ONLINE_MAP_EXTENSION_NAME,
-            title: "DashboardWebCustomItemStringId.DefaultNameOnlineMap",
+            title: "Online Map",
             index: 1
         };
     }, , , , function(module, exports, __webpack_require__) {
@@ -153,7 +176,6 @@
         var meta_1 = __webpack_require__(4);
         var online_map_viewer_1 = __webpack_require__(9);
         var icon_1 = __webpack_require__(11);
-        __webpack_require__(12);
         var OnlineMapItemExtension = function() {
             function OnlineMapItemExtension(dashboardControl) {
                 this.name = meta_1.ONLINE_MAP_EXTENSION_NAME;
@@ -188,7 +210,7 @@
             };
         }();
         exports.__esModule = true;
-        var common_1 = __webpack_require__(0);
+        var common_1 = __webpack_require__(2);
         var map_1 = __webpack_require__(10);
         var OnlineMapItem = function(_super) {
             __extends(OnlineMapItem, _super);
@@ -284,33 +306,5 @@
         exports.__esModule = true;
         var meta_1 = __webpack_require__(4);
         exports.ONLINE_MAP_ICON = '<?xml version="1.0" encoding="utf-8"?>\n\x3c!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --\x3e\n<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n<svg version="1.1" id="' + meta_1.onlineMapMeta.icon + '" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"\n\t viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">\n<path class="dx_darkgray" d="M12,1C8.1,1,5,4.1,5,8c0,3.9,3,10,7,15c4-5,7-11.1,7-15C19,4.1,15.9,1,12,1z M12,12c-2.2,0-4-1.8-4-4\n\tc0-2.2,1.8-4,4-4s4,1.8,4,4C16,10.2,14.2,12,12,12z"/>\n<circle class="dx_red" cx="12" cy="8" r="2"/>\n</svg>';
-    }, function(module, exports, __webpack_require__) {
-        "use strict";
-        exports.__esModule = true;
-        var devexpress_dashboard_1 = __webpack_require__(3);
-        function getDefaultCustomLocalization() {
-            return {
-                "DashboardWebCustomItemStringId.DefaultNameOnlineMap": "Online Map",
-                "DashboardWebCustomItemStringId.Latitude": "Latitude",
-                "DashboardWebCustomItemStringId.Binding.SetLatitude": "Set Latitude",
-                "DashboardWebCustomItemStringId.Binding.ConfigureLatitude": "Configure Latitude",
-                "DashboardWebCustomItemStringId.Longitude": "Longitude",
-                "DashboardWebCustomItemStringId.Binding.SetLongitude": "Set Longitude",
-                "DashboardWebCustomItemStringId.Binding.ConfigureLongitude": "Configure Longitude",
-                "DashboardWebCustomItemStringId.OnlineMapProvider": "Provider",
-                "DashboardWebCustomItemStringId.OnlineMapType": "Type",
-                "DashboardWebCustomItemStringId.OnlineMapProviderGoogle": "Google",
-                "DashboardWebCustomItemStringId.OnlineMapProviderBing": "Bing",
-                "DashboardWebCustomItemStringId.OnlineMapTypeRoadMap": "RoadMap",
-                "DashboardWebCustomItemStringId.OnlineMapTypeSatellite": "Satellite",
-                "DashboardWebCustomItemStringId.OnlineMapTypeHybrid": "Hybrid",
-                "DashboardWebCustomItemStringId.OnlineMapDisplayMode": "Display Mode",
-                "DashboardWebCustomItemStringId.OnlineMapDisplayModeMarkers": "Markers",
-                "DashboardWebCustomItemStringId.OnlineMapDisplayModeRoutes": "Routes",
-                "DashboardWebCustomItemStringId.OnlineMapDisplayModeMarkersAndRoutes": "All",
-                "DashboardWebCustomItemStringId.OnlineMapSectionName": "Custom Options"
-            };
-        }
-        devexpress_dashboard_1.ResourceManager.setLocalizationMessages(getDefaultCustomLocalization());
     } ]);
 });

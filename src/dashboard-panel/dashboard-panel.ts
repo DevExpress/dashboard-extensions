@@ -97,23 +97,10 @@ export class CustomDashboardPanelExtension implements IExtension {
         }));
 
         if(this._isMobile()) {
-            var api = <ViewerApiExtension>this._dashboardControl.findExtension("viewer-api");
-            let originalTitleUpdatedHangler = api._options.onDashboardTitleToolbarUpdated;
-            api._options.onDashboardTitleToolbarUpdated = (args) => {
-                args.options.navigationItems.push({
-                    type: 'button',
-                    template: () => {
-                        return $('<div/>')
-                            .addClass([this._flexParent, this._ellipsisText].join(' '))
-                            .append($('<svg><use xlink:href="#' + this._iconBack + '" /></svg>'))
-                            .append($('<div/>').text(this._dashboardsButtonName).addClass([this._dashboardsButton, this._dashboardTruncated].join(' ')));
-                    },
-                    click: () => {
-                        this.showPanelAsync({ surfaceLeft: this._actualPanelWidth() });
-                    }
-                });
-                originalTitleUpdatedHangler.call(this, args);
-            };
+            var viewerApiExtension = <ViewerApiExtension>this._dashboardControl.findExtension("viewer-api");
+            if(viewerApiExtension) {
+                viewerApiExtension.on('dashboardTitleToolbarUpdated', this._titleToolbarUpdatedHandler)
+            }
         }
 
         if(!this._dashboardControl.isDesignMode()) {
@@ -126,9 +113,13 @@ export class CustomDashboardPanelExtension implements IExtension {
     stop() {
         this._disposables.forEach(d => d.dispose());
         this._disposables = [];
-        var extension = <ToolboxExtension>this._dashboardControl.findExtension("toolbox");
-        if(extension) {
-            extension.toolbarGroups.remove(this._toolbarElement);
+        var viewerApiExtension = <ViewerApiExtension>this._dashboardControl.findExtension("viewer-api");
+        if(viewerApiExtension) {
+            viewerApiExtension.off('dashboardTitleToolbarUpdated', this._titleToolbarUpdatedHandler)
+        }
+        var toolboxExtension = <ToolboxExtension>this._dashboardControl.findExtension("toolbox");
+        if(toolboxExtension) {
+            toolboxExtension.toolbarGroups.remove(this._toolbarElement);
         }
         this._dashboardControl.customTemplates.remove(this._customTemplate);
     }
@@ -162,6 +153,20 @@ export class CustomDashboardPanelExtension implements IExtension {
         if(this._isMobile()) {
             this.hidePanelAsync({ surfaceLeft: 0 });
         }
+    }
+    private _titleToolbarUpdatedHandler = (args) => {
+        args.options.navigationItems.push({
+            type: 'button',
+            template: () => {
+                return $('<div/>')
+                    .addClass([this._flexParent, this._ellipsisText].join(' '))
+                    .append($('<svg><use xlink:href="#' + this._iconBack + '" /></svg>'))
+                    .append($('<div/>').text(this._dashboardsButtonName).addClass([this._dashboardsButton, this._dashboardTruncated].join(' ')));
+            },
+            click: () => {
+                this.showPanelAsync({ surfaceLeft: this._actualPanelWidth() });
+            }
+        });
     }
     showPanelAsync = (options: WorkingModeSwitchingOptions) => {
         var def = $.Deferred();

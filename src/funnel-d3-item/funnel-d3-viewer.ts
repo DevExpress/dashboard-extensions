@@ -128,7 +128,7 @@ export class FunnelD3Item extends CustomItemViewer {
                                 var obj = this.funnelSettings.data[index][0];
                                 return obj.data && this.isSelected(obj.data) ? getSelectionColor(obj.color) : obj.color;
                             },
-                            type: this.getPropertyValue('FillType').toLowerCase()
+                            type: (<string>this.getPropertyValue('FillType')).toLowerCase()
                         }
                     },
                     label: {

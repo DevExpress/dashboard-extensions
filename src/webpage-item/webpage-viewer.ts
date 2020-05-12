@@ -28,6 +28,6 @@ export class WebPageItem extends CustomItemViewer {
                 attribute = row.getDisplayText('Attribute')[0];
             }
         });
-        this._iframe.attr('src', this.getPropertyValue('Url').replace('{0}', attribute));
+        this._iframe.attr('src', (<string>this.getPropertyValue('Url')).replace('{0}', attribute));
     }
 }
