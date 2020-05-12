@@ -247,8 +247,7 @@
                 if (!this._ensureFunnelLibrary(htmlElement)) return;
                 if (!!data) {
                     if (!changeExisting || !this.funnelViewer) {
-                        this.funnelContainer && this.funnelContainer.parentNode.removeChild(this.funnelContainer);
-                        htmlElement.innerHTML = "";
+                        while (htmlElement.firstChild) htmlElement.removeChild(htmlElement.firstChild);
                         this.funnelContainer = document.createElement("div");
                         this.funnelContainer.style.margin = "20px";
                         this.funnelContainer.style.height = "calc(100% - 40px)";
@@ -257,7 +256,7 @@
                     }
                     this._update(data, this._getFunnelSizeOptions());
                 } else {
-                    htmlElement.innerHTML = "";
+                    while (htmlElement.firstChild) htmlElement.removeChild(htmlElement.firstChild);
                     this.funnelViewer = null;
                 }
             };
@@ -283,6 +282,7 @@
                 };
             };
             FunnelD3Item.prototype._getFunnelSizeOptions = function() {
+                if (!this.funnelContainer) return {};
                 return {
                     chart: {
                         width: this.funnelContainer.clientWidth,
