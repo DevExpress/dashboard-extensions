@@ -28,6 +28,10 @@ The following extensions are available:
 
     The **Dashboard Panel** is an extension that displays a list of available dashboards and lets you switch between the [designer and viewer](https://docs.devexpress.com/Dashboard/120098) modes.
 
+- [Polar Chart Item](docs/polar-chart-item.md)
+
+    A custom **Polar Chart** item renders a polar chart using the [dxPolarChart](https://js.devexpress.com/Documentation/ApiReference/Data_Visualization_Widgets/dxPolarChart/) DevExtreme widget.
+
 You can use these extensions as a base for your own dashboard item extension [development](https://docs.devexpress.com/Dashboard/117546).
 
 - [Install a dashboard extension package](#install-a-dashboard-extension-package)
@@ -73,6 +77,7 @@ Import the required modules and register extensions in code before the control i
     import { ParameterItemExtension } from 'dashboard-extensions/dist/parameter-item';
     import { WebPageItemExtension } from 'dashboard-extensions/dist/webpage-item';
     import { SimpleTableItemExtension } from 'dashboard-extensions/dist/simple-table-item';
+    import { PolarChartItemExtension } from 'dashboard-extensions/dist/polar-chart-item';
     // ...
     export class DashboardComponent implements AfterViewInit {
         ngAfterViewInit(): void {
@@ -82,6 +87,7 @@ Import the required modules and register extensions in code before the control i
             dashboardControl.registerExtension(new WebPageItemExtension(dashboardControl));
             dashboardControl.registerExtension(new ParameterItemExtension(dashboardControl));
             dashboardControl.registerExtension(new SimpleTableItemExtension(dashboardControl));
+            dashboardControl.registerExtension(new PolarChartItemExtension(dashboardControl));
             dashboardControl.render(); 
         }
     }
@@ -106,6 +112,7 @@ See [Client-Side Configuration (Modular Approach)](https://docs.devexpress.com/D
     <script src="node_modules/dashboard-extensions/dist/parameter-item.js"></script>
     <script src="node_modules/dashboard-extensions/dist/webpage-item.js"></script>
     <script src="node_modules/dashboard-extensions/dist/simple-table-item.js"></script>
+    <script src="node_modules/dashboard-extensions/dist/polar-chart-item.js"></script>
 </body>
 ```
 
@@ -121,7 +128,8 @@ See [Client-Side Configuration (Modular Approach)](https://docs.devexpress.com/D
     dashboardControl.registerExtension(new FunnelD3ItemExtension(dashboardControl));
     dashboardControl.registerExtension(new WebPageItemExtension(dashboardControl));
     dashboardControl.registerExtension(new ParameterItemExtension(dashboardControl));
-    dashboardControl.registerExtension(new SimpleTableItemExtension(dashboardControl));    
+    dashboardControl.registerExtension(new SimpleTableItemExtension(dashboardControl));
+    dashboardControl.registerExtension(new PolarChartItemExtension(dashboardControl));
 
     dashboardControl.render();
 ```
@@ -151,10 +159,10 @@ You can use a code of these extensions as a base for your own dashboard item ext
     ```bash
     npm install
     ```
-5. Install the [devexpress-dashboard](https://www.npmjs.com/package/devexpress-dashboard) package.
+5. Install [devextreme](https://www.npmjs.com/package/devextreme), [@devexpress/analytics-core](https://www.npmjs.com/package/@devexpress/analytics-core) and [devexpress-dashboard](https://www.npmjs.com/package/devexpress-dashboard) packages.
 
     ```bash
-    npm install devexpress-dashboard
+    npm install devextreme @devexpress/analytics-core devexpress-dashboard
     ```
 
 6. Edit extension's code in the **src** folder and save your changes.

@@ -9,7 +9,8 @@ module.exports = {
         'funnel-d3-item': './src/funnel-d3-item/funnel-d3-extension.ts',
         'parameter-item': './src/parameter-item/parameter-item-extension.ts',
         'webpage-item': './src/webpage-item/webpage-extension.ts',
-        'simple-table-item': './src/simple-table/simple-table-extension.js'
+        'simple-table-item': './src/simple-table/simple-table-extension.js',
+        'polar-chart-item': './src/polar-chart-item/polar-chart-extension.ts',
     },
     output: {
         libraryTarget: 'umd',
@@ -21,6 +22,7 @@ module.exports = {
         'knockout': { root: 'ko', commonjs2: 'knockout', commonjs: 'knockout', amd: 'knockout' },
         'd3-funnel': { root: 'D3Funnel', commonjs2: 'd3-funnel', commonjs: 'd3-funnel', amd: 'd3-funnel' },
         'devextreme/ui/map': { root: ['DevExpress', 'ui', 'dxMap'], commonjs2: 'devextreme/ui/map', commonjs: 'devextreme/ui/map', amd: 'devextreme/ui/map' },
+        'devextreme/viz/polar_chart': { root: ['DevExpress', 'viz', 'dxPolarChart'], commonjs2: 'devextreme/viz/polar_chart', commonjs: 'devextreme/viz/polar_chart', amd: 'devextreme/viz/polar_chart' },
         'devextreme/ui/button': { root: ['DevExpress', 'ui', 'dxButton'], commonjs2: 'devextreme/ui/button', commonjs: 'devextreme/ui/button', amd: 'devextreme/ui/button' },
         'devextreme/core/devices': { root: ['DevExpress', 'devices'], commonjs2: 'devextreme/core/devices', commonjs: 'devextreme/core/devices', amd: 'devextreme/core/devices' },
 
