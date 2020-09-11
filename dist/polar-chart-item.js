@@ -141,7 +141,7 @@
                     if (this.getBindingValue("measureValue").length > 0) {
                         this.iterateData(function(dataRow) {
                             var dataItem = {
-                                arg: dataRow.getValue("dimensionValue"),
+                                arg: dataRow.getValue("dimensionValue")[0] || "",
                                 color: dataRow.getColor()[0],
                                 clientDataRow: dataRow
                             };
