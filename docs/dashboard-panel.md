@@ -113,7 +113,7 @@ See [Client-Side Configuration (Global Namespaces)](https://docs.devexpress.com/
 ## API
 The DashboardPanelExtension class contains the following public properties and methods that are similar to the integrated Dashboard Panel's API:
 
-| Property | Description |
+| Member | Description |
 |--|--|
 | [DashboardPanelExtension.allowSwitchToDesigner](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardPanelExtension#js_DevExpress_Dashboard_DashboardPanelExtension_allowSwitchToDesigner) | Specifies whether you can switch into the designer mode. This property control the visibility of the *Edit in Designer* button. Property value: bool.  |
 | [DashboardPanelExtension.name](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardPanelExtension#js_DevExpress_Dashboard_DashboardPanelExtension_name) | Specifies a unique name of a Web Dashboard extension. The default value is 'dashboard-panel'. Property value: string. |
