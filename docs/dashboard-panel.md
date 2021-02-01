@@ -111,7 +111,7 @@ See [Client-Side Configuration (Modular Approach)](https://docs.devexpress.com/D
 See [Client-Side Configuration (Global Namespaces)](https://docs.devexpress.com/Dashboard/119158/) for more information on how to configure a client part of the Web Dashboard application using the approach with global namespaces.
 
 ## API
-The DashboardPanelExtension class contains the following public properties that are similar to the integrated Dashboard Panel's API:
+The DashboardPanelExtension class contains the following public properties and methods that are similar to the integrated Dashboard Panel's API:
 
 | Property | Description |
 |--|--|
@@ -119,7 +119,7 @@ The DashboardPanelExtension class contains the following public properties that 
 | [DashboardPanelExtension.name](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardPanelExtension#js_DevExpress_Dashboard_DashboardPanelExtension_name) | Specifies a unique name of a Web Dashboard extension. The default value is 'dashboard-panel'. Property value: string. |
 | [DashboardPanelExtension.panelWidth](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardPanelExtension#js_DevExpress_Dashboard_DashboardPanelExtension_panelWidth) | Specifies the width of the Dashboard Panel extension. The default value is 250 px. Property value: number. |
 | [DashboardPanelExtension.visible](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardPanelExtension#js_DevExpress_Dashboard_DashboardPanelExtension_visible) | Specifies whether the Dashboard Panel is visible. Property value: bool. |
-
+| [DashboardPanelExtension.updateDashboardsList](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardPanelExtension#js_devexpress_dashboard_dashboardpanelextension_updatedashboardslist) | Updates the dashboard list based on the dashboards available in the dashboard storage. |
 
 ## Development 
 
