@@ -35,6 +35,14 @@
     padding: 0;
 }
 
+.dx-dashboard-custom-panel-extension .dx-dashboard-dashboard-list-full {
+    bottom: 0;
+} 
+
+.dx-dashboard-custom-panel-extension .dx-dashboard-dashboard-list-clipped {
+    height: calc(100% - 110px);
+}      
+
 .dx-dashboard-custom-panel-extension .dx-dashboard-dashboard-list .dx-list-item-content {
     padding-left: 20px;
     font-size: 12px;

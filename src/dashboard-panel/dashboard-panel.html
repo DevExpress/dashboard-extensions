@@ -35,7 +35,10 @@
         <div 
              class="dx-dashboard-dashboard-list dx-dashboard-typography" 
              data-bind="dxList: listOptions, 
-                        style: { bottom: allowSwitchToDesigner() ? '' : 0 }">
+                        css: {
+                            'dx-dashboard-dashboard-list-full': !allowSwitchToDesigner(),
+                            'dx-dashboard-dashboard-list-clipped': allowSwitchToDesigner()
+                        }">
             <div data-options="dxTemplate:{ name: 'dashboard-card-view' }">
                 <div class="dx-dashboard-card-view">
                     <div class='dx-dashboard-card-name' data-bind="text: name"></div>
