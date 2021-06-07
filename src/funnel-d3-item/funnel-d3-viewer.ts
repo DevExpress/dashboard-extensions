@@ -6,7 +6,6 @@
 import { CustomItemViewer } from 'devexpress-dashboard/common'
 import * as D3Funnel from 'd3-funnel';
 import * as $ from 'jquery';
-import { dxElement } from 'devextreme/core/element';
 
 export class FunnelD3Item extends CustomItemViewer {
     funnelSettings;
@@ -25,8 +24,8 @@ export class FunnelD3Item extends CustomItemViewer {
         this._subscribeProperties();
     }
 
-    renderContent(element: dxElement, changeExisting) {
-        let htmlElement: HTMLElement = element instanceof $ ? element.get(0): <HTMLElement>(<any>element);
+    renderContent(element, changeExisting) {
+        let htmlElement: HTMLElement = element instanceof $ ? (<JQuery>element).get(0): <HTMLElement>(<any>element);
 
         var data = this._getDataSource();
         if(!this._ensureFunnelLibrary(htmlElement))

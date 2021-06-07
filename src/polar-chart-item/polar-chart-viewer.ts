@@ -1,6 +1,5 @@
 import { CustomItemViewer } from 'devexpress-dashboard/common'
 import * as $ from 'jquery';
-import { dxElement } from 'devextreme/core/element';
 import dxPolarChart, { dxPolarChartOptions } from 'devextreme/viz/polar_chart';
 
 export class PolarChartItem extends CustomItemViewer {
@@ -72,8 +71,8 @@ export class PolarChartItem extends CustomItemViewer {
         };
     }
 
-    renderContent(element: dxElement, changeExisting) {
-        let htmlElement: HTMLElement = element instanceof $ ? element.get(0): <HTMLElement>(<any>element);
+    renderContent(element, changeExisting) {
+        let htmlElement: HTMLElement = element instanceof $ ? (<JQuery>element).get(0): <HTMLElement>(<any>element);
 
         if (!changeExisting) {
             while(htmlElement.firstChild)
