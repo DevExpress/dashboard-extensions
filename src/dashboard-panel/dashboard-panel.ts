@@ -7,7 +7,6 @@ import { IExtension,
     MobileLayoutExtension, 
     ViewerApiExtension } from 'devexpress-dashboard/common'
 import { DashboardToolbarGroup, DashboardToolbarItem, ToolboxExtension } from 'devexpress-dashboard/designer';
-import DxDesigner from '@devexpress/analytics-core/dx-analytics-core';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
 
