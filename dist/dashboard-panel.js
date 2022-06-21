@@ -3,7 +3,7 @@
         var a = typeof exports === "object" ? factory(require("devexpress-dashboard/designer"), require("jquery"), require("knockout")) : factory(root["DevExpress"]["Dashboard"]["Designer"], root["$"], root["ko"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
-})(window, function(__WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__13__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__14__) {
     return function(modules) {
         var installedModules = {};
         function __webpack_require__(moduleId) {
@@ -67,17 +67,15 @@
             return Object.prototype.hasOwnProperty.call(object, property);
         };
         __webpack_require__.p = "";
-        return __webpack_require__(__webpack_require__.s = 12);
+        return __webpack_require__(__webpack_require__.s = 13);
     }({
-        1: function(module, exports) {
-            module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
-        },
-        12: function(module, exports, __webpack_require__) {
+        13: function(module, exports, __webpack_require__) {
             "use strict";
             exports.__esModule = true;
-            var designer_1 = __webpack_require__(1);
+            exports.CustomDashboardPanelExtension = void 0;
+            var designer_1 = __webpack_require__(2);
             var $ = __webpack_require__(3);
-            var ko = __webpack_require__(13);
+            var ko = __webpack_require__(14);
             var CustomDashboardPanelExtension = function() {
                 function CustomDashboardPanelExtension(_dashboardControl, options) {
                     var _this = this;
@@ -202,6 +200,7 @@
                     this.updateDashboardsList();
                 };
                 CustomDashboardPanelExtension.prototype.stop = function() {
+                    this._dashboardControl.surfaceLeft(0);
                     this._disposables.forEach(function(d) {
                         return d.dispose();
                     });
@@ -325,8 +324,11 @@
                 return PanelExtensionDashboardInfo;
             }();
         },
-        13: function(module, exports) {
-            module.exports = __WEBPACK_EXTERNAL_MODULE__13__;
+        14: function(module, exports) {
+            module.exports = __WEBPACK_EXTERNAL_MODULE__14__;
+        },
+        2: function(module, exports) {
+            module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
         },
         3: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__3__;

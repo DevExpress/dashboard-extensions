@@ -1,9 +1,9 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/designer"), require("devexpress-dashboard/common"), require("devextreme/ui/button")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/model", "devexpress-dashboard/designer", "devexpress-dashboard/common", "devextreme/ui/button" ], factory); else {
-        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/designer"), require("devexpress-dashboard/common"), require("devextreme/ui/button")) : factory(root["DevExpress"]["Dashboard"]["Model"], root["DevExpress"]["Dashboard"]["Designer"], root["DevExpress"]["Dashboard"], root["DevExpress"]["ui"]["dxButton"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/common"), require("devexpress-dashboard/designer"), require("devextreme/ui/button")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/model", "devexpress-dashboard/common", "devexpress-dashboard/designer", "devextreme/ui/button" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/common"), require("devexpress-dashboard/designer"), require("devextreme/ui/button")) : factory(root["DevExpress"]["Dashboard"]["Model"], root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"]["Designer"], root["DevExpress"]["ui"]["dxButton"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__20__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__21__) {
     return function(modules) {
         var installedModules = {};
         function __webpack_require__(moduleId) {
@@ -67,7 +67,7 @@
             return Object.prototype.hasOwnProperty.call(object, property);
         };
         __webpack_require__.p = "";
-        return __webpack_require__(__webpack_require__.s = 18);
+        return __webpack_require__(__webpack_require__.s = 19);
     }([ function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
     }, function(module, exports) {
@@ -77,8 +77,9 @@
     }, , , , function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
+        exports.parameterItemMeta = exports.PARAMETER_ITEM_EXTENSION_NAME = void 0;
         var model_1 = __webpack_require__(0);
-        var designer_1 = __webpack_require__(1);
+        var designer_1 = __webpack_require__(2);
         var onOffButtons = [ {
             text: "On"
         }, {
@@ -127,12 +128,13 @@
             icon: exports.PARAMETER_ITEM_EXTENSION_NAME,
             title: "Parameters"
         };
-    }, , , , , , , , , , , , function(module, exports, __webpack_require__) {
+    }, , , , , , , , , , , , , function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
+        exports.ParameterItemExtension = void 0;
         var meta_1 = __webpack_require__(6);
-        var viewer_1 = __webpack_require__(19);
-        var icon_1 = __webpack_require__(21);
+        var viewer_1 = __webpack_require__(20);
+        var icon_1 = __webpack_require__(22);
         var ParameterItemExtension = function() {
             function ParameterItemExtension(dashboardControl) {
                 var _this = this;
@@ -161,11 +163,12 @@
                 } instanceof Array && function(d, b) {
                     d.__proto__ = b;
                 } || function(d, b) {
-                    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+                    for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
                 };
                 return extendStatics(d, b);
             };
             return function(d, b) {
+                if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
                 extendStatics(d, b);
                 function __() {
                     this.constructor = d;
@@ -174,7 +177,8 @@
             };
         }();
         exports.__esModule = true;
-        var button_1 = __webpack_require__(20);
+        exports.ParameterItemViewer = void 0;
+        var button_1 = __webpack_require__(21);
         var buttonsStyle = {
             containerHeight: 60,
             height: 40,
@@ -182,7 +186,7 @@
             marginRight: 15,
             marginTop: 10
         };
-        var common_1 = __webpack_require__(2);
+        var common_1 = __webpack_require__(1);
         var ParameterItemViewer = function(_super) {
             __extends(ParameterItemViewer, _super);
             function ParameterItemViewer(model, container, options, parametersExtension) {
@@ -319,10 +323,11 @@
         }(common_1.CustomItemViewer);
         exports.ParameterItemViewer = ParameterItemViewer;
     }, function(module, exports) {
-        module.exports = __WEBPACK_EXTERNAL_MODULE__20__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__21__;
     }, function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
+        exports.PARAMETER_ITEM_ICON = void 0;
         var meta_1 = __webpack_require__(6);
         exports.PARAMETER_ITEM_ICON = '<svg id="' + meta_1.parameterItemMeta.icon + '" viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="11" fill="#39A866" /></svg>';
     } ]);

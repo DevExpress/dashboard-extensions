@@ -1,9 +1,9 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/designer"), require("devexpress-dashboard/common"), require("jquery"), require("d3-funnel")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/model", "devexpress-dashboard/designer", "devexpress-dashboard/common", "jquery", "d3-funnel" ], factory); else {
-        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/designer"), require("devexpress-dashboard/common"), require("jquery"), require("d3-funnel")) : factory(root["DevExpress"]["Dashboard"]["Model"], root["DevExpress"]["Dashboard"]["Designer"], root["DevExpress"]["Dashboard"], root["$"], root["D3Funnel"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/common"), require("devexpress-dashboard/designer"), require("jquery"), require("d3-funnel")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/model", "devexpress-dashboard/common", "devexpress-dashboard/designer", "jquery", "d3-funnel" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/common"), require("devexpress-dashboard/designer"), require("jquery"), require("d3-funnel")) : factory(root["DevExpress"]["Dashboard"]["Model"], root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"]["Designer"], root["$"], root["D3Funnel"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
-})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__17__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__18__) {
     return function(modules) {
         var installedModules = {};
         function __webpack_require__(moduleId) {
@@ -67,7 +67,7 @@
             return Object.prototype.hasOwnProperty.call(object, property);
         };
         __webpack_require__.p = "";
-        return __webpack_require__(__webpack_require__.s = 14);
+        return __webpack_require__(__webpack_require__.s = 15);
     }([ function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
     }, function(module, exports) {
@@ -79,8 +79,9 @@
     }, , function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
+        exports.funnelMeta = exports.FUNNEL_D3_EXTENSION_NAME = void 0;
         var model_1 = __webpack_require__(0);
-        var designer_1 = __webpack_require__(1);
+        var designer_1 = __webpack_require__(2);
         exports.FUNNEL_D3_EXTENSION_NAME = "FunnelD3";
         exports.funnelMeta = {
             bindings: [ {
@@ -182,11 +183,12 @@
             title: "Funnel D3",
             index: 3
         };
-    }, , , , , , , , , function(module, exports, __webpack_require__) {
+    }, , , , , , , , , , function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
-        var icon_1 = __webpack_require__(15);
-        var funnel_d3_viewer_1 = __webpack_require__(16);
+        exports.FunnelD3ItemExtension = void 0;
+        var icon_1 = __webpack_require__(16);
+        var funnel_d3_viewer_1 = __webpack_require__(17);
         var meta_1 = __webpack_require__(5);
         var FunnelD3ItemExtension = function() {
             function FunnelD3ItemExtension(dashboardControl) {
@@ -203,6 +205,7 @@
     }, function(module, exports, __webpack_require__) {
         "use strict";
         exports.__esModule = true;
+        exports.FUNNEL_D3_ICON = void 0;
         var meta_1 = __webpack_require__(5);
         exports.FUNNEL_D3_ICON = '<?xml version="1.0" encoding="utf-8"?>\x3c!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --\x3e<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="' + meta_1.funnelMeta.icon + '" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"\t viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"><polygon class="dx_green" points="2,1 22,1 16,8 8,8 "/><polygon class="dx_blue" points="8,9 16,9 14,15 10,15 "/><polygon class="dx_red" points="10,16 14,16 13,23 11,23 "/></svg>';
     }, function(module, exports, __webpack_require__) {
@@ -214,11 +217,12 @@
                 } instanceof Array && function(d, b) {
                     d.__proto__ = b;
                 } || function(d, b) {
-                    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+                    for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
                 };
                 return extendStatics(d, b);
             };
             return function(d, b) {
+                if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
                 extendStatics(d, b);
                 function __() {
                     this.constructor = d;
@@ -227,8 +231,9 @@
             };
         }();
         exports.__esModule = true;
-        var common_1 = __webpack_require__(2);
-        var D3Funnel = __webpack_require__(17);
+        exports.FunnelD3Item = void 0;
+        var common_1 = __webpack_require__(1);
+        var D3Funnel = __webpack_require__(18);
         var $ = __webpack_require__(3);
         var FunnelD3Item = function(_super) {
             __extends(FunnelD3Item, _super);
@@ -453,6 +458,6 @@
         }(common_1.CustomItemViewer);
         exports.FunnelD3Item = FunnelD3Item;
     }, function(module, exports) {
-        module.exports = __WEBPACK_EXTERNAL_MODULE__17__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE__18__;
     } ]);
 });
