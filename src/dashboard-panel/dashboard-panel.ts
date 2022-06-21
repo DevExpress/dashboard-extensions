@@ -110,6 +110,7 @@ export class CustomDashboardPanelExtension implements IExtension {
     }
 
     stop() {
+        this._dashboardControl.surfaceLeft(0);
         this._disposables.forEach(d => d.dispose());
         this._disposables = [];
         var viewerApiExtension = <ViewerApiExtension>this._dashboardControl.findExtension("viewer-api");
