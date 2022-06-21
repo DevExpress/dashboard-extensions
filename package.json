@@ -1,6 +1,6 @@
 {
   "name": "dashboard-extensions",
-  "version": "3.2.1",
+  "version": "4.0.0",
   "description": "DevExpress Dashboard Extensions",
   "repository": {
     "type": "git",
@@ -13,9 +13,9 @@
     "d3-funnel": "^1.2.1"
   },
   "peerDependencies": {
-    "devexpress-dashboard": ">20.1",
-    "@devexpress/analytics-core": ">20.1",
-    "devextreme": ">20.1"
+    "devexpress-dashboard": ">20.1 <22.1",
+    "@devexpress/analytics-core": ">20.1 <22.1",
+    "devextreme": ">20.1 <22.1"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.6.0",

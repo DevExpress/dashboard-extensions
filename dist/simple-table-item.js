@@ -1,6 +1,6 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/designer"), require("devexpress-dashboard/common"), require("jquery")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/model", "devexpress-dashboard/designer", "devexpress-dashboard/common", "jquery" ], factory); else {
-        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/designer"), require("devexpress-dashboard/common"), require("jquery")) : factory(root["DevExpress"]["Dashboard"]["Model"], root["DevExpress"]["Dashboard"]["Designer"], root["DevExpress"]["Dashboard"], root["$"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/common"), require("devexpress-dashboard/designer"), require("jquery")); else if (typeof define === "function" && define.amd) define([ "devexpress-dashboard/model", "devexpress-dashboard/common", "devexpress-dashboard/designer", "jquery" ], factory); else {
+        var a = typeof exports === "object" ? factory(require("devexpress-dashboard/model"), require("devexpress-dashboard/common"), require("devexpress-dashboard/designer"), require("jquery")) : factory(root["DevExpress"]["Dashboard"]["Model"], root["DevExpress"]["Dashboard"], root["DevExpress"]["Dashboard"]["Designer"], root["$"]);
         for (var i in a) (typeof exports === "object" ? exports : root)[i] = a[i];
     }
 })(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__3__) {
@@ -67,7 +67,7 @@
             return Object.prototype.hasOwnProperty.call(object, property);
         };
         __webpack_require__.p = "";
-        return __webpack_require__(__webpack_require__.s = 25);
+        return __webpack_require__(__webpack_require__.s = 26);
     }({
         0: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
@@ -78,10 +78,10 @@
         2: function(module, exports) {
             module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
         },
-        25: function(module, exports, __webpack_require__) {
-            var CustomItemViewer = __webpack_require__(2).CustomItemViewer;
+        26: function(module, exports, __webpack_require__) {
+            var CustomItemViewer = __webpack_require__(1).CustomItemViewer;
             var CustomItem = __webpack_require__(0).CustomItem;
-            var FormItemTemplates = __webpack_require__(1).FormItemTemplates;
+            var FormItemTemplates = __webpack_require__(2).FormItemTemplates;
             var $ = __webpack_require__(3);
             var customItemSimpleTableMeta = {
                 bindings: [ {
