@@ -1,4 +1,4 @@
-⛔ DEPRECATED. This repository was deprecated. To get an up-to-date custom items, refer to the following examples:
+⛔ DEPRECATED. This repository was deprecated. For up-to-date information on custom items, refer to the following examples:
 
 * [Dashboard for ASP.NET Core - Custom Item Gallery](https://github.com/DevExpress-Examples/asp-net-core-dashboard-custom-item-gallery)
 * [Dashboard for Angular - Custom Item Gallery](https://github.com/DevExpress-Examples/dashboard-angular-app-custom-item-gallery)
