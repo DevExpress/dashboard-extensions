@@ -1,11 +1,15 @@
-⛔ DEPRECATED. This repository was deprecated. Refer to the following examples:
+⛔ DEPRECATED. This repository was deprecated. To get an up-to-date custom items, refer to:
 
-[Dashboard for ASP.NET Core - Custom Item Gallery](https://github.com/DevExpress-Examples/asp-net-core-dashboard-custom-item-gallery)
-[Dashboard for Angular - Custom Item Gallery](https://github.com/DevExpress-Examples/dashboard-angular-app-custom-item-gallery)
-[Dashboard for React - Custom Item Gallery](https://github.com/DevExpress-Examples/dashboard-react-app-custom-item-gallery)
+* [Dashboard for ASP.NET Core - Custom Item Gallery](https://github.com/DevExpress-Examples/asp-net-core-dashboard-custom-item-gallery)
+* [Dashboard for Angular - Custom Item Gallery](https://github.com/DevExpress-Examples/dashboard-angular-app-custom-item-gallery)
+* [Dashboard for React - Custom Item Gallery](https://github.com/DevExpress-Examples/dashboard-react-app-custom-item-gallery)
 
-[Dashboard for ASP.NET Core - How to Implement a Custom Service and UI for Managing Dashboards List](https://github.com/DevExpress-Examples/asp-net-core-dashboard-custom-panel)
-[Dashboard for Angular - How to Implement a Custom Service and UI for Managing Dashboards List](https://github.com/DevExpress-Examples/angular-dashboard-custom-panel)
+For a custom panel that displays a list of available dashboards, visit the following:
+
+* [Dashboard for ASP.NET Core - How to Implement a Custom Service and UI for Managing Dashboards List](https://github.com/DevExpress-Examples/asp-net-core-dashboard-custom-panel)
+* [Dashboard for Angular - How to Implement a Custom Service and UI for Managing Dashboards List](https://github.com/DevExpress-Examples/angular-dashboard-custom-panel)
+
+The current repository will not be updated in the future.
 
 ## DevExpress Dashboard Extensions
 
