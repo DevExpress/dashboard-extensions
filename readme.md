@@ -1,3 +1,12 @@
+⛔ DEPRECATED. This repository was deprecated. Refer to the following examples:
+
+[Dashboard for ASP.NET Core - Custom Item Gallery](https://github.com/DevExpress-Examples/asp-net-core-dashboard-custom-item-gallery)
+[Dashboard for Angular - Custom Item Gallery](https://github.com/DevExpress-Examples/dashboard-angular-app-custom-item-gallery)
+[Dashboard for React - Custom Item Gallery](https://github.com/DevExpress-Examples/dashboard-react-app-custom-item-gallery)
+
+[Dashboard for ASP.NET Core - How to Implement a Custom Service and UI for Managing Dashboards List](https://github.com/DevExpress-Examples/asp-net-core-dashboard-custom-panel)
+[Dashboard for Angular - How to Implement a Custom Service and UI for Managing Dashboards List](https://github.com/DevExpress-Examples/angular-dashboard-custom-panel)
+
 ## DevExpress Dashboard Extensions
 
 This repository contains [dashboard extensions](https://docs.devexpress.com/Dashboard/117232) that allow you to add the additional functionality to the Web Dashboard. 
